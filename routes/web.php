@@ -11,7 +11,8 @@
 |
 */
 use App\TheLoai;
-use App\Room_Type;
+
+
 Route::get('/',function(){
 	return view('welcome');
 });
