@@ -3,7 +3,7 @@
                   <!-- general form elements -->
                   <div class="box box-primary">
                     <div class="box-header with-border">
-                      <h3 class="box-title">Sửa loại phòng</h3>
+                      <h3 class="box-title">Sửa loại bài</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -21,16 +21,16 @@
                             </div>
                         @endif
 
-                    <form action="admin/loaiphong/sua/{{$loaiphong->id}}" method="POST">
+                    <form action="admin/loaibai/sua/{{$loaibai->id}}" method="POST">
                     <input type="hidden" name="_token" value={{csrf_token()}} />
                       <div class="box-body">
                         <div class="form-group">
-                          <label>Tên</label>
-                          <input type="text" class="form-control" id="name" name="name" value="{{$loaiphong->name}}">
+                          <label>Tên loại bài</label>
+                          <input type="text" class="form-control" id="name" name="name" value="{{$loaibai->name}}">
                         </div>
                         <div class="form-group">
-                          <label>Mô tả</label>
-                          <input class="form-control" id="description" name="description" value="{{$loaiphong->description}}">
+                          <label>Mô tả loại bài</label>
+                          <input class="form-control" id="description" name="description" value="{{$loaibai->description}}">
                         </div>
                       </div>
                       <!-- /.box-body -->
