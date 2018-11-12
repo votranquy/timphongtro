@@ -12,6 +12,9 @@
 */
 use App\TheLoai;
 use App\Room_Type;
+Roue::get('/',function(){
+	return view('welcome');
+});
 
 Route::get('thu', function () {
     return view('admin.loaiphong.them');
@@ -79,3 +82,6 @@ Route::group(['prefix'=>'admin'],function(){
 	});
 
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
