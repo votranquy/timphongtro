@@ -3,7 +3,7 @@
                   <!-- general form elements -->
                   <div class="box box-primary">
                     <div class="box-header with-border">
-                      <h3 class="box-title">Thêm loại phòng</h3>
+                      <h3 class="box-title">Thêm loại bài</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -11,7 +11,7 @@
                             <div class="alert alert-danger">
                                 @foreach($errors->all() as $err)
                                     {{$err}}<br>
-                                @endforeach 
+                                @endforeach
                             </div>
                         @endif
 
@@ -19,17 +19,17 @@
                             <div class="alert alert-success">
                                 {{session('thongbao')}}
                             </div>
-                        @endif                    
-                    <form action="admin/loaiphong/them" method="POST">
+                        @endif
+                    <form action="admin/loaibai/them" method="POST">
                     <input type="hidden" name="_token" value={{csrf_token()}} />
                       <div class="box-body">
                         <div class="form-group">
-                          <label>Tên</label>
-                          <input class="form-control" id="name" name="name" placeholder="Nhập tên loại phòng">
+                          <label>Tên loại bài đăng</label>
+                          <input class="form-control" id="name" name="name" placeholder="Nhập tên loại bài">
                         </div>
                         <div class="form-group">
                           <label>Mô tả</label>
-                          <input class="form-control" id="description" name="description"placeholder="Nhập mô tả loại phòng">
+                          <input class="form-control" id="description" name="description"placeholder="Nhập mô tả loại bài">
                         </div>
                       </div>
                       <!-- /.box-body -->

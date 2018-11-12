@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class LoaiBai extends Model
 {
     //
-    protected $table="post_type";    
+    protected $table="post_type";
 }
