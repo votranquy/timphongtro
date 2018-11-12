@@ -20,7 +20,7 @@ class LoaiPhongController extends Controller
  		$loaiphong=LoaiPhong::find($id);
         $this->validate($request,
             [
-                'name'=>'required|min:3|max:100|unique:Room_Type',
+                'name'=>'required|min:3|max:100|unique:room_type',
                 'description'=>'required'
             ],
             [
@@ -44,7 +44,7 @@ class LoaiPhongController extends Controller
         //echo $request->Ten;
         $this->validate($request,
             [
-                'name'=>'required|min:3|max:100|unique:Room_Type',
+                'name'=>'required|min:3|max:100|unique:room_type',
                 'description'=>'required'
             ],
             [
