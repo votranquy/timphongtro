@@ -12,7 +12,7 @@
 */
 use App\TheLoai;
 use App\Room_Type;
-Roue::get('/',function(){
+Route::get('/',function(){
 	return view('welcome');
 });
 
