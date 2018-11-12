@@ -60,4 +60,9 @@ class LoaiBaiController extends Controller
         $loaibai->save();
         return redirect('admin/loaibai/sua/'.$id)->with('thongbao','Sửa thành công'); 
     }
+    public function getXoa($id){
+        $loaibai=LoaiBai::find($id);
+        $loaibai->delete();
+        return redirect('admin/loaibai/danhsach')->with('thongbao','Bạn đã xóa thành công');    
+    }    
 }
