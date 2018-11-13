@@ -21,7 +21,8 @@
                             </div>
                         @endif
                     <form action="admin/user/them" method="POST">
-                    <input type="hidden" name="_token" value={{csrf_token()}} />
+                    <!-- <input type="hidden" name="_token" value={{csrf_token()}} /> -->
+                    @csrf
                       <div class="box-body">
                         <div class="form-group">
                           <label>Username</label>
