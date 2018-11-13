@@ -42,7 +42,7 @@
                                 <td>{{$us->name}}</td>
                                 <td>{{$us->address}}</td>
                                 <td>{{$us->phone}}</td>
-                                <td><p> <img width="100px" src="upload/tintuc/{{$us->image}}"/></p></td>
+                                <td>{{$us->image}}</td>
                                 <td>{{$us->email}}</td>
                                 <td>{{$us->created_at}}</td>
                                 <td>{{$us->updated_at}}</td>
