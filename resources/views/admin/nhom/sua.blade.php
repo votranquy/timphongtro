@@ -19,7 +19,7 @@
                             </div>
                         @endif
 
-                    <form action="admin/nhom/sua/{{$nhom->nh}}" method="POST">
+                    <form action="admin/nhom/sua/{{$nhom->id}}" method="POST">
                     <input type="hidden" name="_token" value={{csrf_token()}} />
                       <div class="box-body">
                         <div class="form-group">
