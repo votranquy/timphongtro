@@ -39,14 +39,14 @@
                         <div class="form-group">
                           <label>Địa chỉ</label>
                           <input class="form-control" id="address" name="address"placeholder="Nhập địa chỉ">
-                        </div>  
+                        </div>
                         <div class="form-group">
                           <label>SDT</label>
                           <input class="form-control" id="phone" name="phone"placeholder="Nhập số điện thoại">
                         </div>
                         <div class="form-group">
                           <label>Ảnh</label>
-                          <input class="form-control" type="file" id="image" name="phone" placeholder="Chọn ảnh">
+                          <input class="form-control" type="file" id="image" name="image" placeholder="Chọn ảnh">
                         </div>
                         <div class="form-group">
                           <label>Email</label>
