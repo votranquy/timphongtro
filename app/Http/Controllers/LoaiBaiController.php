@@ -63,6 +63,6 @@ class LoaiBaiController extends Controller
     public function getXoa($id){
         $loaibai=LoaiBai::find($id);
         $loaibai->delete();
-        return redirect('admin/loaibai/danhsach')->with('thongbao','Bạn đã xóa thành công');    
-    }    
+        return redirect('admin/loaibai/danhsach')->with('thongbao','Bạn đã xóa thành công');
+    }
 }
