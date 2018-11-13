@@ -8,7 +8,8 @@ class UserController extends Controller
 {
     //
     public function getDanhSach(){
-    	return view('admin.user.danhsach');
+        $user = Users::all();
+        return view('admin.user.danhsach',['user'=>$user]);
     }
 
     public function getSua(){

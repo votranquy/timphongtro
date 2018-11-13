@@ -64,6 +64,20 @@
           <li><a href="admin/nhom/them"><i class="fa fa-circle-o"></i> Thêm</a></li>
         </ul>
       </li>
+
+      <li class="treeview">
+        <a href="admin/user/danhsach">
+          <i class="fa fa-pie-chart"></i>
+          <span>User</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="admin/user/danhsach"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+          <li><a href="admin/user/them"><i class="fa fa-circle-o"></i> Thêm</a></li>
+        </ul>
+      </li>      
       <li class="treeview">
         <a href="#">
           <i class="fa fa-files-o"></i>

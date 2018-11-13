@@ -51,14 +51,18 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('xoa/{id}','LoaiBaiController@getXoa');
 	});
 
-	Route::group(['prefix'=>'tintuc'],function(){
-		Route::get('danhsach','TinTucController@getDanhSach');
+	Route::group(['prefix'=>'nhom'],function(){
+		Route::get('danhsach','NhomController@getDanhSach');
 
-		Route::get('sua','TinTucController@getSua');
+		Route::get('sua/{id}','NhomController@getSua');
 
-		Route::get('them','TinTucController@getThem');
+		Route::post('sua/{id}','NhomController@postSua');
 
-		Route::post('them','TinTucController@postThem');
+		Route::get('them','NhomController@getThem');
+
+		Route::post('them','NhomController@postThem');
+
+		Route::get('xoa/{id}','NhomController@getXoa');
 	});
 
 	Route::group(['prefix'=>'user'],function(){
