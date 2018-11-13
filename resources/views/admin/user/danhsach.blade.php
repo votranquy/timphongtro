@@ -38,7 +38,7 @@
                             <tr class="odd gradeX" align="center">
                                 <td>{{$us->id}}</td>
                                 <td>{{$us->username}}</td>
-                                <td>{{$us->password}}</td>
+                                <td>substr({{$us->password}},0,5)</td>
                                 <td>{{$us->name}}</td>
                                 <td>{{$us->address}}</td>
                                 <td>{{$us->phone}}</td>
