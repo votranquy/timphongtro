@@ -20,7 +20,15 @@
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
-                                <th>Tên</th>
+                                <th>UserName</th>
+                                <th>PassWord</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Phone</th>
+                                <th>Image</th>
+                                <th>Email</th>
+                                <th>Tạo</th>
+                                <th>Sửa lần cuối</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
@@ -30,6 +38,14 @@
                             <tr class="odd gradeX" align="center">
                                 <td>{{$us->id}}</td>
                                 <td>{{$us->username}}</td>
+                                <td>{{$us->password}}</td>
+                                <td>{{$us->name}}</td>
+                                <td>{{$us->address}}</td>
+                                <td>{{$us->phone}}</td>
+                                <td>{{$us->image}}</td>
+                                <td>{{$us->email}}</td>
+                                <td>{{$us->created_at}}</td>
+                                <td>{{$us->updated_at}}</td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/user/xoa/{{$us->id}}"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/user/sua/{{$us->id}}">Edit</a></td>
                             </tr>
