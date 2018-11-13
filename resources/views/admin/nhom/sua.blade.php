@@ -24,11 +24,11 @@
                       <div class="box-body">
                         <div class="form-group">
                           <label>Tên nhóm</label>
-                          <input type="text" class="form-control" id="name" name="name" value="{{$nh->name}}">
+                          <input type="text" class="form-control" id="name" name="name" value="{{$nhom->name}}">
                         </div>
                         <div class="form-group">
                           <label>Mô tả</label>
-                          <input class="form-control" id="description" name="description" value="{{$nh->description}}">
+                          <input class="form-control" id="description" name="description" value="{{$nhom->description}}">
                         </div>
                       </div>
                       <!-- /.box-body -->
