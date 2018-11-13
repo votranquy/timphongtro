@@ -14,7 +14,7 @@
                     @if(session('thongbao'))
                     <div class="alert alert-success">
                         {{session('thongbao')}}
-                     </div>   
+                     </div>
                     @endif
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
@@ -30,7 +30,6 @@
                             <tr class="odd gradeX" align="center">
                                 <td>{{$us->id}}</td>
                                 <td>{{$us->username}}</td>
-                              <!--   <td>{{$tl->TenKhongDau}}</td> -->
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/user/xoa/{{$us->id}}"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/user/sua/{{$us->id}}">Edit</a></td>
                             </tr>
