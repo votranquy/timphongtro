@@ -7,4 +7,8 @@ use App\Nhom;
 class NhomController extends Controller
 {
     //
+    public function getDanhSach(){
+    	$nhom = Nhom::all();
+    	return view('admin.nhom.danhsach',['nhom'=>$nhom]);
+    }    
 }

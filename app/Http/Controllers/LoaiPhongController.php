@@ -66,5 +66,6 @@ class LoaiPhongController extends Controller
     public function getXoa($id){
         $loaiphong=LoaiPhong::find($id);
         $loaiphong->delete();
-        return redirect('admin/loaiphong/danhsach')->with('thongbao','Bạn đã xóa thành công');    }
+        return redirect('admin/loaiphong/danhsach')->with('thongbao','Bạn đã xóa thành công');    
+    }
 }
