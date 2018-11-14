@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\TheLoai;
+//use App\TheLoai;
 
 
 Route::get('/',function(){
@@ -93,6 +93,6 @@ Route::group(['prefix'=>'admin'],function(){
 	});
 
 });
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

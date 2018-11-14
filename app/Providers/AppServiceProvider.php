@@ -11,12 +11,17 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    
-    //
+
+    //Host
     public function boot()
     {
         URL::forceScheme('https');
     }
+    //Local
+    // public function boot()
+    // {
+    //     //
+    // }
 
     /**
      * Register any application services.

@@ -56,12 +56,12 @@ class TinTucController extends Controller
                 return redirect('admin/tintuc/them')->with('loi','Bạn chỉ được chọn ảnh jpg,png, jpeg');
             }
             $name = $file->getClientOriginalName();
-            $Hinh =str_random(4)."_".$name;
-            while(file_exists("upload/tintuc/".$Hinh)){
-                $Hinh =str_random(4)."_".$name;
+            $TenHinh =str_random(4)."_".$name;
+            while(file_exists("upload/tintuc/".$TenHinh)){
+                $TenHinh =str_random(4)."_".$name;
             }
-            $file->move("upload/tintuc",$Hinh);
-            $tintuc->Hinh=$Hinh;
+            $file->move("upload/tintuc",$TenHinh);
+            $tintuc->Hinh=$TenHinh;
         }
         else{
             $tintuc->Hinh="";

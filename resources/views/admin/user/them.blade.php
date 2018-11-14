@@ -20,7 +20,7 @@
                                 {{session('thongbao')}}
                             </div>
                         @endif
-                    <form action="admin/user/them" method="POST">
+                    <form action="admin/user/them" method="POST" enctype="multipart/form-data">
                     <!-- <input type="hidden" name="_token" value={{csrf_token()}} /> -->
                     @csrf
                       <div class="box-body">
@@ -38,15 +38,15 @@
                         </div>
                         <div class="form-group">
                           <label>Địa chỉ</label>
-                          <input class="form-control" id="address" name="address"placeholder="Nhập địa chỉ">
+                          <input class="form-control" id="address" name="address" placeholder="Nhập địa chỉ">
                         </div>
                         <div class="form-group">
                           <label>SDT</label>
-                          <input class="form-control" id="phone" name="phone"placeholder="Nhập số điện thoại">
+                          <input class="form-control" id="phone" name="phone" placeholder="Nhập số điện thoại">
                         </div>
                         <div class="form-group">
                           <label>Ảnh</label>
-                          <input class="form-control" type="file" id="image" name="image" placeholder="Chọn ảnh">
+                          <input class="form-control" type="file" name="image" placeholder="Chọn ảnh">
                         </div>
                         <div class="form-group">
                           <label>Email</label>

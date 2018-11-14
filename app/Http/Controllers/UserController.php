@@ -40,23 +40,25 @@ class UserController extends Controller
         $users->address= $request->address;
         $users->phone= $request->phone;
         $users->email= $request->email;
+        //Xu ly anh
         if($request->hasFile('image')){
             $file=$request->file('image');
             $duoi =$file->getClientOriginalExtension();
             if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg'){
-                return redirect('admin/user/them')->with('loi','Bạn chỉ được chọn ảnh jpg,png, jpeg');
+                return redirect('admin/user/them')->with('loi','Bạn chỉ được chọn ảnh jpg, png, jpeg');
             }
-            $name = $file->getClientOriginalName();
-            $Hinh =str_random(4)."_".$name;
-            while(file_exists("upload/tintuc/".$Hinh)){
-                $Hinh =str_random(4)."_".$name;
+            $name = $file->getClientOriginalName();//Lay ten anh
+            $Hinh =str_random(4)."_".$name;        //Tao moi ten
+            while(file_exists("upload/tintuc/".$Hinh)){//Neu anh da ton tai trong thu muc luu tru
+                $Hinh =str_random(4)."_".$name;         //Random ten moi
             }
-            $file->move("upload/tintuc",$Hinh);
+            $file->move("upload/tintuc",$Hinh);     //Luu anh vao thu muc
             $users->image=$Hinh;
         }
         else{
             $users->image="";
         }
+        //Ket thuc 
         $users->save();
 
         return redirect('admin/user/them')->with('thongbao','Thêm thành công');
