@@ -58,7 +58,7 @@ class UserController extends Controller
         else{
             $users->image="";
         }
-        //Ket thuc 
+        //Ket thuc
         $users->save();
 
         return redirect('admin/user/them')->with('thongbao','Thêm thành công');
