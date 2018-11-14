@@ -62,4 +62,9 @@ class UserController extends Controller
         $users->save();
         return redirect('admin/user/danhsach')->with('thongbao','Thêm thành công');
     }
+    public function getXoa($id){
+        $users=Users::find($id);
+        $users->delete();
+        return redirect('admin/user/danhsach')->with('thongbao','Bạn đã xóa thành công');
+    }
 }
