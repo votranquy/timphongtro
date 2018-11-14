@@ -12,15 +12,17 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
 
-    //Host
+
     public function boot()
-    {
-        URL::forceScheme('https');
+    {   
+        \Schema::defaultStringLength(191);
+        if(env('APP_ENV') === 'production'){
+            URL::forceScheme('https');    //For Heroku
+        }
     }
-    //Local
     // public function boot()
     // {
-    //     //
+    //                                 //For Local
     // }
 
     /**

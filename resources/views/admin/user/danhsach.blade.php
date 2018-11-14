@@ -37,8 +37,8 @@
                             @foreach($user as $us)
                             <tr class="odd gradeX" align="center">
                                 <td>{{$us->id}}</td>
-                                <td>{{$us->username}}</td>
-                                <td>*************</td>
+                                <td width="10px">{{$us->username}}</td>
+                                <td width="30ex">*************</td>
                                 <td>{{$us->name}}</td>
                                 <td>{{$us->address}}</td>
                                 <td>{{$us->phone}}</td>
