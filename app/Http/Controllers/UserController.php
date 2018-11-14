@@ -41,26 +41,25 @@ class UserController extends Controller
         $users->phone= $request->phone;
         $users->email= $request->email;
         //Xu ly anh
-        if($request->hasFile('image')){
-            $file=$request->file('image');
+        if($request->hasFile('Hinh')){
+            $file=$request->file('Hinh');
             $duoi =$file->getClientOriginalExtension();
-            if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg'){
+            if($duoi!='jpg' && $duoi!='JPG' && $duoi!='png' && $duoi!='PNG'&& $duoi!='jpeg' && $duoi!='JPGE'){
                 return redirect('admin/user/them')->with('loi','Bạn chỉ được chọn ảnh jpg, png, jpeg');
             }
-            $name = $file->getClientOriginalName();//Lay ten anh
-            $Hinh =str_random(4)."_".$name;        //Tao moi ten
-            while(file_exists("upload/tintuc/".$Hinh)){//Neu anh da ton tai trong thu muc luu tru
-                $Hinh =str_random(4)."_".$name;         //Random ten moi
+            $name = $file->getClientOriginalName();
+            $TenHinh =str_random(4)."_".$name;
+            while(file_exists("upload/tintuc/".$TenHinh)){
+                $TenHinh =str_random(4)."_".$name;
             }
-            $file->move("upload/tintuc",$Hinh);     //Luu anh vao thu muc
-            $users->image=$Hinh;
+            $file->move("upload/tintuc",$TenHinh);
+            $users->image=$TenHinh;
         }
         else{
             $users->image="";
         }
         //Ket thuc
         $users->save();
-
-        return redirect('admin/user/them')->with('thongbao','Thêm thành công');
+        return redirect('admin/user/danhsach')->with('thongbao','Thêm thành công');
     }
 }

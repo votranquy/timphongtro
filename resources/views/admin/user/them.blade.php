@@ -14,6 +14,11 @@
                                 @endforeach
                             </div>
                         @endif
+                        @if(session('loi'))
+                            <div class="alert alert-danger">
+                                {{session('loi')}}
+                            </div>
+                        @endif
 
                         @if(session('thongbao'))
                             <div class="alert alert-success">
@@ -30,7 +35,7 @@
                         </div>
                         <div class="form-group">
                           <label>PassWord</label>
-                          <input class="form-control" id="password" name="password"placeholder="Nhập password">
+                          <input class="form-control" id="password" name="password" placeholder="Nhập password">
                         </div>
                         <div class="form-group">
                           <label>Tên</label>
@@ -46,15 +51,14 @@
                         </div>
                         <div class="form-group">
                           <label>Ảnh</label>
-                          <input class="form-control" type="file" name="image" placeholder="Chọn ảnh">
+                          <input class="form-control" type="file" name="Hinh" placeholder="Chọn ảnh">
                         </div>
                         <div class="form-group">
                           <label>Email</label>
-                          <input class="form-control" id="email" name="email"placeholder="Nhập email">
+                          <input class="form-control" id="email" name="email" placeholder="Nhập email">
                         </div>
                       </div>
                       <!-- /.box-body -->
-
                       <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
                       </div>
