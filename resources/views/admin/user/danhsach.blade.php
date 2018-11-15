@@ -25,7 +25,7 @@
                                 <th>Name</th>
                                 <th>Address</th>
                                 <th>Phone</th>
-                                <th>Image</th>
+<!--                                 <th>Image</th> -->
                                 <th>Email</th>
                                 <th>Tạo</th>
                                 <th>Sửa lần cuối</th>
@@ -42,7 +42,7 @@
                                 <td>{{$us->name}}</td>
                                 <td>{{$us->address}}</td>
                                 <td>{{$us->phone}}</td>
-                                <td><img width="100px" src="upload/tintuc/{{$us->image}}"/></td>
+<!--                                 <td><img width="100px" src="upload/tintuc/{{$us->image}}"/></td> -->
                                 <td>{{$us->email}}</td>
                                 <td>{{$us->created_at}}</td>
                                 <td>{{$us->updated_at}}</td>
