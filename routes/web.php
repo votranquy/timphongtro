@@ -21,6 +21,9 @@ Route::get('thu', function () {
     return view('admin.loaiphong.them');
 });
 
+Route::get('profile',function(){
+	return view('view');
+});
 
 Route::group(['prefix'=>'admin'],function(){
 	Route::group(['prefix'=>'loaiphong'],function(){
@@ -79,12 +82,18 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('xoa/{id}','UserController@getXoa');
 	});
 
-	Route::group(['prefix'=>'slide'],function(){
-		Route::get('danhsach','SlideController@getDanhSach');
+	Route::group(['prefix'=>'profile'],function(){
+		Route::get('view','UserController@getView');
 
-		Route::get('sua','SlideController@getSua');
+		Route::get('sua/{id}','UserController@getSua');
 
-		Route::get('them','SlideController@getThem');
+		Route::post('sua/{id}','UserController@postSua');
+
+		Route::get('them','UserController@getThem');
+
+		Route::post('them','UserController@postThem');
+
+		Route::get('xoa/{id}','UserController@getXoa');
 	});
 
 	Route::group(['prefix'=>'ajax'],function(){

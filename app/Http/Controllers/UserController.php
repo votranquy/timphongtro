@@ -67,4 +67,8 @@ class UserController extends Controller
         $users->delete();
         return redirect('admin/user/danhsach')->with('thongbao','Bạn đã xóa thành công');
     }
+    public function getView(){
+        $user = Users::find(9);
+        return view('admin.profile.view',['user'=>$user]);
+    }
 }
