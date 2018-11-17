@@ -27,7 +27,7 @@
                      aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
-                            <form class="avatar-form" method="post" action="https://cms.botble.com/admin/system/users/modify-profile-image" enctype="multipart/form-data">
+                            <form class="avatar-form" method="post" action="" enctype="multipart/form-data">
                                 <div class="modal-header">
                                     <h4 class="modal-title" id="avatar-modal-label"><i class="til_img"></i><strong>Change Profile Image</strong></h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -35,9 +35,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-    
                                     <div class="avatar-body">
-    
                                         <!-- Upload image and data -->
                                         <div class="avatar-upload">
                                             <input class="avatar-src" name="avatar_src" type="hidden">
@@ -47,9 +45,8 @@
                                             <label for="avatarInput">New Image</label>
                                             <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
                                         </div>
-    
+
                                         <div class="loading" tabindex="-1" role="img" aria-label="Loading"></div>
-    
                                         <!-- Crop and preview -->
                                         <div class="row">
                                             <div class="col-md-9">

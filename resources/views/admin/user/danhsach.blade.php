@@ -18,17 +18,14 @@
                     @endif
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
-                            <tr align="center">
+                            <tr align="center" style="text-align: center; background-color: green; color: white;">
                                 <th>ID</th>
                                 <th>UserName</th>
-                                <th>PassWord</th>
                                 <th>Name</th>
                                 <th>Address</th>
                                 <th>Phone</th>
 <!--                                 <th>Image</th> -->
                                 <th>Email</th>
-                                <th>Tạo</th>
-                                <th>Sửa lần cuối</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
@@ -38,16 +35,13 @@
                             <tr class="odd gradeX" align="center">
                                 <td>{{$us->id}}</td>
                                 <td width="10px">{{$us->username}}</td>
-                                <td width="30ex">*************</td>
                                 <td>{{$us->name}}</td>
                                 <td>{{$us->address}}</td>
                                 <td>{{$us->phone}}</td>
 <!--                                 <td><img width="100px" src="upload/tintuc/{{$us->image}}"/></td> -->
                                 <td>{{$us->email}}</td>
-                                <td>{{$us->created_at}}</td>
-                                <td>{{$us->updated_at}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/user/xoa/{{$us->id}}"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/user/sua/{{$us->id}}">Edit</a></td>
+                                <td class="center"><a href="admin/user/xoa/{{$us->id}}" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger"><i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil"></i> Delete</a></td>
+                                <td class="center"><a href="admin/user/sua/{{$us->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
                             </tr>
                             @endforeach
                         </tbody>

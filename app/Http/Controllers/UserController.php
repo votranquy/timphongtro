@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;//Thư viện hỗ trợ đăng nhập
 use Illuminate\Http\Request;
-use App\Users;
+use App\User;
 class UserController extends Controller
 {
     //
     public function getDanhSach(){
-        $user = Users::all();
+        $user = User::all();
         return view('admin.user.danhsach',['user'=>$user]);
     }
 
@@ -33,7 +33,7 @@ class UserController extends Controller
                 'password.required'=>'Bạn chưa nhập password'
             ]
         );
-        $users = new Users;
+        $users = new User;
         $users->username=$request->username;
         $users->password= bcrypt($request->password);
         $users->name= $request->name;
@@ -63,12 +63,37 @@ class UserController extends Controller
         return redirect('admin/user/danhsach')->with('thongbao','Thêm thành công');
     }
     public function getXoa($id){
-        $users=Users::find($id);
+        $users=User::find($id);
         $users->delete();
         return redirect('admin/user/danhsach')->with('thongbao','Bạn đã xóa thành công');
     }
-    public function getView(){
-        $user = Users::find(9);
+    public function getView($id){
+        $user = User::find($id);
         return view('admin.profile.view',['user'=>$user]);
+    }
+
+        public function getdangnhapAdmin(){
+        return view('admin.login');
+    }
+    public function postdangnhapAdmin(Request $request){
+        $this->validate($request,[
+            'email'=>'required',
+            'password'=>'required|min:3|max:32'
+        ],[
+            'email.required'=>'Bạn chưa nhập email',
+            'password.required'=>'Bạn chưa nhập password',
+            'password.min'=>'Password tối thiểu 3 kí tự',
+            'password.max'=>'Password không được quá 32 kí tự'
+        ]);
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+            return redirect('admin/baidang/danhsach');
+        }
+        else{
+            return redirect('admin/dangnhap')->with('thongbao','Sai tài khoản hoặc mật khẩu');
+        }
+    }
+    public function getDangXuatAdmin(){
+        Auth::logout();
+        return redirect('admin/dangnhap');
     }
 }

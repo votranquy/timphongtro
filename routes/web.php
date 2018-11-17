@@ -25,7 +25,12 @@ Route::get('profile',function(){
 	return view('view');
 });
 
-Route::group(['prefix'=>'admin'],function(){
+
+Route::get('admin/dangnhap','UserController@getdangnhapAdmin');
+Route::post('admin/dangnhap','UserController@postdangnhapAdmin');
+Route::get('admin/logout','UserController@getDangXuatAdmin');
+
+Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 	Route::group(['prefix'=>'loaiphong'],function(){
 		Route::get('danhsach','LoaiPhongController@getDanhSach');
 
@@ -81,9 +86,23 @@ Route::group(['prefix'=>'admin'],function(){
 
 		Route::get('xoa/{id}','UserController@getXoa');
 	});
+	Route::group(['prefix'=>'baidang'],function(){
+		Route::get('danhsach','BaiDangController@getDanhSach');
 
+		Route::get('sua/{id}','BaiDangController@getSua');
+
+		Route::post('sua/{id}','BaiDangController@postSua');
+
+		Route::get('xem/{id}','BaiDangController@getXem');
+
+		Route::get('them','BaiDangController@getThem');
+
+		Route::post('them','BaiDangController@postThem');
+
+		Route::get('xoa/{id}','BaiDangController@getXoa');
+	});
 	Route::group(['prefix'=>'profile'],function(){
-		Route::get('view','UserController@getView');
+		Route::get('view/{id}','UserController@getView');
 
 		Route::get('sua/{id}','UserController@getSua');
 
@@ -95,7 +114,10 @@ Route::group(['prefix'=>'admin'],function(){
 
 		Route::get('xoa/{id}','UserController@getXoa');
 	});
+	Route::group(['prefix'=>'binhluan'],function(){
 
+		Route::get('xoa/{id}/{idBaiDang}','BinhLuanController@getXoa');
+	});
 	Route::group(['prefix'=>'ajax'],function(){
 		Route::get('loaitin/{idTheLoai}','AjaxController@getLoaiTin');
 
