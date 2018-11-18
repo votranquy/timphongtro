@@ -57,6 +57,18 @@
                           <label>Email</label>
                           <input class="form-control" id="email" name="email" placeholder="Nhập email">
                         </div>
+                        <div class="form-group">
+                                <label>Quyền </label>
+                                <label class="radio-inline">
+                                    <input name="group" value="3" checked="" type="radio">Thường
+                                </label>
+                                <label class="radio-inline">
+                                    <input name="group" value="2" type="radio">Mod
+                                </label>
+                                <label class="radio-inline">
+                                    <input name="group" value="1" type="radio">Admin
+                                </label>
+                        </div>
                       </div>
                       <!-- /.box-body -->
                       <div class="box-footer">

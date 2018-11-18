@@ -85,6 +85,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 		Route::post('them','UserController@postThem');
 
 		Route::get('xoa/{id}','UserController@getXoa');
+
+		Route::get('xem/{id}','UserController@getXem');
 	});
 	Route::group(['prefix'=>'baidang'],function(){
 		Route::get('danhsach','BaiDangController@getDanhSach');

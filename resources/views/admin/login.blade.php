@@ -46,6 +46,7 @@
                                 {{session('thongbao')}}
                             </div>
                         @endif
+                        
                         <form role="form" action="admin/dangnhap" method="POST">
                             @csrf
                             <fieldset>

@@ -26,6 +26,7 @@
                                 <th>Phone</th>
 <!--                                 <th>Image</th> -->
                                 <th>Email</th>
+                                <th>View</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
@@ -40,6 +41,9 @@
                                 <td>{{$us->phone}}</td>
 <!--                                 <td><img width="100px" src="upload/tintuc/{{$us->image}}"/></td> -->
                                 <td>{{$us->email}}</td>
+                                <td class="center">
+                                    <a href="admin/user/xem/{{$us->id}}" class="btn btn-block btn-success"><i class="fa fa-newspaper-o"></i> View</a>
+                                </td>
                                 <td class="center"><a href="admin/user/xoa/{{$us->id}}" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger"><i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil"></i> Delete</a></td>
                                 <td class="center"><a href="admin/user/sua/{{$us->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
                             </tr>

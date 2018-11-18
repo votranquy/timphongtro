@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;//Thư viện hỗ trợ đăng nhập
 use Illuminate\Http\Request;
 use App\User;
+use App\NhomTaiKhoan;
+use App\BaiDang;
 class UserController extends Controller
 {
     //
@@ -60,6 +62,10 @@ class UserController extends Controller
         }
         //Ket thuc
         $users->save();
+        $nhomtaikhoan=new NhomTaiKhoan;
+        $nhomtaikhoan->user_id=$users->id;
+        $nhomtaikhoan->group_id=$request->group;
+        $nhomtaikhoan->save();
         return redirect('admin/user/danhsach')->with('thongbao','Thêm thành công');
     }
     public function getXoa($id){
@@ -67,12 +73,19 @@ class UserController extends Controller
         $users->delete();
         return redirect('admin/user/danhsach')->with('thongbao','Bạn đã xóa thành công');
     }
+    //Xem thông tin cá nhân
     public function getView($id){
         $user = User::find($id);
         return view('admin.profile.view',['user'=>$user]);
     }
+    //Xem trang cá nhân một user
+    public function getXem($id){
+        $user = User::find($id);
+        $baidang = BaiDang::where('user_id',$id)->get();
+        return view('admin.user.xem',['user'=>$user,'baidang'=>$baidang]);
+    }
 
-        public function getdangnhapAdmin(){
+    public function getdangnhapAdmin(){
         return view('admin.login');
     }
     public function postdangnhapAdmin(Request $request){

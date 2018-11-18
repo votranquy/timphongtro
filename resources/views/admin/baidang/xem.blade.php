@@ -20,14 +20,14 @@
                               <td>
                                 {{$baidang->title}}
                               </td>
-                            </tr>                           
+                            </tr>
                             <td style="width: 15%;">
                                 <b style="color: blue;">Người đăng</b>
                               </td>
                               <td>
                                 {{$baidang->user->username}}
                               </td>
-                            </tr>                           
+                            </tr>
                             <td style="width: 15%;">
                                 <b style="color: blue;">Loại bài </b>
                               </td>
