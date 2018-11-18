@@ -23,8 +23,9 @@
                                 <th>ID</th>
                                 <th>Tên</th>
                                 <th>Mô tả</th>
-                                <th>Delete</th>
+                                <th>View</th>
                                 <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,9 +33,28 @@
                             <tr class="odd gradeX" align="center">
                                 <td>{{$lp->id}}</td>
                                 <td>{{$lp->name}}</td>
-                                <td>{{$lp->description}}</td>       
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/loaiphong/xoa/{{$lp->id}}"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/loaiphong/sua/{{$lp->id}}">Edit</a></td>
+                                <td>{{$lp->description}}</td>
+
+                                <td class="center">
+                                    <a href="#" class="btn btn-primary"><i class="fa fa-newspaper-o"></i> View</a>
+                                </td>
+
+                                 <td class="center"><a href="admin/loaiphong/sua/{{$lp->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
+
+                                <td class="center"><a href="admin/loaiphong/danhsach" onclick="return confirm('Chức năng tạm thời disable');" title="Xóa" class="btn btn-danger"><i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil"></i> Delete</a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
                             </tr>
                             @endforeach
                         </tbody>
