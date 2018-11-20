@@ -69,10 +69,16 @@
                                 <label>Số điện thoại</label>
                                 <input class="form-control" name="phone" placeholder="Nhập số điện thoại" />
                             </div>
-                            <div class="form-group">
+
+                              <div class="form-group">
                                 <label>Nội dung</label>
-                                 <textarea id="demo" name="description" class="form-control ckeditor" rows="5"></textarea>
-                            </div>
+
+                                <div class="col-sm-10">
+                                  <textarea class="form-control" name="description" placeholder="Nhập nội dung"></textarea>
+                                </div>
+                              </div>
+
+
 
                             <p >
                             <div class="form-group" id="giamin" style="display:;">
