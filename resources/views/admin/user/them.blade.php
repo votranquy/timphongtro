@@ -1,5 +1,25 @@
 @extends('admin.layout.index')
 @section('content')
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Dashboard
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section>
+
+
+    <!-- Main content -->
+    <section class="content">
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <section class="connectedSortable">
+          <div class="box box-success">
                   <!-- general form elements -->
                   <div class="box box-primary">
                     <div class="box-header with-border">

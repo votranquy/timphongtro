@@ -57,26 +57,7 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Dashboard
-        <small>Control panel</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
-    </section>
 
-
-    <!-- Main content -->
-    <section class="content">
-      <!-- Main row -->
-      <div class="row">
-        <!-- Left col -->
-        <section class="connectedSortable">
-          <div class="box box-success">
                @yield('content')
           </div>
         </section>
@@ -329,7 +310,8 @@
 <script src="admin_asset/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="admin_asset/dist/js/demo.js"></script>
-
+<script src="admin_asset/bower_components/js/jquery.validate.min.js"></script>
+<script src="admin_asset/bower_components/js/jquery-3.3.1.min.js"></script>
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>

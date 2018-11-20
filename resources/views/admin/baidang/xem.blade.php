@@ -1,5 +1,25 @@
 @extends('admin.layout.index')
 @section('content')
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i> Bài đăng</li>
+        <li class="active"><a href="admin/baidang/danhsach">Danh sách</a></li>
+        <li class="active">Xem chi tiết</li>
+      </ol>
+    </section>
+
+
+    <!-- Main content -->
+    <section class="content">
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <section class="connectedSortable">
+          <div class="box box-success">
 
         <!-- Page Content -->
         <div id="page-wrapper">

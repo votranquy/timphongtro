@@ -47,7 +47,7 @@
                             </div>
                         @endif
                         
-                        <form role="form" action="admin/dangnhap" method="POST">
+                        <form class="form-class" action="admin/dangnhap" method="POST">
                             @csrf
                             <fieldset>
                                 <div class="form-group">
@@ -76,7 +76,36 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="admin_asset/dist/js/sb-admin-2.js"></script>
+    <script type="text/javascript" src="admin_asset/bower_components/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="admin_asset/bower_components/js/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.form-class').validate({
+                rules:{
+                    email:{
+                        required:true,
+                        email: true
+                    },
+                    password:{
+                        required:true,
+                    },
+                },
+                messages:{
+                    email:{
+                        required: 'Vui lòng nhập email đúng định dạng',
+                    },
+                    password:{
+                        required:'Vui lòng nhập password',
+                    },
+
+                },
+            });
+        });
+    </script>
 
 </body>
 
 </html>
+
+

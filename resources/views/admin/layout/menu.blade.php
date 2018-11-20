@@ -32,14 +32,20 @@
 
 
       <!-- Bài đăng -->
-      <li class="">
+
+      <li class="treeview">
         <a href="admin/baidang/danhsach">
           <i class="fa fa-pie-chart"></i>
-          Bài đăng
-
+          <span>Bài đăng</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
         </a>
+        <ul class="treeview-menu">
+          <li><a href="admin/baidang/danhsach"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+          <li><a href="admin/baidang/them"><i class="fa fa-circle-o"></i> Thêm</a></li>
+        </ul>
       </li>
-
 
         <!-- User -->
         <li class="treeview">

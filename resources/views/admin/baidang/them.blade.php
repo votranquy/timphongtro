@@ -27,58 +27,96 @@
                             </div>
                         @endif
 
-                        <form action="admin/tintuc/them" method="POST" enctype="multipart/form-data">
+                        <form action="admin/baidang/them" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label>Thể loại</label>
-                                <select class="form-control" name="TheLoai" id="TheLoai">
-                                    @foreach($theloai as $tl)
-                                    <option value="{{$tl->id}}">{{$tl->Ten}}</option>
+                                <label>Loại bài đăng</label>
+                                <select class="form-control" name="LoaiBai" id="LoaiBai">
+                                    @foreach($loaibai as $lb)
+                                    <option value="{{$lb->id}}">{{$lb->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label>Loại Tin</label>
-                                <select class="form-control" name="LoaiTin" id="LoaiTin">
-<!--                                     @foreach($loaitin as $lt)
-                                    <option value="{{$lt->id}}">{{$lt->Ten}}</option>
-                                    @endforeach -->
+                                <label>Tiêu đề</label>
+                                <input class="form-control" name="title" placeholder="Nhập tiêu đề" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Loại phòng</label>
+                                <select class="form-control" name="roomtype">
+                                    @foreach($loaiphong as $lp)
+                                    <option value="{{$lp->id}}">{{$lp->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label>Tiêu đề</label>
-                                <input class="form-control" name="TieuDe" placeholder="Nhập tiêu đề" />
+                                <input class="form-control" name="title" placeholder="Nhập tiêu đề" />
                             </div>
-
                             <div class="form-group">
-                                <label>Tóm tắt</label>
-                                 <textarea name="TomTat" id="demo" class="form-control ckeditor" rows="3"></textarea>
+                                <label>Số điện thoại</label>
+                                <input class="form-control" name="phone" placeholder="Nhập số điện thoại" />
                             </div>
-
                             <div class="form-group">
                                 <label>Nội dung</label>
-                                 <textarea id="demo" name="NoiDung" class="form-control ckeditor" rows="5"></textarea>
+                                 <textarea id="demo" name="description" class="form-control ckeditor" rows="5"></textarea>
                             </div>
 
+                            <p >
+                            <div class="form-group" id="giamin" style="display:;">
+                                <label>Giá min</label>
+                                <input class="form-control" name="minprice" placeholder="Nhập giá min" />
+                            </div>
+                            <div class="form-group" id="giamax" style="display:;">
+                                <label>Giá max</label>
+                                <input class="form-control" name="maxprice" placeholder="Nhập giá max" />
 
-                            <div class="form-group">
+                            </div>
+                            <div class="form-group" id="dientichmin" style="display:;">
+                                <label>Diện tích min</label>
+                                <input class="form-control" name="minaceage" placeholder="Nhập diện tích min" />
+                            </div>
+                            <div class="form-group" id="dientichmax" style="display:;">
+                                <label>Diện tích max</label>
+                                <input class="form-control" name="maxaceage" placeholder="Nhập diện tích max" />
+                            </div>
+                          </p>
+
+
+                          <p>
+                            <div class="form-group" id="gia" style="display:none;">
+                                <label>Giá</label>
+                                <input class="form-control" name="price" placeholder="Nhập giá" />
+                            </div>
+                            <div class="form-group" id="dientich" style="display:none;">
+                                <label>Diện tích</label>
+                                <input class="form-control" name="aceage" placeholder="Nhập diện tích" />
+                             </div>
+                            <div class="form-group" id="diachi" style="display:none;">
+                                <label>Địa chỉ</label>
+                                <input class="form-control" name="address" placeholder="Nhập địa chỉ" />
+                            </div>
+                            <div class="form-group" id="kinhdo" style="display:none;">
+                                <label>Kinh độ</label>
+                                <input class="form-control" name="longitute" placeholder="Nhập kinh độ" />
+                            </div>
+                            <div class="form-group" id="vido" style="display:none;">
+                                <label>Vĩ độ</label>
+                                <input class="form-control" name="latitude" placeholder="Nhập vĩ độ" />
+                            </div>
+                            <div class="form-group" id="anh" style="display:none;">
                                 <label>Hình ảnh</label>
-                                <input type="file" name="Hinh" class="form-control" />
+                                <input type="file"  name="Hinh" class="form-control" />
                             </div>
+                          </p>
 
-                            <div class="form-group">
-                                <label>Nổi bật </label>
-                                <label class="radio-inline">
-                                    <input name="NoiBat" value="0" checked="" type="radio">Không
-                                </label>
-                                <label class="radio-inline">
-                                    <input name="NoiBat" value="1" type="radio">Có
-                                </label>
-                            </div>
 
-                            <button type="submit" class="btn btn-default">Thêm Add</button>
+
+
+                            <button type="submit" class="btn btn-default">Thêm</button>
                             <button type="reset" class="btn btn-default">Làm mới</button>
                         <form>
                     </div>
@@ -91,17 +129,42 @@
 @endsection
 
 @section('script')
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function(){
-            var idTheLoai=$("#TheLoai").val();
-            $.get("admin/ajax/loaitin/"+idTheLoai,function(data){
-                    $("#LoaiTin").html(data);
-                });
-            $("#TheLoai").change(function(){
-                var idTheLoai=$(this).val();
-                $.get("admin/ajax/loaitin/"+idTheLoai,function(data){
-                    $("#LoaiTin").html(data);
-                });
+          $(document).ready(function (){
+            // var idLoaiBai=$("#LoaiBai").val();
+            // if (idLoaiBai != "2") {
+            //         $("#chothue").hide();
+            //         $("#timtro").show();
+            //     }else{
+            //         $("#chothue").show();
+            //         $("#timtro").hide();
+            //     }
+            $("#LoaiBai").change(function() {
+                // foo is the id of the other select box 
+                if ($(this).val() != "2") {
+                    $("#giamin").show();
+                    $("#giamax").show();
+                    $("#dientichmin").show();
+                    $("#dientichmax").show();
+                    $("#gia").hide();
+                    $("#dientich").hide();
+                    $("#diachi").hide();
+                    $("#kinhdo").hide();
+                    $("#vido").hide();
+                    $("#anh").hide();
+                }else{
+                    $("#giamin").hide();
+                    $("#giamax").hide();
+                    $("#dientichmin").hide();
+                    $("#dientichmax").hide();
+                    $("#gia").show();
+                    $("#dientich").show();
+                    $("#diachi").show();
+                    $("#kinhdo").show();
+                    $("#vido").show();
+                    $("#anh").show();
+                }
             });
         });
     </script>

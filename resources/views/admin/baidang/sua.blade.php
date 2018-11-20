@@ -1,52 +1,105 @@
 @extends('admin.layout.index')
-@section('content')
 
-        <!-- Page Content -->
+@section('content')
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Dashboard
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section>
+
+
+    <!-- Main content -->
+    <section class="content">
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <section class="connectedSortable">
+          <div class="box box-success">
+ <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
-                            <small>Edit</small>
+                        <h1 class="page-header">Tin Tức
+                            <small>Thêm</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="" method="POST">
+
+                        @if(count($errors)>0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                    {{$err}}<br>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @if(session('thongbao'))
+                            <div class="alert alert-success">
+                                {{session('thongbao')}}
+                            </div>
+                        @endif
+
+                        <form action="admin/tintuc/them" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="form-group">
-                                <label>Category Parent</label>
-                                <select class="form-control">
-                                    <option value="0">Please Choose Category</option>
-                                    <option value="">Tin Tức</option>
+                                <label>Thể loại</label>
+                                <select class="form-control" name="TheLoai" id="TheLoai">
+                                    @foreach($theloai as $tl)
+                                    <option value="{{$tl->id}}">{{$tl->Ten}}</option>
+                                    @endforeach
                                 </select>
                             </div>
+
                             <div class="form-group">
-                                <label>Category Name</label>
-                                <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
+                                <label>Loại Tin</label>
+                                <select class="form-control" name="LoaiTin" id="LoaiTin">
+<!--                                     @foreach($loaitin as $lt)
+                                    <option value="{{$lt->id}}">{{$lt->Ten}}</option>
+                                    @endforeach -->
+                                </select>
                             </div>
+
                             <div class="form-group">
-                                <label>Category Order</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" />
+                                <label>Tiêu đề</label>
+                                <input class="form-control" name="TieuDe" placeholder="Nhập tiêu đề" />
                             </div>
+
                             <div class="form-group">
-                                <label>Category Keywords</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" />
+                                <label>Tóm tắt</label>
+                                 <textarea name="TomTat" id="demo" class="form-control ckeditor" rows="3"></textarea>
                             </div>
+
                             <div class="form-group">
-                                <label>Category Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <label>Nội dung</label>
+                                 <textarea id="demo" name="NoiDung" class="form-control ckeditor" rows="5"></textarea>
                             </div>
+
+
                             <div class="form-group">
-                                <label>Category Status</label>
+                                <label>Hình ảnh</label>
+                                <input type="file" name="Hinh" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nổi bật </label>
                                 <label class="radio-inline">
-                                    <input name="rdoStatus" value="1" checked="" type="radio">Visible
+                                    <input name="NoiBat" value="0" checked="" type="radio">Không
                                 </label>
                                 <label class="radio-inline">
-                                    <input name="rdoStatus" value="2" type="radio">Invisible
+                                    <input name="NoiBat" value="1" type="radio">Có
                                 </label>
                             </div>
-                            <button type="submit" class="btn btn-default">Category Edit</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
+
+                            <button type="submit" class="btn btn-default">Thêm Add</button>
+                            <button type="reset" class="btn btn-default">Làm mới</button>
                         <form>
                     </div>
                 </div>
@@ -55,4 +108,21 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function(){
+            var idTheLoai=$("#TheLoai").val();
+            $.get("admin/ajax/loaitin/"+idTheLoai,function(data){
+                    $("#LoaiTin").html(data);
+                });
+            $("#TheLoai").change(function(){
+                var idTheLoai=$(this).val();
+                $.get("admin/ajax/loaitin/"+idTheLoai,function(data){
+                    $("#LoaiTin").html(data);
+                });
+            });
+        });
+    </script>
 @endsection
