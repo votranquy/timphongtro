@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\LoaiPhong;
+use App\BaiDang;
 class LoaiPhongController extends Controller
 {
 
@@ -66,6 +67,10 @@ class LoaiPhongController extends Controller
     public function getXoa($id){
         $loaiphong=LoaiPhong::find($id);
         $loaiphong->delete();
-        return redirect('admin/loaiphong/danhsach')->with('thongbao','Bạn đã xóa thành công');    
+        return redirect('admin/loaiphong/danhsach')->with('thongbao','Bạn đã xóa thành công');
+    }
+    public function getXem($id){
+        $baidang=BaiDang::where('room_type_id',$id)->get();
+        return view('admin.loaiphong.xem',['baidang'=>$baidang]);
     }
 }

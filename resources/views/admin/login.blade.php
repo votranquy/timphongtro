@@ -46,7 +46,6 @@
                                 {{session('thongbao')}}
                             </div>
                         @endif
-                        
                         <form class="form-class" action="admin/dangnhap" method="POST">
                             @csrf
                             <fieldset>
@@ -76,7 +75,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="admin_asset/dist/js/sb-admin-2.js"></script>
-    <script type="text/javascript" src="admin_asset/bower_components/js/jquery.validate.min.js"></script>
+<!--     <script type="text/javascript" src="admin_asset/bower_components/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="admin_asset/bower_components/js/jquery-3.3.1.min.js"></script>
 
     <script type="text/javascript">
@@ -85,7 +84,7 @@
                 rules:{
                     email:{
                         required:true,
-                        email: true
+                        email: true,
                     },
                     password:{
                         required:true,
@@ -93,7 +92,8 @@
                 },
                 messages:{
                     email:{
-                        required: 'Vui lòng nhập email đúng định dạng',
+                        required: 'Vui lòng nhập email ',
+                        email: 'email k đúng định dạng',
                     },
                     password:{
                         required:'Vui lòng nhập password',
@@ -103,7 +103,7 @@
             });
         });
     </script>
-
+ -->
 </body>
 
 </html>

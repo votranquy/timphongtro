@@ -14,8 +14,9 @@ class UserController extends Controller
         return view('admin.user.danhsach',['user'=>$user]);
     }
 
-    public function getSua(){
-    	return view('admin.user.sua');
+    public function getSua($id){
+        $user=User::find($id);
+    	return view('admin.user.sua',['user'=>$user]);
     }
 
     public function getThem(){

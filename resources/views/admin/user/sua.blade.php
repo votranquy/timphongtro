@@ -3,15 +3,15 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        User
+        <small>Chỉnh sửa</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><i class="fa fa-dashboard"></i> User</li>
+        <li class="active"><a href="admin/user/danhsach">Danh sách</a></li>
+        <li class="active">Chỉnh sửa</li>
       </ol>
     </section>
-
 
     <!-- Main content -->
     <section class="content">
@@ -20,58 +20,55 @@
         <!-- Left col -->
         <section class="connectedSortable">
           <div class="box box-success">
-        <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Category
-                            <small>Edit</small>
-                        </h1>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                    <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="" method="POST">
-                            <div class="form-group">
-                                <label>Category Parent</label>
-                                <select class="form-control">
-                                    <option value="0">Please Choose Category</option>
-                                    <option value="">Tin Tức</option>
-                                </select>
+                  <!-- general form elements -->
+                  <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                        @if(count($errors)>0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                    {{$err}}<br>
+                                @endforeach
                             </div>
-                            <div class="form-group">
-                                <label>Category Name</label>
-                                <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
+                        @endif
+                        @if(session('loi'))
+                            <div class="alert alert-danger">
+                                {{session('loi')}}
                             </div>
-                            <div class="form-group">
-                                <label>Category Order</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" />
+                        @endif
+
+                        @if(session('thongbao'))
+                            <div class="alert alert-success">
+                                {{session('thongbao')}}
                             </div>
-                            <div class="form-group">
-                                <label>Category Keywords</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" />
-                            </div>
-                            <div class="form-group">
-                                <label>Category Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Category Status</label>
+                        @endif
+                    <form action="admin/user/sua/{{$user->id}}" method="POST" enctype="multipart/form-data">
+                    <!-- <input type="hidden" name="_token" value={{csrf_token()}} /> -->
+                    @csrf
+                      <div class="box-body">
+                        <div class="form-group">
+                                <label>{{$user->email}}</label>
+                        </div>
+                        <div class="form-group">
+                                <label>Quyền </label>
                                 <label class="radio-inline">
-                                    <input name="rdoStatus" value="1" checked="" type="radio">Visible
+                                    <input name="group" value="3" checked="" type="radio"                                     @if($user->nhomtaikhoan->group_id==3) {{"checked"}}
+                                    @endif>Thường
                                 </label>
                                 <label class="radio-inline">
-                                    <input name="rdoStatus" value="2" type="radio">Invisible
+                                    <input name="group" value="2" type="radio" @if($user->nhomtaikhoan->group_id==2) {{"checked"}}
+                                    @endif>Mod
                                 </label>
-                            </div>
-                            <button type="submit" class="btn btn-default">Category Edit</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
-                        <form>
-                    </div>
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-        </div>
-        <!-- /#page-wrapper -->
+                                <label class="radio-inline">
+                                    <input name="group" value="1" type="radio" @if($user->nhomtaikhoan->group_id==1) {{"checked"}}
+                                    @endif>Admin
+                                </label>
+                        </div>
+                      </div>
+                      <!-- /.box-body -->
+                      <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                      </div>
+                    </form>
+                  </div>
 @endsection

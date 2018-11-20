@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;//Thư viện hỗ trợ đăng nhập
 use Illuminate\Http\Request;
 use App\BaiDang;
 use App\Anh;
@@ -20,7 +20,8 @@ class BaiDangController extends Controller
     }
     public function getXem($id){
         $baidang = BaiDang::find($id);
-        return view('admin.baidang.xem',['baidang'=>$baidang]);
+        $anh= Anh::where('post_id',$id)->get();
+        return view('admin.baidang.xem',['baidang'=>$baidang,'anh'=>$anh]);
     }    
 
     public function getSua($id){
@@ -51,35 +52,68 @@ class BaiDangController extends Controller
                 'description.required'=>'Bạn chưa nhập mô tả'
 
             ]);
-        $tintuc = new TinTuc;
-        $tintuc->TieuDe=$request->TieuDe;
-        $tintuc->TieuDeKhongDau=changeTitle($request->TieuDe);
-        $tintuc->idLoaiTin=$request->LoaiTin;
-        $tintuc->TomTat=$request->TomTat;
-        $tintuc->NoiDung=$request->NoiDung;
-        if($request->hasFile('Hinh')){
-            $file=$request->file('Hinh');
-            $duoi =$file->getClientOriginalExtension();
-            if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg'){
-                return redirect('admin/tintuc/them')->with('loi','Bạn chỉ được chọn ảnh jpg,png, jpeg');
-            }
-            $name = $file->getClientOriginalName();
-            $TenHinh =str_random(4)."_".$name;
-            while(file_exists("upload/tintuc/".$TenHinh)){
+        $baidang = new BaiDang;
+        $chitietphong= new ChiTietPhong;
+
+        $baidang->post_type_id=$request->posttype;
+        $baidang->room_type_id=$request->roomtype;
+        $baidang->user_id=Auth::id();
+        $baidang->title=$request->title;
+        $baidang->phone=$request->phone;
+        $chitietphong->post_id=$baidang->id;
+        $chitietphong->description=$request->description;
+        if($request->posttype=="1"){//Tìm trọ
+            $baidang->minPrice=$request->minprice;
+            $baidang->maxPrice=$request->maxprice;
+            $chitietphong->minAceage=$request->minaceage;
+            $chitietphong->maxAceage=$request->maxaceage;
+            $chitietphong->longitute=NULL;
+            $chitietphong->latitude=NULL;
+            $chitietphong->aceage=NULL;
+            $baidang->price=NULL;
+            $baidang->address=NULL;
+            $baidang->save();
+            $chitietphong->post_id=$baidang->id;
+            $chitietphong->save();
+        }
+        else{//Cho thuê
+            $baidang->price=$request->price;
+            $baidang->minPrice=NULL;
+            $baidang->maxPrice=NULL;
+            $baidang->address=$request->address;
+            $chitietphong->aceage=$request->aceage;
+            $chitietphong->minAceage=NULL;
+            $chitietphong->maxAceage=NULL;
+            $chitietphong->longitute=$request->longitute;
+            $chitietphong->latitude=$request->latitude;
+            $baidang->save();
+            $chitietphong->post_id=$baidang->id;
+            $chitietphong->save();
+            if($request->hasFile('Hinh')){
+                $anh = new Anh;
+                $anh->post_id=$baidang->id;
+                $file=$request->file('Hinh');
+                $duoi =$file->getClientOriginalExtension();
+                if($duoi!='jpg' && $duoi!='png' && $duoi!='jpeg'){
+                    return redirect('admin/baidang/them')->with('loi','Bạn chỉ được chọn ảnh jpg, png, jpeg');
+                }
+                $name = $file->getClientOriginalName();
                 $TenHinh =str_random(4)."_".$name;
+                while(file_exists("upload/tintuc/".$TenHinh)){
+                    $TenHinh =str_random(4)."_".$name;
+                }
+                $file->move("upload/tintuc",$TenHinh);
+                $anh->path=$TenHinh;
+                $anh->save();
             }
-            $file->move("upload/tintuc",$TenHinh);
-            $tintuc->Hinh=$TenHinh;
         }
-        else{
-            $tintuc->Hinh="";
-        }
-        $tintuc->save();
+
+
         // echo "DONE";
         // $theloai=TheLoai::all();
         // $loaitin=LoaiTin::all();
         // return view('admin/tintuc/them',['theloai'=>$theloai,'loaitin'=>$loaitin]);
-        return redirect('admin/tintuc/them')->with('thongbao','Bạn đã thêm tin tức thành công');
+        return redirect('admin/baidang/them')->with('thongbao','Bạn đã thêm bài đăng thành công');
 
     }
 }

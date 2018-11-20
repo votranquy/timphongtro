@@ -3,12 +3,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        Nhóm
+        <small>Danh sách</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><i class="fa fa-dashboard"></i> Nhóm</li>
+        <li class="active">Danh sách</li>
       </ol>
     </section>
 
@@ -25,11 +25,6 @@
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Nhóm
-                            <small>Danh Sách</small>
-                        </h1>
-                    </div>
                     <!-- /.col-lg-12 -->
                     @if(session('thongbao'))
                     <div class="alert alert-success">
@@ -42,9 +37,9 @@
                                 <th>ID</th>
                                 <th>Tên nhóm</th>
                                 <th>Mô tả</th>
-                                <th>Thời gian tạo</th>
-                                <th>Thời gian sửa</th>
-                                <th>Delete</th>
+<!--                                 <th>Thời gian tạo</th>
+                                <th>Thời gian sửa</th> -->
+                                <th>View</th>
                                 <th>Edit</th>
                             </tr>
                         </thead>
@@ -54,10 +49,12 @@
                                 <td>{{$nh->id}}</td>
                                 <td>{{$nh->name}}</td>
                                 <td>{{$nh->description}}</td>
-                                <td>{{$nh->created_at}}</td>
-                                <td>{{$nh->updated_at}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/nhom/xoa/{{$nh->id}}"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/nhom/sua/{{$nh->id}}">Edit</a></td>
+
+                                <td class="center">
+                                    <a href="admin/nhom/xem/{{$nh->id}}" class="btn btn-success"><i class="fa fa-newspaper-o"></i> View</a>
+                                </td>
+
+                                 <td class="center"><a href="admin/nhom/sua/{{$nh->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
                             </tr>
                             @endforeach
                         </tbody>

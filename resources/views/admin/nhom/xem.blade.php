@@ -3,12 +3,14 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        User
-        <small>Danh sách</small>
+        Nhom
+        <small>Danh sách user</small>
       </h1>
       <ol class="breadcrumb">
-        <li><i class="fa fa-dashboard"></i> User</li>
-        <li class="active">Danh sách</li>
+        <li><i class="fa fa-dashboard"></i>Nhóm</li>
+        <li class="active"><a href="admin/nhom/danhsach">Danh sách nhóm</li>
+        <li class="active">Danh sách user</li>
+
       </ol>
     </section>
 
@@ -48,20 +50,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($user as $us)
+                            @foreach($nhomtaikhoan->user as $user)
                             <tr class="odd gradeX" align="center">
-                                <td>{{$us->id}}</td>
-                                <td width="10px">{{$us->username}}</td>
-                                <td>{{$us->name}}</td>
-                                <td>{{$us->nhomtaikhoan->nhom->name}}</td>
-                                <td>{{$us->phone}}</td>
+                                <td>{{$user->id}}</td>
+                                <td width="10px">{{$user->username}}</td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->nhomtaikhoan->nhom->name}}</td>
+                                <td>{{$user->phone}}</td>
 <!--                                 <td><img width="100px" src="upload/tintuc/{{$us->image}}"/></td> -->
-                                <td>{{$us->email}}</td>
+                                <td>{{$user->email}}</td>
                                 <td class="center">
-                                    <a href="admin/user/xem/{{$us->id}}" class="btn btn-block btn-success"><i class="fa fa-newspaper-o"></i> View</a>
+                                    <a href="admin/user/xem/{{$user->id}}" class="btn btn-block btn-success"><i class="fa fa-newspaper-o"></i> View</a>
                                 </td>
-                                <td class="center"><a href="admin/user/xoa/{{$us->id}}" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger"><i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil"></i> Delete</a></td>
-                                <td class="center"><a href="admin/user/sua/{{$us->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
+                                <td class="center"><a href="admin/user/xoa/{{$user->id}}" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger"><i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil"></i> Delete</a></td>
+                                <td class="center"><a href="admin/user/sua/{{$user->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
                             </tr>
                             @endforeach
                         </tbody>

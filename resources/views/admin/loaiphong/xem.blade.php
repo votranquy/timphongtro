@@ -4,11 +4,12 @@
     <section class="content-header">
       <h1>
         Loại phòng
-        <small>Danh sách</small>
+        <small>Danh sách bài đăng</small>
       </h1>
       <ol class="breadcrumb">
         <li><i class="fa fa-dashboard"></i> Loại phòng</li>
-        <li class="active">Danh sách</li>
+        <li class="active"><a href="admin/loaiphong/danhsach">Danh sách loại phòng</a></li>
+        <li class="active">Danh sách bài đăng</li>
       </ol>
     </section>
 
@@ -36,42 +37,30 @@
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
-                                <th>Tên</th>
-                                <th>Mô tả</th>
-                                <th>View</th>
-                                <th>Edit</th>
-<!--                                 <th>Delete</th> -->
+                                <th>Loại bài</th>
+                                <th>Loại phòng</th>
+                                <th>User đăng</th>
+                                <th>Tiêu đề</th>
+                                <th>Xem</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach($loaiphong as $lp)
+                        <tbody> 
+                        	@foreach($baidang as $bd)
                             <tr class="odd gradeX" align="center">
-                                <td>{{$lp->id}}</td>
-                                <td>{{$lp->name}}</td>
-                                <td>{{$lp->description}}</td>
-
+                                <td>{{$bd->id}}</td>
+                                <td>{{$bd->loaibai->name}}</td>
+                                <td>{{$bd->loaiphong->name}}</td>
+                                <td>{{$bd->user->username}}</td>
+                                <td>{{$bd->title}}</td>
                                 <td class="center">
-                                    <a href="admin/loaiphong/xem/{{$lp->id}}" class="btn btn-success"><i class="fa fa-newspaper-o"></i> View</a>
+                                    <a href="admin/baidang/xem/{{$bd->id}}" class="btn btn-success"><i class="fa fa-newspaper-o"></i> Xem</a>
                                 </td>
-
-                                 <td class="center"><a href="admin/loaiphong/sua/{{$lp->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
-
-<!--                                 <td class="center"><a href="admin/loaiphong/danhsach" onclick="return confirm('Chức năng tạm thời disable');" title="Xóa" class="btn btn-danger"><i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil"></i> Delete</a></td> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                 <td>
+                                  <a href="admin/baidang/xoa/{{$bd->id}}" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger"><i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil"></i> Xóa</a>
+                                </td>
                             </tr>
-                            @endforeach
+                           @endforeach
                         </tbody>
                     </table>
 

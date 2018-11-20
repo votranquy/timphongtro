@@ -1,18 +1,31 @@
 @extends('admin.layout.index')
-
 @section('content')
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>Bài đăng
+        <small>Thêm</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i> Bài đăng</li>
+        <li class="active">Thêm</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <section class="connectedSortable">
+          <div class="box box-success">
+
  <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Tin Tức
-                            <small>Thêm</small>
-                        </h1>
-                    </div>
+
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-
                         @if(count($errors)>0)
                             <div class="alert alert-danger">
                                 @foreach($errors->all() as $err)
@@ -31,7 +44,7 @@
                             @csrf
                             <div class="form-group">
                                 <label>Loại bài đăng</label>
-                                <select class="form-control" name="LoaiBai" id="LoaiBai">
+                                <select class="form-control" name="posttype" id="LoaiBai">
                                     @foreach($loaibai as $lb)
                                     <option value="{{$lb->id}}">{{$lb->name}}</option>
                                     @endforeach
@@ -52,10 +65,6 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
-                                <label>Tiêu đề</label>
-                                <input class="form-control" name="title" placeholder="Nhập tiêu đề" />
-                            </div>
                             <div class="form-group">
                                 <label>Số điện thoại</label>
                                 <input class="form-control" name="phone" placeholder="Nhập số điện thoại" />

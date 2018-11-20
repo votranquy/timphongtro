@@ -43,6 +43,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 		Route::post('them','LoaiPhongController@postThem');
 
 		Route::get('xoa/{id}','LoaiPhongController@getXoa');
+
+		Route::get('xem/{id}','LoaiPhongController@getXem');
 	});
 
 	Route::group(['prefix'=>'loaibai'],function(){
@@ -57,6 +59,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 		Route::post('them','LoaiBaiController@postThem');
 
 		Route::get('xoa/{id}','LoaiBaiController@getXoa');
+
+		Route::get('xem/{id}','LoaiBaiController@getXem');
 	});
 
 	Route::group(['prefix'=>'nhom'],function(){
@@ -71,6 +75,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 		Route::post('them','NhomController@postThem');
 
 		Route::get('xoa/{id}','NhomController@getXoa');
+
+		Route::get('xem/{id}','NhomController@getXem');
 	});
 
 	Route::group(['prefix'=>'user'],function(){

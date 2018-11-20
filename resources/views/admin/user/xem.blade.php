@@ -3,12 +3,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        User
+        <small>Xem chi tiết</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><i class="fa fa-dashboard"></i> User</li>
+        <li class="active"><a href="admin/user/danhsach">Danh sách</a></li>
+        <li class="active">Xem chi tiết</li>
       </ol>
     </section>
 
@@ -36,16 +37,16 @@
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Email</b> <a class="pull-right">{{$user->email}}</a>
+                  <b>Email</b> <p><a class="pull-right">{{$user->email}}</a></p>
                 </li>
                 <li class="list-group-item">
-                  <b>Phone</b> <a class="pull-right">{{$user->phone}}</a>
+                  <b>Phone</b> <p><a class="pull-right">{{$user->phone}}</a></p>
                 </li>
                 <li class="list-group-item">
-                  <b>Post</b> <a class="pull-right">69</a>
+                  <b>Tham gia</b><p> <a class="pull-right">{{$user->created_at}}</a></p>
                 </li>
                 <li class="list-group-item">
-                  <b>Location</b> <a class="pull-right">{{$user->address}}</a>
+                  <b>Location</b><p> <a class="pull-right">{{$user->address}}</a></p>
                 </li>
               </ul>
             </div>

@@ -43,7 +43,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="admin/baidang/danhsach"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-          <li><a href="admin/baidang/them"><i class="fa fa-circle-o"></i> Thêm</a></li>
+          <!-- <li><a href="admin/baidang/them"><i class="fa fa-circle-o"></i> Thêm</a></li> -->
         </ul>
       </li>
 
@@ -58,7 +58,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="admin/user/danhsach"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-          <li><a href="admin/user/them"><i class="fa fa-circle-o"></i> Thêm</a></li>
+          <!-- <li><a href="admin/user/them"><i class="fa fa-circle-o"></i> Thêm</a></li> -->
         </ul>
       </li>
 
@@ -73,7 +73,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="admin/loaiphong/danhsach"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-          <li><a href="admin/loaiphong/them"><i class="fa fa-circle-o"></i> Thêm</a></li>
+          <!-- <li><a href="admin/loaiphong/them"><i class="fa fa-circle-o"></i> Thêm</a></li> -->
         </ul>
       </li>
 
@@ -88,7 +88,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="admin/loaibai/danhsach"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-          <li><a href="admin/loaibai/them"><i class="fa fa-circle-o"></i> Thêm</a></li>
+          <!-- <li><a href="admin/loaibai/them"><i class="fa fa-circle-o"></i> Thêm</a></li> -->
         </ul>
       </li>
 
@@ -103,7 +103,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="admin/nhom/danhsach"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-          <li><a href="admin/nhom/them"><i class="fa fa-circle-o"></i> Thêm</a></li>
+          <!-- <li><a href="admin/nhom/them"><i class="fa fa-circle-o"></i> Thêm</a></li> -->
         </ul>
       </li>
 

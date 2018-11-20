@@ -2,8 +2,8 @@
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        <small>Control panel</small>
+      <h1>Bài đăng
+        <small>Chi tiết</small>
       </h1>
       <ol class="breadcrumb">
         <li><i class="fa fa-dashboard"></i> Bài đăng</li>
@@ -34,96 +34,131 @@
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <tbody>
+                          <tr>
                             <td style="width: 15%;">
                                 <b style="color: blue;">Tiêu đề </b>
-                              </td>
-                              <td>
+                            </td>
+                            <td>
                                 {{$baidang->title}}
-                              </td>
-                            </tr>
+                            </td>
+                          </tr>
+                          <tr>
                             <td style="width: 15%;">
                                 <b style="color: blue;">Người đăng</b>
-                              </td>
-                              <td>
+                            </td>
+                            <td>
                                 {{$baidang->user->username}}
-                              </td>
-                            </tr>
+                            </td>
+                          </tr>
+                          <tr>
                             <td style="width: 15%;">
                                 <b style="color: blue;">Loại bài </b>
-                              </td>
-                              <td>
+                            </td>
+                            <td>
                                 {{$baidang->loaibai->name}}
                               </td>
-                            </tr>                           
+                          </tr>
+                          <tr>
                             <td style="width: 15%;">
                                 <b style="color: blue;">Loại phòng </b>
                               </td>
                               <td>
                                 {{$baidang->loaiphong->name}}
                               </td>
-                            </tr>                           
+                          </tr>
+                            @if($baidang->loaibai->id == "2")
+                          <tr>
                             <td style="width: 15%;">
                                 <b style="color: blue;">Giá </b>
                               </td>
                               <td>
                                 {{$baidang->price}}
                               </td>
-                            </tr>                           
+                            </tr>
+                            @endif
+                            @if($baidang->loaibai->id == "1")
+                          <tr>
                             <td style="width: 15%;">
                                 <b style="color: blue;">Giá min </b>
                               </td>
                               <td>
                                 {{$baidang->minPrice}}
                               </td>
-                            </tr>                           
+                          </tr>
+                          @endif
+                          @if($baidang->loaibai->id == "1")
+                          <tr>
                             <td style="width: 15%;">
                                 <b style="color: blue;">Giá max </b>
                               </td>
                               <td>
                                 {{$baidang->maxPrice}}
                               </td>
-                            </tr>                           
+                            </tr>
+                           @endif
+                          @if($baidang->loaibai->id == "2")
+                           <tr>
                             <td style="width: 15%;">
                                 <b style="color: blue;">Địa chỉ </b>
                               </td>
                               <td>
                                 {{$baidang->address}}
                               </td>
-                            </tr>                           
+                            </tr>
+                           @endif
+                           <tr>
                             <td style="width: 15%;">
                                 <b style="color: blue;">SĐT </b>
                               </td>
                               <td>
                                 {{$baidang->phone}}
                               </td>
-                            </tr>                           
+                            </tr>
+                            <tr>
                             <td style="width: 15%;">
                                 <b style="color: blue;">Thời gian </b>
                               </td>
                               <td>
                                 {{$baidang->created_at}}
                               </td>
-                            </tr>                           
+                            </tr>
+                            @if($baidang->loaibai->id == "1")
+                            <tr>
                             <td style="width: 15%;">
                                 <b style="color: blue;">Diện tích min </b>
                               </td>
                               <td>
                                 {{$baidang->chitietphong->minAceage}}
                               </td>
-                            </tr>                           
+                            </tr>
+                            @endif
+                            @if($baidang->loaibai->id == "1")
+                            <tr>
                             <td style="width: 15%;">
                                 <b style="color: blue;">Diện tích max</b>
                               </td>
-                              <td>  
+                              <td>
                                 {{$baidang->chitietphong->maxAceage}}
                               </td>
-                            </tr>                           
+                            </tr>
+                            @endif
                             <td style="width: 15%;">
                                 <b style="color: blue;">Mô tả </b>
                               </td>
                               <td>
                                 {{$baidang->chitietphong->description}}
                               </td>
+                            </tr>
+                            @if($baidang->loaibai->id == "2")
+                              <td style="width: 15%;">
+                                <b style="color: blue;">Ảnh </b>
+                              </td>
+                            @foreach($anh as $ah)
+                              <td>
+                                <img width="150px" src="upload/tintuc/{{$ah->path}}"/>
+                              </td>
+                            @endforeach
+                            @endif
                             </tr>
                         </tbody>
                     </table>

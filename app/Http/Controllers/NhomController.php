@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Nhom;
+use App\User;
+use App\NhomTaiKhoan;
 class NhomController extends Controller
 {
     //
@@ -65,5 +67,10 @@ class NhomController extends Controller
         $nhom=Nhom::find($id);
         $nhom->delete();
         return redirect('admin/nhom/danhsach')->with('thongbao','Bạn đã xóa thành công');
+    }
+    public function getXem($id){
+        $nhomtaikhoan=NhomTaiKhoan::where('group_id',$id);
+        // $user=User::join(NhomTaiKhoan::where('group_id',$id),'id','=','user_id')->get();
+        return view('admin.nhom.xem',['nhomtaikhoan'=>$nhomtaikhoan]);
     }
 }

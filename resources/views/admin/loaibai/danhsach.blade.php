@@ -2,12 +2,12 @@
 @section('content')    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        Loại bài
+        <small>Danh sách</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>Loại bài</a></li>
+        <li class="active">Danh sách</li>
       </ol>
     </section>
 
@@ -23,11 +23,6 @@
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Loại Bài đăng
-                            <small>Danh Sách</small>
-                        </h1>
-                    </div>
                     <!-- /.col-lg-12 -->
                     <!-- /.col-lg-12 -->
                     @if(session('thongbao'))
@@ -55,8 +50,13 @@
                                 <td>{{$lb->description}}</td>
                                 <td>{{$lb->created_at}}</td>
                                 <td>{{$lb->updated_at}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/loaibai/xoa/{{$lb->id}}"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/loaibai/sua/{{$lb->id}}">Edit</a></td>
+<!--                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/loaibai/xem/{{$lb->id}}"> View</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/loaibai/sua/{{$lb->id}}">Edit</a></td> -->
+                                <td class="center">
+                                    <a href="admin/loaibai/xem/{{$lb->id}}" class="btn btn-success"><i class="fa fa-newspaper-o"></i> View</a>
+                                </td>
+
+                                 <td class="center"><a href="admin/loaibai/sua/{{$lb->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
                             </tr>
                             @endforeach
                         </tbody>

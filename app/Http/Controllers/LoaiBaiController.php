@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\LoaiBai;
+use App\BaiDang;
 class LoaiBaiController extends Controller
 {
     public function getDanhSach(){
@@ -64,5 +65,9 @@ class LoaiBaiController extends Controller
         $loaibai=LoaiBai::find($id);
         $loaibai->delete();
         return redirect('admin/loaibai/danhsach')->with('thongbao','Bạn đã xóa thành công');
+    }
+    public function getXem($id){
+        $baidang=BaiDang::where('post_type_id',$id)->get();
+        return view('admin.loaibai.xem',['baidang'=>$baidang]);
     }
 }
