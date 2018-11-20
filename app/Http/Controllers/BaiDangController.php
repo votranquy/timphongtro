@@ -32,7 +32,7 @@ class BaiDangController extends Controller
 
     public function getThem(){
         $loaibai = LoaiBai::all();
-        $loaiphong=LoaiPhong::all();
+        $loaiphong = LoaiPhong::all();
         return view('admin.baidang.them',['loaibai'=>$loaibai,'loaiphong'=>$loaiphong]);
     }
 
