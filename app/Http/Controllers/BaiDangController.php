@@ -7,7 +7,7 @@ use App\BaiDang;
 use App\Anh;
 use App\BinhLuan;
 use App\ChiTietPhong;
-use App\loaiBai;
+use App\LoaiBai;
 use App\LoaiPhong;
 
 class BaiDangController extends Controller
@@ -31,7 +31,7 @@ class BaiDangController extends Controller
     }
 
     public function getThem(){
-        $loaibai = LoaiBai::all();
+        $loaibai =  LoaiBai::all();
         $loaiphong = LoaiPhong::all();
         return view('admin.baidang.them',['loaibai'=>$loaibai,'loaiphong'=>$loaiphong]);
     }
