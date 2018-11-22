@@ -5,27 +5,22 @@
 				<span>Tin đăng chính chủ</span>
 			</div>
 			<ul class="list">
-				<li><a class="img"
-					href="https://dithuenha.com/van-phong-quan-3-nguyen-dinh-chieu-110m-chinhchu-ms-phuong-chi-pd2119339.htm"
-					title="Văn phòng quận 3 nguyễn đình chiểu 110m² chínhchủ - ms. phương chi">
+				@foreach($baichinhchu as $bcc)
+				<li>
+					<a class="img"
+					href=""
+					title="">
 						<img
-						alt="Văn phòng quận 3 nguyễn đình chiểu 110m² chínhchủ - ms. phương chi"
+						alt=""
 						src="index_files/kij1541578869(1).jpg">
-				</a> <a class="title"
-					href="https://dithuenha.com/van-phong-quan-3-nguyen-dinh-chieu-110m-chinhchu-ms-phuong-chi-pd2119339.htm">
-						Văn phòng quận 3 nguyễn đình chiểu 110m² chínhchủ - ms. ... </a>
-					<p class="price">39.5 triệu</p></li>
-				<li><a class="img"
-					href="https://dithuenha.com/cho-thue-nha-5-tang-mat-ngo-pho-doi-can-50m2-phu-hop-lam-van-phong-n-pd2119338.htm"
-					title="Cho thuê nhà 5 tầng mặt ngõ phố đội cấn, 50m2, phù hợp làm văn phòng n">
-						<img
-						alt="Cho thuê nhà 5 tầng mặt ngõ phố đội cấn, 50m2, phù hợp làm văn phòng n"
-						src="index_files/hve1541578843(1).jpg">
-				</a> <a class="title"
-					href="https://dithuenha.com/cho-thue-nha-5-tang-mat-ngo-pho-doi-can-50m2-phu-hop-lam-van-phong-n-pd2119338.htm">
-						Cho thuê nhà 5 tầng mặt ngõ phố đội cấn, 50m2, phù hợp làm
-						... </a>
-					<p class="price">15 triệu</p></li>
+					</a>
+					<a class="title"
+					href="">
+						{{ $bcc->title }}
+					</a>
+					<p class="price">{{ $bcc->price }}</p>
+				</li>
+				@endforeach
 			</ul>
 		</div>
 		<div class="right_news">
