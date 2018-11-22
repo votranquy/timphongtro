@@ -106,6 +106,7 @@ class BaiDangController extends Controller
                 $anh->path=$TenHinh;
                 $anh->save();
             }
+            else{}
         }
 
 
