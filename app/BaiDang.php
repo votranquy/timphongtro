@@ -13,7 +13,7 @@ class BaiDang extends Model
     	return $this->hasMany('App\BinhLuan','post_id','id');
     }
     public function anh(){
-    	return $this->hasOne('App\Anh','post_id','id');
+    	return $this->hasMany('App\Anh','post_id','id');
     }
     public function chitietphong(){
     	return $this->hasOne('App\ChiTietPhong','post_id','id');

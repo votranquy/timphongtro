@@ -71,16 +71,14 @@
                             </div>
 
                               <div class="form-group">
-                                <label>Nội dung</label>
 
-                                <div class="col-sm-10">
+                                <label>Nội dung</label>
                                   <textarea class="form-control" name="description" placeholder="Nhập nội dung"></textarea>
-                                </div>
+
                               </div>
 
 
 
-                            <p >
                             <div class="form-group" id="giamin" style="display:;">
                                 <label>Giá min</label>
                                 <input class="form-control" name="minprice" placeholder="Nhập giá min" />
@@ -98,10 +96,8 @@
                                 <label>Diện tích max</label>
                                 <input class="form-control" name="maxaceage" placeholder="Nhập diện tích max" />
                             </div>
-                          </p>
 
 
-                          <p>
                             <div class="form-group" id="gia" style="display:none;">
                                 <label>Giá</label>
                                 <input class="form-control" name="price" placeholder="Nhập giá" />
@@ -126,7 +122,6 @@
                                 <label>Hình ảnh</label>
                                 <input type="file"  name="Hinh" class="form-control" />
                             </div>
-                          </p>
 
 
 

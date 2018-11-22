@@ -13,9 +13,9 @@
 //use App\TheLoai;
 
 
-Route::get('/',function(){
-	return view('welcome');
-});
+// Route::get('/',function(){
+// 	return view('welcome');
+// });
 
 Route::get('thu', function () {
     return view('admin.loaiphong.them');
@@ -24,7 +24,7 @@ Route::get('thu', function () {
 Route::get('profile',function(){
 	return view('view');
 });
-
+Route::get('trangchu','PageController@trangchu');
 
 Route::get('admin/dangnhap','UserController@getdangnhapAdmin');
 Route::post('admin/dangnhap','UserController@postdangnhapAdmin');
