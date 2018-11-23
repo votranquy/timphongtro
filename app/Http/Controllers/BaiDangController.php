@@ -120,7 +120,9 @@ class BaiDangController extends Controller
         $baidang=BaiDang::find($id);
         $anh = Anh::where('post_id',$id);
         $chitietphong = ChiTietPhong::where('post_id',$id);
+        $binhluan = BinhLuan::where('post_id',$id);
         $anh->delete();
+        $binhluan->delete();
         $chitietphong->delete();
         $baidang->delete();
         return redirect('admin/baidang/danhsach')->with('thongbao','Bạn đã xóa thành công');
