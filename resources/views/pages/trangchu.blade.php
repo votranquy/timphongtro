@@ -50,7 +50,9 @@
 							<a
 								href="">{{ $baidang->title }}</a>
 						</h3>
-						<div class="intro">{{ $baidang->chitietphong->description }}</div>
+						<div class="intro">
+							
+						</div>
 						<div class="group2">
 							<p class="info_adrr">
 								<span class="info2_lable">Địa chỉ :</span> <span
