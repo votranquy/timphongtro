@@ -115,6 +115,15 @@ class BaiDangController extends Controller
         // $loaitin=LoaiTin::all();
         // return view('admin/tintuc/them',['theloai'=>$theloai,'loaitin'=>$loaitin]);
         return redirect('admin/baidang/them')->with('thongbao','Bạn đã thêm bài đăng thành công');
+    }
+    public function getXoa($id){
+        $baidang=BaiDang::find($id);
+        $anh = Anh::where('post_id',$id);
+        $chitietphong = ChiTietPhong::where('post_id',$id);
+        $anh->delete();
+        $chitietphong->delete();
+        $baidang->delete();
+        return redirect('admin/baidang/danhsach')->with('thongbao','Bạn đã xóa thành công');
 
     }
 }

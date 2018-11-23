@@ -1,4 +1,4 @@
-@extends('admin.layout.index')
+    @extends('admin.layout.index')
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -62,7 +62,10 @@
                                   <a href="admin/baidang/sua/{{$bd->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i> Sửa</a>
                                  </td> -->
                                  <td>
-                                  <a href="admin/baidang/xoa/{{$bd->id}}" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger"><i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil"></i> Xóa</a>
+                                    <a href="admin/baidang/xoa/{{$bd->id}}" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger">
+                                    <i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil">
+                                    </i> Xóa
+                                    </a>
                                 </td>
 
                             </tr>
