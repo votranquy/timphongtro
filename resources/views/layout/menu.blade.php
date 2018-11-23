@@ -7,13 +7,16 @@
 			<ul class="list">
 				@foreach($baichinhchu as $bcc)
 				<li>
+					@if( count($bcc->anh) != 0)
+					<?php $tenanh= $bcc->anh->first();?>
 					<a class="img"
 					href=""
 					title="">
 						<img
 						alt=""
-						src="index_files/kij1541578869(1).jpg">
+						src="upload/tintuc/{{$tenanh->path}}">
 					</a>
+					@endif
 					<a class="title"
 					href="">
 						{{ $bcc->title }}
