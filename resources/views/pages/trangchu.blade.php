@@ -72,7 +72,7 @@
 									class="info2_lable3"> <a
 									title="Cho thuê chung cư, nhà trọ, phòng trọ tại Quận 7"
 									href="https://dithuenha.com/cho-thue-chung-cu-nha-tro-tai-quan-7-pci132.htm">{{ $baidang->address }}</a>
-								</span> <span class="time">07/11/2018</span>
+								</span> <span class="time">{{ $baidang->created_at }}</span>
 							</p>
 						</div>
 					</div>
