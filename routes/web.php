@@ -30,7 +30,7 @@ Route::get('admin/dangnhap','UserController@getdangnhapAdmin');
 Route::post('admin/dangnhap','UserController@postdangnhapAdmin');
 Route::get('admin/logout','UserController@getDangXuatAdmin');
 
-Route::group(['prefix'=>'admin'],function(){
+Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 	Route::group(['prefix'=>'loaiphong'],function(){
 		Route::get('danhsach','LoaiPhongController@getDanhSach');
 
