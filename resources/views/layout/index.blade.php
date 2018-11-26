@@ -20,6 +20,7 @@
 <script>window.dispatchEvent(new CustomEvent('ethereumprovider', { detail: {}}))</script>
 <title>Cho thuê nhà trọ, cho thuê phòng trọ giá rẻ, cho thuê
 	chung cư, cho thuê chung cư mini, cho thuê nhà nguyên căn</title>
+<base href="{{ asset('') }}">	
 <meta http-equiv="content-style-type" content="text/css">
 <meta http-equiv="content-language" content="en-vi">
 <meta name="copyright" content="Dithuenha.com">
@@ -42,17 +43,34 @@
 <link rel="shortcut icon"
 	href="index_files/pqd1541408742.png"
 	type="image/x-icon">
-<script async="" type="text/javascript"
-	src="index_files/web.js.tải xuống"></script>
-<script src="index_files/client_platform.js.tải xuống" async=""
-	defer="" gapi_processed="true"></script>
+
+<!--  Customer-->
+
+<!-- ./Customer -->
+
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<script>
+$(document).ready(function() {
+    $('#dataTables-example').DataTable({
+            responsive: true
+    });
+});
+</script>
+<script type="text/javascript" language="javascript" src="admin_asset/ckeditor/ckeditor.js" ></script>
+
+
 <link rel="stylesheet" type="text/css"
 	href="index_files/font-awesome.min.css">
 <link
 	href="index_files/style.css"
 	rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<!-- <link href="css/shop-homepage.css" rel="stylesheet"> -->
+<link href="css/my.css" rel="stylesheet">
 </head>
-<body>
+
+	<body class="hold-transition skin-blue sidebar-mini">
 	<div id="wrapper" class="wrapper">
 		<h1 class="page_h1">Cho thuê nhà trọ, cho thuê phòng trọ giá rẻ,
 			cho thuê chung cư, cho thuê chung cư mini, cho thuê nhà nguyên căn</h1>
@@ -61,12 +79,10 @@
 		@include('layout.header')
 		<!--./Header -->
 
-		<!-- Search -->
-		@include('layout.search')
+
 		<!-- ./Search -->
 		<script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&appId=151336352087612&version=v2.0"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
-		<script src="index_files/platform.js.tải xuống" async="" defer=""
-			gapi_processed="true"> {lang: 'vi'} </script>
+
 		<div class="content mainContent">
 			<div class="container ">
 				<div class="content">

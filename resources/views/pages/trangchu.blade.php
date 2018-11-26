@@ -1,5 +1,7 @@
 @extends('layout.index')
 @section('content')
+		<!-- Search -->
+<!-- 		@include('layout.search') -->
 <div class="module1">
 	<div class="module1_content_hot">
 		<p class="module_title">Tin nổi bật</p>
@@ -8,10 +10,10 @@
 				@if( count($baidang->anh) != 0)
 				<li>
 					<?php $tenanh= $baidang->anh->first();?>
-					<a class="img" href="">
+					<a class="img" href="baidang/{{$baidang->id}}">
 						<img width="15px" src="upload/tintuc/{{$tenanh->path}}">
 					</a>
-					<a class="title" href="">
+					<a class="title" href="baidang/{{$baidang->id}}">
 						{{$baidang->title}}
 					</a>
 					<p class="price">{{$baidang->price}}</p>
@@ -38,7 +40,7 @@
 				<li class="pro_item">
 					@if( count($baidang->anh) != 0)
 					<?php $tenanh= $baidang->anh->first();?>
-					<a class="img" href="">
+					<a class="img" href="baidang/{{$baidang->id}}">
 						<img alt="" src="upload/tintuc/{{$tenanh->path}}">
 					</a>
 					@endif
@@ -48,10 +50,9 @@
 						</p>
 						<h3 class="title">
 							<a
-								href="">{{ $baidang->title }}</a>
+								href="baidang/{{$baidang->id}}">{{ $baidang->title }}</a>
 						</h3>
 						<div class="intro">
-							
 						</div>
 						<div class="group2">
 							<p class="info_adrr">
@@ -83,4 +84,7 @@
 		@endforeach
 	@endforeach
 </div>
+@endsection
+@section('script')
+
 @endsection

@@ -25,10 +25,19 @@ Route::get('profile',function(){
 	return view('view');
 });
 Route::get('trangchu','PageController@trangchu');
+Route::get('baidang/{id}','PageController@getBaiDang');
+Route::get('trangnhap/{id}','PageController@getTrangnhap');
+Route::get('dangnhap','PageController@getdangnhap');
+Route::post('dangnhap','PageController@postdangnhap');
+Route::get('dangxuat','PageController@getdangxuat');
+Route::get('dangky','PageController@getdangky');
+Route::post('dangky','PageController@postdangky');
+Route::post('binhluan/{id}','BinhLuanController@postbinhluan');
 
 Route::get('admin/dangnhap','UserController@getdangnhapAdmin');
 Route::post('admin/dangnhap','UserController@postdangnhapAdmin');
 Route::get('admin/logout','UserController@getDangXuatAdmin');
+
 
 Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 	Route::group(['prefix'=>'loaiphong'],function(){

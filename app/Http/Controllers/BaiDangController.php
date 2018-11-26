@@ -21,8 +21,9 @@ class BaiDangController extends Controller
     public function getXem($id){
         $baidang = BaiDang::find($id);
         $anh= Anh::where('post_id',$id)->get();
-        return view('admin.baidang.xem',['baidang'=>$baidang,'anh'=>$anh]);
-    }    
+        $binhluan=BinhLuan::where('post_id',$id)->get();
+        return view('admin.baidang.xem',['baidang'=>$baidang,'anh'=>$anh,'binhluan'=>$binhluan]);
+    }
 
     public function getSua($id){
     }
