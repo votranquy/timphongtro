@@ -10,14 +10,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script>window.dispatchEvent(new CustomEvent('ethereumprovider', { detail: {}}))</script>
-<script>window.dispatchEvent(new CustomEvent('ethereumprovider', { detail: {}}))</script>
-<script>window.dispatchEvent(new CustomEvent('ethereumprovider', { detail: {}}))</script>
-<script>window.dispatchEvent(new CustomEvent('ethereumprovider', { detail: {}}))</script>
-<script>window.dispatchEvent(new CustomEvent('ethereumprovider', { detail: {}}))</script>
-<script>window.dispatchEvent(new CustomEvent('ethereumprovider', { detail: {}}))</script>
-<script>window.dispatchEvent(new CustomEvent('ethereumprovider', { detail: {}}))</script>
-<script>window.dispatchEvent(new CustomEvent('ethereumprovider', { detail: {}}))</script>
+
 <title>Cho thuê nhà trọ, cho thuê phòng trọ giá rẻ, cho thuê
 	chung cư, cho thuê chung cư mini, cho thuê nhà nguyên căn</title>
 <base href="{{ asset('') }}">	
@@ -43,6 +36,7 @@
 <link rel="shortcut icon"
 	href="index_files/pqd1541408742.png"
 	type="image/x-icon">
+@yield('link')
 
 <!--  Customer-->
 

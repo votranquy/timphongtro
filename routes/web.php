@@ -26,13 +26,16 @@ Route::get('profile',function(){
 });
 Route::get('trangchu','PageController@trangchu');
 Route::get('baidang/{id}','PageController@getBaiDang');
+Route::get('loaiphong/{id}','PageController@getLoaiPhong');
 Route::get('trangnhap/{id}','PageController@getTrangnhap');
 Route::get('dangnhap','PageController@getdangnhap');
 Route::post('dangnhap','PageController@postdangnhap');
 Route::get('dangxuat','PageController@getdangxuat');
 Route::get('dangky','PageController@getdangky');
 Route::post('dangky','PageController@postdangky');
+Route::get('thongbao','PageController@getthongbao');
 Route::post('binhluan/{id}','BinhLuanController@postbinhluan');
+Route::get('dangbaichothue','PageController@getdangbaichothue');
 
 Route::get('admin/dangnhap','UserController@getdangnhapAdmin');
 Route::post('admin/dangnhap','UserController@postdangnhapAdmin');

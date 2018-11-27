@@ -14,7 +14,7 @@ class BaiDangController extends Controller
 {
    //
     public function getDanhSach(){
-    	$baidang = BaiDang::all();
+    	$baidang = BaiDang::where('id','!=',0)->paginate(10);
     	return view('admin.baidang.danhsach',['baidang'=>$baidang]);
 
     }

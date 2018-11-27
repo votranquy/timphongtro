@@ -6,24 +6,32 @@ use Illuminate\Http\Request;
 use App\BaiDang;
 use App\LoaiPhong;
 use App\Anh;
+use App\ThongBao;
 class PageController extends Controller
 {
     function __construct(){
     	$baichinhchu = BaiDang::where('post_type_id',2)->take(4)->get();
     	$baimoi = BaiDang::where('post_type_id',2)->orderBy('created_at', 'desc')->take(5)->get();
         $loaiphong=LoaiPhong::all();
+
+        $demthongbao=ThongBao::where('isRead',0)->get();
     	view()->share('baichinhchu',$baichinhchu);
     	view()->share('baimoi',$baimoi);
         view()->share('loaiphong',$loaiphong);
+        view()->share('demthongbao',$demthongbao);
     }
     function trangchu(){
     	$baidangnoibat = BaiDang::where('post_type_id',2)->take(4)->get();
-    	$loaiphong = LoaiPhong::all();
     	return view('pages.trangchu',['baidangnoibat'=>$baidangnoibat]);
     }
     public function getBaiDang($id){
         $baidang=BaiDang::find($id);
         return view('pages.baidang',['baidang'=>$baidang]);
+    }
+    public function getLoaiPhong($id){
+        $loaiphongchitiet=LoaiPhong::find($id);
+        $baidang=BaiDang::where('room_type_id',$id)->paginate(5);
+        return view('pages.loaiphong',['baidang'=>$baidang,'loaiphongchitiet'=>$loaiphongchitiet]);
     }
     public function getTrangnhap($id){
 
@@ -34,7 +42,7 @@ class PageController extends Controller
     }
     public function getdangnhap(){
         return view('pages.dangnhap');
-    }  
+    }
     public function postdangnhap(Request $request){
             $this->validate($request,[
             'email'=>'required',
@@ -55,5 +63,15 @@ class PageController extends Controller
     function getdangxuat(){
         Auth::logout();
         return redirect('trangchu');
+    }
+    function getthongbao(){
+        $id=Auth::user()->id;
+        $thongbao= ThongBao::where('user_id',$id)->get();
+        return view('pages.thongbao',['thongbao'=>$thongbao]);
+    }
+
+    function getdangbaichothue(){
+        $loaiphong=LoaiPhong::all();
+        return view('pages.dangbaichothue',['loaiphong'=>$loaiphong]);
     }
 }
