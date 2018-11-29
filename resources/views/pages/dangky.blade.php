@@ -5,11 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign Up for TROTOT</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <script src="//code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+
+
+
+
+
+    <style type="text/css" media="screen">
+        .error{
+            color: red;
+            display: block;
+            width:100%;
+        }
+    </style>
+   <link rel="stylesheet" type="text/css" href="LoginPage/vendor/bootstrap/css/bootstrap.min.css">
+
+
+    <!-- <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script> -->
     <!-- Font Icon -->
     <link rel="stylesheet" href="RegisterPage/fonts/material-icon/css/material-design-iconic-font.min.css">
 
@@ -28,12 +40,12 @@
                             <div class="alert alert-danger">
                                 @foreach($errors->all() as $err)
                                     {{$err}}<br>
-                                @endforeach 
+                                @endforeach
                             </div>
                         @endif
 
                         @if(session('thongbao'))
-                            <div class="alert alert-success">
+                            <div style="width: 100%;" class="alert alert-danger">
                                 {{session('thongbao')}}
                             </div>
                         @endif
@@ -47,8 +59,8 @@
                             <input type="email" class="form-input" name="email" id="email" placeholder="Your Email"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="password" id="password" placeholder="Password"/>
-                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                            <input type="password" class="form-input" name="password" id="password" placeholder="Password"/>
+                            <!-- <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span> -->
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-input" name="re_password" id="re_password" placeholder="Repeat your password"/>
@@ -67,7 +79,62 @@
     </div>
 
     <!-- JS -->
-    <script src="LoginPage/vendor/jquery/jquery.min.js"></script>
-    <script src="LoginPage/js/main.js"></script>
+<!--     <script src="LoginPage/vendor/jquery/jquery.min.js"></script>
+    <script src="LoginPage/js/main.js"></script> -->
+
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.signup-form').validate({
+                rules:{
+                    name:{
+                        required:true,
+                        minlength:8,
+                    },
+                    email:{
+                        required:true,
+                        email: true,
+                        minlength:8,
+                    },
+                    password:{
+                        required:true,
+                        minlength:8,
+                    },
+                    re_password:{
+                        required:true,
+                        equalTo: "#password",
+                    },
+                },
+                messages:{
+                    name:{
+                        required: 'Vui lòng nhập tên ',
+                        minlength:'Tên có độ dài tối thiểu 8 kí tự',
+                    },
+                    email:{
+                        required: 'Vui lòng nhập Email ',
+                        email: 'Email bạn nhập không đúng định dạng',
+                        minlength:'Email có độ dài tối thiểu 8 kí tự',
+                    },
+                    password:{
+                        required:'Vui lòng nhập password',
+                        minlength:'Password có độ dài tối thiểu 8 kí tự',
+                    },
+                    re_password:{
+                        required:'Vui lòng nhập password',
+                        equalTo:'Password không khớp',
+                    },
+
+                },
+                // errorElement:'div',
+                // errorLabelContainer: '.error'
+            });
+        });
+    </script>
+
+
+
+
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

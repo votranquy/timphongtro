@@ -24,6 +24,7 @@ Route::get('thu', function () {
 Route::get('profile',function(){
 	return view('view');
 });
+Route::get('danganh','PageController@danganh');
 Route::get('trangchu','PageController@trangchu');
 Route::get('baidang/{id}','PageController@getBaiDang');
 Route::get('loaiphong/{id}','PageController@getLoaiPhong');
@@ -33,6 +34,8 @@ Route::post('dangnhap','PageController@postdangnhap');
 Route::get('dangxuat','PageController@getdangxuat');
 Route::get('dangky','PageController@getdangky');
 Route::post('dangky','PageController@postdangky');
+Route::get('sua/{id}/','PageController@getsua');
+Route::post('sua/{id}/{idbaidang}','PageController@postsua');
 Route::get('thongbao','PageController@getthongbao');
 Route::post('binhluan/{id}','BinhLuanController@postbinhluan');
 Route::get('dangbaichothue','PageController@getdangbaichothue');

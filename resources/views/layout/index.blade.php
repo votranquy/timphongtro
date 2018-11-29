@@ -1,41 +1,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!-- saved from url=(0022)https://dithuenha.com/ -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-vi" lang="en-vi">
-<script src="index_files/f(6).txt"></script>
+<!-- <script src="index_files/f(6).txt"></script>
 <script src="index_files/ca-pub-6623210302800586.js.tải xuống"></script>
 <script id="facebook-jssdk" src="index_files/sdk.js.tải xuống"></script>
 <script src="index_files/cb=gapi.loaded_0" async=""></script>
 <script async="" src="index_files/analytics.js.tải xuống"></script>
-<script src="index_files/script.js"></script>
+<script src="index_files/script.js"></script> -->
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Cho thuê nhà trọ, cho thuê phòng trọ giá rẻ, cho thuê
 	chung cư, cho thuê chung cư mini, cho thuê nhà nguyên căn</title>
-<base href="{{asset('') }}"
-<meta http-equiv="content-style-type" content="text/css">
-<meta http-equiv="content-language" content="en-vi">
-<meta name="copyright" content="Dithuenha.com">
-<meta name="description"
-	content="Cho thuê phòng trọ sinh viên, cho thuê căn hộ chung cư, cho thuê chung cư mini, cho thuê nhà nguyên căn, cho thuê nhà trọ sinh viên giá rẻ, phòng rộng, đẹp, thoáng mát, điện nước đầy đủ, an ninh đảm bảo. Tìm nhà trọ, tìm phòng trọ, tìm nhà cho thuê nhanh nhất với hàng ngàn tin đăng cho thuê nhà. Dithuenha.com website đăng tin cho thuê nhà trọ uy tín cập nhật liên tục 24/24.">
-<meta property="og:site_name" content="Dithuenha.com">
-<meta property="og:type" content="website">
-<meta property="og:title"
-	content="Cho thuê nhà trọ, cho thuê phòng trọ giá rẻ, cho thuê chung cư, cho thuê chung cư mini, cho thuê nhà nguyên căn">
-<meta property="og:description"
-	content="Cho thuê phòng trọ sinh viên, cho thuê căn hộ chung cư, cho thuê chung cư mini, cho thuê nhà nguyên căn, cho thuê nhà trọ sinh viên giá rẻ, phòng rộng, đẹp, thoáng mát, điện nước đầy đủ, an ninh đảm bảo. Tìm nhà trọ, tìm phòng trọ, tìm nhà cho thuê nhanh nhất với hàng ngàn tin đăng cho thuê nhà. Dithuenha.com website đăng tin cho thuê nhà trọ uy tín cập nhật liên tục 24/24.">
-<meta property="og:url" content="https://dithuenha.com/">
-<meta property="og:image"
-	content="https://dithuenha.com/themes/images/nha_tro.jpg">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1">
+<base href="{{asset('') }}">
 
+	<style type="text/css" media="screen">
+		.error{
+			color: red;
+			display: block;
+			width:100%;
+		}
+	</style>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/shop-homepage.css" rel="stylesheet">
-    <link href="css/my.css" rel="stylesheet">	
-
+    <link href="css/my.css" rel="stylesheet">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 
 
@@ -47,9 +38,9 @@
 	type="image/x-icon">
 	<!-- Latest compiled and minified CSS & JS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<script src="//code.jquery.com/jquery.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+	<!-- <script src="//code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 @yield('link')
 
 <!--  Customer-->
@@ -57,14 +48,14 @@
 <!-- ./Customer -->
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-<script>
+<!-- <script>
 $(document).ready(function() {
     $('#dataTables-example').DataTable({
             responsive: true
     });
 });
-</script>
-<script type="text/javascript" language="javascript" src="admin_asset/ckeditor/ckeditor.js" ></script>
+</script> -->
+<!-- <script type="text/javascript" language="javascript" src="admin_asset/ckeditor/ckeditor.js" ></script> -->
 
 
 <link rel="stylesheet" type="text/css"

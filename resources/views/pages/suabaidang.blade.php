@@ -13,12 +13,12 @@
                         {{session('thongbao')}}
                     </div>
                 @endif
-	            <form method="POST" action="dangbaichothue/2" class="user_form "  enctype="multipart/form-data">
+	            <form method="POST" action="sua/2/{{$baidang->id}}" class="user_form "  enctype="multipart/form-data">
 	            	@csrf
 	               <div class="item">
 	                  <label>Tiêu đề tin <span class="red">(*)</span></label>
 	                  <div class="item_input">
-	                     <input  name="title" class="pro_title" type="text" id="" value="" placeholder="Cho thuê nhà trọ, phòng trọ ở đâu..." style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="title" class="pro_title" type="text" id="" value="{{$baidang->title}}" placeholder="Cho thuê nhà trọ, phòng trọ ở đâu..." style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 	              <div class="item">
@@ -26,73 +26,80 @@
 	                  <div class="item_input">
 	                        <select class="pro_title" name="roomtype" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
                                 @foreach($loaiphong as $lp)
-                                    <option value="{{$lp->id}}">{{$lp->name}}</option>
-                                 @endforeach
+                                    <option 
+									@if($baidang->post_type_id == $lp->id)
+                                    {{"selected"}}
+                                    @endif
+                                    value="{{$lp->id}}" >{{$lp->name}}</option>
+                                @endforeach
                             </select>
 	                  </div>
 	              </div>
 	               <div class="item">
 	                  <label>Số điện thoại để liên hệ</label>
 	                  <div class="item_input">
-	                     <input  name="phone" class="pro_title" type="text" id="" value="" placeholder="Nhập số điện thoại của bạn" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="phone" class="pro_title" type="text" id="" value="{{$baidang->phone}}" placeholder="Nhập số điện thoại của bạn" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 	               <div class="item">
 	                  <label>Nhập mô tả (điều kiện, diện tích, an ninh, ...)<span class="red">(*)</span></label>
 	                  <div class="item_input">
-                            <textarea class="pro_title" value="" type="text" name="description" placeholder="Nhập nội dung " style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%;"></textarea>
+                            <textarea class="pro_title" value="" type="text" name="description" placeholder="Nhập nội dung " style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%;">{{$baidang->chitietphong->description}}</textarea>
 	                  </div>
 	              </div>
 	               <div class="item">
 	                  <label>Mức giá (tháng) <span class="red">(*)</span></label>
 	                  <div class="item_input">
-	                     <input  name="price" class="pro_title" type="text" id="" value="" placeholder="Nhập mức giá" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="price" class="pro_title" type="text" id="" value="{{$baidang->price}}" placeholder="Nhập mức giá" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 	               <div class="item">
 	                  <label>Nhập diện tích</label>
 	                  <div class="item_input">
-	                     <input  name="aceage" class="pro_title" type="text" id="" value="" placeholder="Nhập diện tích" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="aceage" class="pro_title" type="text" id="" value="{{$baidang->chitietphong->aceage}}" placeholder="Nhập diện tích" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 	               <div class="item">
 	                  <label>Nhập địa chỉ</label>
 	                  <div class="item_input">
-	                     <input  name="address" class="pro_title" type="text" id="" value="" placeholder="Nhập địa chỉ" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="address" class="pro_title" type="text" id="" value="{{$baidang->address}}" placeholder="Nhập địa chỉ" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
-<!-- 	               <div class="item">
-	                  <label>Tải ảnh (có thể chọn nhiều)</label>
-	                  <div class="item_input">
-	                     <input  name="image[]" class="pro_title" type="file" id="" value="" multiple="multiple" placeholder="Chọn ảnh" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
-	                  </div>
-	              </div> -->
 
-	<div class="item">
-		<label>Chọn ảnh</label>
-        <div class="input-group control-group increment" >
-          <input type="file" name="image[]" class="form-control" multiple />
-          <div class="input-group-btn"> 
-            <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
-          </div>
-        </div>
-        <div class="clone hide">
-          <div class="control-group input-group" style="margin-top:10px">
-            <input type="file" name="image[]" class="form-control" multiple/>
-            <div class="input-group-btn"> 
-              <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-            </div>
-          </div>
-        </div>
-     </div>
-
-
-
+					<div class="item">
+						<label>Chọn ảnh</label><br>
+						@foreach($baidang->anh as $anh)
+						        <div class="clone">
+						          <div class="control-group input-group" style="margin-top:10px">
+						          	<img src="upload/tintuc/{{$anh->path}}" width="150px" height="100px"><br>
+									<input type="text" name="filename[]" class="form-control pro_title" value="{{$anh->path}}" disabled="">
+						            <div class="input-group-btn" style="padding-bottom: 0;">
+						              <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Move</button>
+						            </div>
+						          </div>
+						        </div>
+				        @endforeach
+						<br>
+				        <div class="input-group control-group increment" >
+				          <input type="file" name="filename[]" class="form-control pro_title" value="">
+				          <div class="input-group-btn">
+				            <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>ADD</button>
+				          </div>
+				        </div>
+				        <div class="clone hide" >
+				          <div class="control-group input-group" style="margin-top:10px">
+				            <input type="file" name="filename[]" class="form-control pro_title">
+				            <div class="input-group-btn" style="padding-bottom: 0;"> 
+				              <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Move</button>
+				            </div>
+				          </div>
+				        </div>
+					</div>
 
 
 
 	             <div class="header_btn_post" style="text-align:center;margin:0;">
-	             		<button type="submit" class="btn_post1" >Đăng bài</button>
+	             		<button type="submit" class="btn_post1" >Sửa bài</button>
 	              </div>
 	          </form>
 			</div>

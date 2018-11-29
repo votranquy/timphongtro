@@ -3183,7 +3183,7 @@ color
 }
 
 #top_page {
-	background: url(/themes/images/btn_backtop.png) bottom left no-repeat;
+	
 	bottom: 10px;
 	height: 50px;
 	position: fixed;
@@ -7473,7 +7473,6 @@ color
 }
 
 #top_page {
-	background: url(/themes/images/btn_backtop.png) bottom left no-repeat;
 	bottom: 10px;
 	height: 50px;
 	position: fixed;

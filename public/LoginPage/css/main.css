@@ -301,11 +301,18 @@ iframe {
 .wrap-input100 {
   width: 100%;
   position: relative;
-  background-color: #f7f7f7;
-  border: 1px solid #e6e6e6;
-  border-radius: 10px;
 }
 
+
+.inputlogin{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
 
 /*---------------------------------------------*/
 .input100 {
@@ -313,10 +320,11 @@ iframe {
   color: #333333;
   line-height: 1.2;
   font-size: 18px;
-
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
   display: block;
   width: 100%;
-  background: transparent;
+  background-color: #f7f7f7;
   height: 60px;
   padding: 0 20px;
 }
