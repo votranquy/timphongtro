@@ -36,6 +36,11 @@ Route::post('dangky','PageController@postdangky');
 Route::get('thongbao','PageController@getthongbao');
 Route::post('binhluan/{id}','BinhLuanController@postbinhluan');
 Route::get('dangbaichothue','PageController@getdangbaichothue');
+Route::post('dangbaichothue/{id}','PageController@postdangbaichothue');
+Route::get('login','PageController@getLogin');
+Route::post('login','PageController@postLogin');
+Route::get('map','PageController@getMap');
+
 
 Route::get('admin/dangnhap','UserController@getdangnhapAdmin');
 Route::post('admin/dangnhap','UserController@postdangnhapAdmin');

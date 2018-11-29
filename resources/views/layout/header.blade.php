@@ -31,19 +31,23 @@
 			<!-- User header Menu -->
 			<li class="header_user_loged"> 
 				<a href="/user/vo-tran-quy-4684.htm" class="name"> 
+					@if(Auth::user()->name != NULL)
 					<span class="image">
 						<img src="upload/tintuc/{{Auth::user()->image}}" />
 					</span>
-					<b>{{Auth::user()->name}}</b> 
+					@endif
+					<b>{{Auth::user()->username}}</b> 
 				</a>
 				<div class="header_user_menu"> 
 					<ul>
 						<li class="use">
 							<a href="" class="name2">
+								@if(Auth::user()->name != NULL)
 								<span class="image">
 									<img src="upload/tintuc/{{Auth::user()->image}}" />
 								</span>
-								<b>{{Auth::user()->name}}</b>
+								@endif
+								<b>{{Auth::user()->username}}</b>
 							</a>
 						</li>
 						<li class="li_break"></li>
@@ -79,7 +83,7 @@
 						</li> 
 						<li class="li_break"></li> 
 						<li>
-						 <a href="/dang-xuat.htm"> 
+						 <a href="dangxuat"> 
 						 	 Đăng xuất 
 						 </a> 
 						</li> 

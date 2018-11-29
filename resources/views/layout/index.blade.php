@@ -13,12 +13,10 @@
 
 <title>Cho thuê nhà trọ, cho thuê phòng trọ giá rẻ, cho thuê
 	chung cư, cho thuê chung cư mini, cho thuê nhà nguyên căn</title>
-<base href="{{ asset('') }}">	
+<base href="{{asset('') }}"
 <meta http-equiv="content-style-type" content="text/css">
 <meta http-equiv="content-language" content="en-vi">
 <meta name="copyright" content="Dithuenha.com">
-<meta name="keywords"
-	content="Cho Thuê Nhà, Cho thuê phòng trọ, tìm nhà trọ, phòng trọ, nhà trọ, tìm phòng trọ, cho thuê nhà nguyên căn, đi thuê nhà, cho thuê nhà trọ">
 <meta name="description"
 	content="Cho thuê phòng trọ sinh viên, cho thuê căn hộ chung cư, cho thuê chung cư mini, cho thuê nhà nguyên căn, cho thuê nhà trọ sinh viên giá rẻ, phòng rộng, đẹp, thoáng mát, điện nước đầy đủ, an ninh đảm bảo. Tìm nhà trọ, tìm phòng trọ, tìm nhà cho thuê nhanh nhất với hàng ngàn tin đăng cho thuê nhà. Dithuenha.com website đăng tin cho thuê nhà trọ uy tín cập nhật liên tục 24/24.">
 <meta property="og:site_name" content="Dithuenha.com">
@@ -32,10 +30,26 @@
 	content="https://dithuenha.com/themes/images/nha_tro.jpg">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+    <link href="css/my.css" rel="stylesheet">	
+
+
+
+
+
+	
 <link rel="canonical" href="https://dithuenha.com/">
 <link rel="shortcut icon"
 	href="index_files/pqd1541408742.png"
 	type="image/x-icon">
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 @yield('link')
 
 <!--  Customer-->
@@ -75,7 +89,7 @@ $(document).ready(function() {
 
 
 		<!-- ./Search -->
-		<script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&appId=151336352087612&version=v2.0"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+<!-- 		<script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&appId=151336352087612&version=v2.0"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script> -->
 
 		<div class="content mainContent">
 			<div class="container ">
@@ -98,7 +112,7 @@ $(document).ready(function() {
 				trotot.com Tổng hợp thông tin, nhà đất cho thuê</div>
 		</div>
 		<div class="footer_wrap_bg footer_popup"></div>
-		<div class="form_contact_bottom footer_popup">
+<!-- 		<div class="form_contact_bottom footer_popup">
 			<div class="content">
 				<a class="close_footer"></a>
 				<h4 class="title">Yêu cầu xóa nội dung tin đăng.</h4>
@@ -133,10 +147,10 @@ $(document).ready(function() {
 				</div>
 				<div class="message_return"></div>
 			</div>
-		</div>
+		</div> -->
 		<div class="clear"></div>
 	</div>
-	<ins class="adsbygoogle adsbygoogle-noablate"
+<!-- 	<ins class="adsbygoogle adsbygoogle-noablate"
 		data-adsbygoogle-status="done" style="display: none !important;">
 		<ins id="aswift_0_expand"
 			style="display: inline-table; border: none; height: NaNpx; margin: 0; padding: 0; position: relative; visibility: visible; width: NaNpx; background-color: transparent;">
@@ -150,16 +164,17 @@ $(document).ready(function() {
 					src="index_files/saved_resource(3).html"></iframe>
 			</ins>
 		</ins>
-	</ins>
-	<iframe id="google_osd_static_frame_5412131730488"
+	</ins> -->
+<!-- 	<iframe id="google_osd_static_frame_5412131730488"
 		name="google_osd_static_frame"
 		style="display: none; width: 0px; height: 0px;"
 		src="index_files/saved_resource(4).html"></iframe>
 	<div id="UMS_TOOLTIP"
-		style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div>
+		style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div> -->
 	 @yield('script')	
+
 </body>
-<iframe id="google_shimpl" style="display: none;"
+<!-- <iframe id="google_shimpl" style="display: none;"
 	src="index_files/saved_resource(5).html"></iframe>
-<umsdataelement id="UMSSendDataEventElement"></umsdataelement>
+<umsdataelement id="UMSSendDataEventElement"></umsdataelement> -->
 </html>

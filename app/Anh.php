@@ -11,4 +11,5 @@ class Anh extends Model
     public function baidang(){
         return $this->belongsTo('App\BaiDang','post_id','id');
     }
+    protected $fillable = ['path', 'post_id'];
 }

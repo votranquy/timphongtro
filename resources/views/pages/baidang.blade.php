@@ -31,9 +31,9 @@
 								</p>
 							</div>
 						</div>
-						<div class="content content_qcauto1 margin_10_0"
+<!-- 						<div class="content content_qcauto1 margin_10_0"
 							style="transition: opacity 1s cubic-bezier(0.4, 0, 1, 1) 0s, width 0.2s cubic-bezier(0.4, 0, 1, 1) 0s, height 0.3s cubic-bezier(0.4, 0, 1, 1) 0.2s, margin-left 0.2s cubic-bezier(0.4, 0, 1, 1) 0s, margin-right 0.2s cubic-bezier(0.4, 0, 1, 1) 0s, padding-left 0.2s cubic-bezier(0.4, 0, 1, 1) 0s, padding-right 0.2s cubic-bezier(0.4, 0, 1, 1) 0s, border-left-width 0.2s cubic-bezier(0.4, 0, 1, 1) 0s, border-right-width 0.2s cubic-bezier(0.4, 0, 1, 1) 0s, margin-top 0.3s cubic-bezier(0.4, 0, 1, 1) 0.2s, margin-bottom 0.3s cubic-bezier(0.4, 0, 1, 1) 0.2s, padding-top 0.3s cubic-bezier(0.4, 0, 1, 1) 0.2s, padding-bottom 0.3s cubic-bezier(0.4, 0, 1, 1) 0.2s, border-top-width 0.3s cubic-bezier(0.4, 0, 1, 1) 0.2s, border-bottom-width 0.3s cubic-bezier(0.4, 0, 1, 1) 0.2s; margin: 0px; padding: 0px; border-width: 0px; width: 0px; height: 0px;">
-							<!-- Auto1 -->
+							
 							<ins class="adsbygoogle"
 								style="display: block; height: 0px; width: 0px;"
 								data-ad-client="ca-pub-6623210302800586"
@@ -55,8 +55,8 @@
 								</ins>
 							</ins>
 							<script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
-						</div>
-						<div class="dtop_left product_user product_list_images">
+						</div> -->
+<!-- 						<div class="dtop_left product_user product_list_images">
 							<div id="slider1_container"
 								style="position: relative; top: 0px; left: 0px; width: 800px; height: 533.333px; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(25, 25, 25); overflow: hidden;"
 								jssor-slider="true">
@@ -209,7 +209,51 @@
 								</div>
 							</div>
 							<div class="clear"></div>
-						</div>
+						</div> -->
+    	<!-- slider -->
+    	<div class="row carousel-holder">
+            <div class="col-md-12">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <?php $i=0; ?>
+                        @foreach($anh as $ah)
+                        <li data-target="#carousel-example-generic" data-slide-to="{{$i}}"
+                        @if($i == 0)
+                        class="active"
+                        @endif
+                        ></li>
+                        <?php $i++; ?>
+                        @endforeach
+                    </ol>
+                    <div class="carousel-inner">
+                        <?php $i=0; ?>
+                        @foreach($anh as $ah)
+                        <div 
+                        @if($i ==0)
+                        class="item active"
+                        @else  
+                        class="item" 
+                        @endif
+                        >
+                        <?php $i++; ?>
+                            <img class="slide-image" width="200px" height="150px" src="upload/tintuc/{{$ah->path}}" alt="{{$ah->path}}">
+                        </div>
+                        @endforeach
+                    </div>
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end slide -->
+
+
+
+
 
 						<h2>Chi tiết </h2>
 						<div class="des">{{$baidang->chitietphong->description}}
@@ -284,6 +328,16 @@
 				</div>
 		</div>
 	</div>
-@endsection
 
+@endsection
+@section('script')
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/my.js"></script>
+@endsection
 

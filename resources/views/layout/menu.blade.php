@@ -30,10 +30,10 @@
 				@foreach($baimoi as $bm)
 				<li>
 					<?php $tenanh= $bm->anh->first();?>
-					<a class="img" href="" title="">
+					<a class="img" href="baidang/{{ $bm->id }}" title="">
 						<img alt="" src="upload/tintuc/{{$tenanh->path}}">
 					</a>
-					<a class="title" href="">
+					<a class="title" href="baidang/{{ $bm->id }}">
 						{{$bm->title}}
 					</a>
 					<!-- <p class="price">{{$bm->chitietphong->price}}</p> -->
