@@ -40,6 +40,8 @@ Route::get('thongbao','PageController@getthongbao');
 Route::post('binhluan/{id}','BinhLuanController@postbinhluan');
 Route::get('dangbaichothue','PageController@getdangbaichothue');
 Route::post('dangbaichothue/{id}','PageController@postdangbaichothue');
+Route::get('dangbaicanthue','PageController@getdangbaicanthue');
+Route::post('dangbaicanthue/{id}','PageController@postdangbaicanthue');
 Route::get('login','PageController@getLogin');
 Route::post('login','PageController@postLogin');
 Route::get('map','PageController@getMap');

@@ -4,8 +4,12 @@
 <!-- 		@include('layout.search') -->
 <div class="module1">
 	<div class="module1_content_hot">
-		<p class="module_title">Tin nổi bật</p>
-		<ul class="list_pro">
+		<div class="module_title" style="background-color:#eee;font: 400 11px arial;color:#666;padding: 10px 10px;display: block;">			
+			<a href="">
+				TIN NỔI BẬT
+			</a>
+		</div>
+		<ul class="list_pro" >
 			@foreach($baidangnoibat as $baidang)
 				@if( count($baidang->anh) != 0)
 				<li>
@@ -24,9 +28,9 @@
 		<div class="clear"></div>
 	</div>
 
-
 	@foreach($loaiphong as $lp)
-		<div class="module_title">
+	<div class="content" style="border: 2px solid #ccc; border-radius: 12px;padding:10px;margin-bottom:3px;">
+		<div class="module_title" style="background-color:#eee;font: 400 11px arial;color:#666;padding: 10px 10px;display: block;">
 			<a href="">
 				{{ $lp->name }}
 			</a>
@@ -76,7 +80,8 @@
 									class="info2_lable3">{{ $baidang->chitietphong->aceage }}</span>
 							</p>
 							<p class="info4">
-								 <span class="time">{{ $baidang->created_at }}</span>
+								  <span class="time"><?php $time=$baidang->created_at; echo time_ago_in_php($time);?>
+								 </span>
 							</p>
 						</div>
 					</div>
@@ -85,6 +90,7 @@
 			<div class="clear"></div>
 		</div>
 		@endforeach
+	</div>	
 	@endforeach
 </div>
 @endsection

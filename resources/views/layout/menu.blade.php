@@ -1,10 +1,10 @@
 <div class="module2">
 	<div class="module2_content">
-		<div class="right_news">
+		<div class="right_news" style="border: 2px solid #ccc; border-radius: 12px;padding:10px;margin-bottom:3px;">
 			<div class="module_title">
 				<span>Tin đăng chính chủ</span>
 			</div>
-			<ul class="list">
+			<ul class="list" >
 				@foreach($baichinhchu as $bcc)
 					@if( count($bcc->anh) != 0)
 						<li>
@@ -21,7 +21,7 @@
 				@endforeach
 			</ul>
 		</div>
-		<div class="right_news">
+		<div class="right_news" style="border: 2px solid #ccc; border-radius: 12px;padding:10px;margin-bottom:3px;">
 			<div class="module_title">
 				<span>Mới đăng</span>
 			</div>
@@ -40,6 +40,22 @@
 							<!-- <p class="price">{{$bm->chitietphong->price}}</p> -->
 						</li>
 					@endif
+				@endforeach
+			</ul>
+		</div>
+		<div class="right_news" style="border: 2px solid #ccc; border-radius: 12px;padding:10px;margin-bottom:3px;">
+			<div class="module_title">
+				<span>Bài đăng cần thuê</span>
+			</div>
+
+			<ul class="list">
+				@foreach($baicanthue as $bct)
+						<li>
+							<a  href="baidang/{{ $bct->id }}">
+								{{$bct->title}}
+							</a>
+							<!-- <p class="price">{{$bm->chitietphong->price}}</p> -->
+						</li>
 				@endforeach
 			</ul>
 		</div>

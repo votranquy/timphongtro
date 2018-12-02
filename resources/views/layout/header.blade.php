@@ -56,7 +56,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="/dang-tin-can-thue.htm">
+							<a href="dangbaicanthue">
 								 Đăng tin cần thuê
 							</a>
 						</li>

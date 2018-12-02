@@ -17,12 +17,13 @@ class PageController extends Controller
     	$baichinhchu = BaiDang::where('post_type_id',2)->take(4)->get();
     	$baimoi = BaiDang::where('post_type_id',2)->orderBy('created_at', 'desc')->take(5)->get();
         $loaiphong=LoaiPhong::all();
-
+        $baicanthue=BaiDang::where('post_type_id',1)->orderBy('created_at', 'desc')->take(5)->get();
         $demthongbao=ThongBao::where('isRead',0)->get();
     	view()->share('baichinhchu',$baichinhchu);
     	view()->share('baimoi',$baimoi);
         view()->share('loaiphong',$loaiphong);
         view()->share('demthongbao',$demthongbao);
+        view()->share('baicanthue',$baicanthue);
     }
     function trangchu(){
     	$baidangnoibat = BaiDang::where('post_type_id',2)->take(4)->get();
@@ -43,6 +44,54 @@ class PageController extends Controller
         $id=Auth::user()->id;
         $thongbao= ThongBao::where('user_id',$id)->get();
         return view('pages.thongbao',['thongbao'=>$thongbao]);
+    }
+    public function getdangbaicanthue(){
+        return  view('pages.dangbaicanthue');
+    }
+    public function postdangbaicanthue(Request $request,$id){
+        $this->validate($request,
+            [
+                'title'=>'required|min:10|max:100',
+                'roomtype'=>'required',
+                'description'=>'required',
+                'minprice'=>'required',
+                'maxprice'=>'required',
+                'minaceage'=>'required',
+                'maxaceage'=>'required'
+                ],[
+                'title.required'=>'Bạn chưa nhập tiêu đề',
+                'title.min'=>'Tiêu đề tối thiểu 10 kí tự',
+                'title.max'=>'Tiêu đề tối đa 100 kí tự',
+                'roomtype.required'=>'Bạn chưa chọn loại nhà',
+                'description.required'=>'Bạn chưa nhập mô tả',
+                'minprice.required'=>'Bạn chưa nhập giá',
+                'maxprice.required'=>'Bạn chưa nhập giá',
+                'minaceage.required'=>'Bạn chưa nhập diện tích',
+                'maxaceage.required'=>'Bạn chưa nhập diện tích'
+
+            ]);
+        $baidang = new BaiDang;
+        $baidang->post_type_id=$id;
+        $baidang->room_type_id=$request->roomtype;
+        $baidang->user_id=Auth::id();
+        $baidang->title=$request->title;
+        $baidang->phone=$request->phone;
+        $baidang->minPrice=$request->minprice;
+        $baidang->maxPrice=$request->maxprice;
+        $baidang->price=NULL;
+        $baidang->address=NULL;
+        $baidang->save();
+        $chitietphong= new ChiTietPhong;
+        $chitietphong->minAceage=$request->minaceage;
+        $chitietphong->maxAceage=$request->maxaceage;
+        $chitietphong->post_id=$baidang->id;
+        $chitietphong->description=$request->description;
+        $chitietphong->longitute=NULL;
+        $chitietphong->latitude=NULL;
+        $chitietphong->aceage=NULL;
+        $chitietphong->post_id=$baidang->id;
+        $chitietphong->save();
+        return redirect('dangbaicanthue')->with('thongbao','Bạn đã thêm bài đăng cần thuê thành công');
     }
     public function getdangbaichothue(){
         return  view('pages.dangbaichothue');
