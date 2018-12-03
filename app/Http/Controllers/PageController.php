@@ -7,6 +7,7 @@ use App\BaiDang;
 use App\LoaiPhong;
 use App\Anh;
 use App\ThongBao;
+use App\BinhLuan;
 use Validator;
 use App\User;
 use App\NhomTaiKhoan;
@@ -47,6 +48,37 @@ class PageController extends Controller
     }
     public function getdangbaicanthue(){
         return  view('pages.dangbaicanthue');
+    }
+    public function getquanlytinchothue(){
+        $baidang= BaiDang::where('user_id',Auth::id())->where('post_type_id',2)->get();
+        return view('pages.quanlytinchothue',['baidang'=>$baidang]);
+    }
+    public function postxemthongbao($idbaiviet,$idthongbao){
+        $thongbao= ThongBao::find($idthongbao);
+        $thongbao->isRead=1;
+        $thongbao->save();
+        return redirect('baidang/'.$idbaiviet);
+    }
+    public function getxoabaidang($idbaiviet,$idquanly){
+        $baidang=BaiDang::find($idbaiviet);
+        $anh = Anh::where('post_id',$idbaiviet);
+        $chitietphong = ChiTietPhong::where('post_id',$idbaiviet);
+        $binhluan = BinhLuan::where('post_id',$idbaiviet);
+        $anh->delete();
+        $binhluan->delete();
+        $chitietphong->delete();
+        $baidang->delete();
+        if($idquanly == 1){
+            return redirect('quanlytincanthue')->with('thongbao','Bạn đã xóa thành công');
+        }
+        else{
+            return redirect('quanlytinchothue')->with('thongbao','Bạn đã xóa thành công');
+        }
+
+    }
+    public function getquanlytincanthue(){
+        $baidang= BaiDang::where('user_id',Auth::id())->where('post_type_id',1)->get();
+        return view('pages.quanlytincanthue',['baidang'=>$baidang]);
     }
     public function postdangbaicanthue(Request $request,$id){
         $this->validate($request,

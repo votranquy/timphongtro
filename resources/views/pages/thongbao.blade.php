@@ -7,15 +7,19 @@
 			<div class="module_title">
 				<span>Thông báo</span>
 			</div>
-			<ul class="list_pro">
-				@foreach($thongbao as $tb)
-				<li>
+			@foreach($thongbao as $tb)
+			<ul class="list_pro" @if($tb->isRead == 0) style="background-color:#eee;" @endif>
 
-					<a class="title" href="baidang/{{ $tb->post_id}}">
-						Có bình luận mới về bài đăng
-					</a>
+				<li>
+					<form action="xemthongbao/{{$tb->post_id}}/{{$tb->id}}" method="post" accept-charset="utf-8">
+						@csrf
+							<button type="submit" style="background-color:@if($tb->isRead == 0) #eee @else white @endif
+							;border: none;text-align: left;">Có bình luận mới về bài đăng</button>								  <span class="time"><i><?php $time=$tb->created_at; echo time_ago_in_php($time);?></i>
+							</span>
+					</form>
+
 				</li>
-				@endforeach
+			@endforeach
 			</ul>
 		</div>
 	</div>

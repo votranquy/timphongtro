@@ -45,6 +45,11 @@ Route::post('dangbaicanthue/{id}','PageController@postdangbaicanthue');
 Route::get('login','PageController@getLogin');
 Route::post('login','PageController@postLogin');
 Route::get('map','PageController@getMap');
+Route::get('quanlytinchothue','PageController@getquanlytinchothue');
+Route::get('quanlytincanthue','PageController@getquanlytincanthue');
+Route::post('xemthongbao/{idbaiviet}/{idthongbao}','PageController@postxemthongbao');
+Route::get('xoabaidang/{idbaiviet}/{idquanly}','PageController@getxoabaidang');
+
 
 
 Route::get('admin/dangnhap','UserController@getdangnhapAdmin');

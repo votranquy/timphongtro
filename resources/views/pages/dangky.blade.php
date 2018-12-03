@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up for TROTOT</title>
+    <title>Đăng ký tài khoản</title>
 
 
 
@@ -35,7 +35,7 @@
         <section class="signup">
             <div class="container">
                 <div class="signup-content">
-                    <h2 class="form-title">Create account</h2>
+                    <h2 class="form-title">Đăng ký tài khoản</h2>
                         @if(count($errors)>0)
                             <div class="alert alert-danger">
                                 @foreach($errors->all() as $err)
@@ -53,24 +53,24 @@
                         @csrf
                         
                         <div class="form-group">
-                            <input type="text" class="form-input" name="name" id="name" placeholder="Your Name"/>
+                            <input type="text" class="form-input" name="name" id="name" placeholder="Nhập Họ tên của bạn"/>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" name="email" id="email" placeholder="Your Email"/>
+                            <input type="email" class="form-input" name="email" id="email" placeholder="Nhập Email của bạn"/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-input" name="password" id="password" placeholder="Password"/>
+                            <input type="password" class="form-input" name="password" id="password" placeholder="Nhập Password"/>
                             <!-- <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span> -->
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-input" name="re_password" id="re_password" placeholder="Repeat your password"/>
+                            <input type="password" class="form-input" name="re_password" id="re_password" placeholder="Nhập lại Password"/>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+                            <input type="submit" name="submit" id="submit" class="form-submit" value="Đăng ký"/>
                         </div>
                     </form>
                     <p class="loginhere">
-                        Have already an account ? <a href="dangnhap" class="loginhere-link">Login here</a>
+                        Bạn đã có tài khoản ? <a href="dangnhap" class="loginhere-link">Đăng nhập ngay</a>
                     </p>
                 </div>
             </div>

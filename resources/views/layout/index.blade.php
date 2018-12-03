@@ -162,6 +162,15 @@ $(document).ready(function() {
 		src="index_files/saved_resource(4).html"></iframe>
 	<div id="UMS_TOOLTIP"
 		style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div> -->
+    <script src="admin_asset/bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
+    <script src="admin_asset/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+	<script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true
+        });
+    });
+    </script>
 	 @yield('script')	
 
 </body>

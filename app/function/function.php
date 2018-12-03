@@ -93,17 +93,17 @@ function time_ago_in_php($timestamp){
                 
   if ($seconds <= 60){
 
-    return "Just Now";
+    return "Vừa xong";
 
   } else if ($minutes <= 60){
 
     if ($minutes == 1){
 
-      return "one minute ago";
+      return "1 phút trước";
 
     } else {
 
-      return "$minutes minutes ago";
+      return "$minutes phút trước";
 
     }
 
@@ -111,11 +111,11 @@ function time_ago_in_php($timestamp){
 
     if ($hours == 1){
 
-      return "an hour ago";
+      return "1 giờ trước";
 
     } else {
 
-      return "$hours hrs ago";
+      return "$hours giờ trước";
 
     }
 
@@ -123,11 +123,11 @@ function time_ago_in_php($timestamp){
 
     if ($days == 1){
 
-      return "yesterday";
+      return "Hôm qua";
 
     } else {
 
-      return "$days days ago";
+      return "$days ngày trước";
 
     }
 
@@ -135,11 +135,11 @@ function time_ago_in_php($timestamp){
 
     if ($weeks == 1){
 
-      return "a week ago";
+      return "1 tuần trước";
 
     } else {
 
-      return "$weeks weeks ago";
+      return "$weeks tuần trước";
 
     }
 
@@ -147,11 +147,11 @@ function time_ago_in_php($timestamp){
 
     if ($months == 1){
 
-      return "a month ago";
+      return "1 tháng trước";
 
     } else {
 
-      return "$months months ago";
+      return "$months tháng trước";
 
     }
 
@@ -159,11 +159,11 @@ function time_ago_in_php($timestamp){
     
     if ($years == 1){
 
-      return "one year ago";
+      return "1 năm trước";
 
     } else {
 
-      return "$years years ago";
+      return "$years năm trước";
 
     }
   }

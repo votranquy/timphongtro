@@ -61,8 +61,14 @@
 							</a>
 						</li>
 						<li>
-							<a href="/quan-ly-tin-dang-ban.htm">
+							<a href="quanlytinchothue">
 								 Quản lý tin cho thuê
+							</a>
+						</li>
+						</li>
+						<li>
+							<a href="quanlytincanthue">
+								 Quản lý tin cần thuê
 							</a>
 						</li>
 						<li class="li_break"></li>

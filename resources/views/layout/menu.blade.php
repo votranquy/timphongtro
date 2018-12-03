@@ -9,10 +9,10 @@
 					@if( count($bcc->anh) != 0)
 						<li>
 							<?php $tenanh= $bcc->anh->first();?>
-							<a class="img" href="" title="">
-								<img alt="" src="upload/tintuc/{{$tenanh->path}}">
+							<a class="img" href="baidang/{{$bcc->id}}" title="">
+								<img alt="{{$tenanh->path}}" src="upload/tintuc/{{$tenanh->path}}">
 							</a>
-							<a class="title" href="">
+							<a class="title" href="baidang/{{$bcc->id}}">
 								{{ $bcc->title }}
 							</a>
 							<p class="price">{{ $bcc->price }}</p>
@@ -31,7 +31,7 @@
 					@if( count($bm->anh) != 0)
 						<li>
 							<?php $tenanh= $bm->anh->first();?>
-							<a class="img" href="baidang/{{ $bm->id }}" title="">
+							<a class="img" href="baidang/{{$bm->id}}" title="">
 								<img alt="" src="upload/tintuc/{{$tenanh->path}}">
 							</a>
 							<a class="title" href="baidang/{{ $bm->id }}">
