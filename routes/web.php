@@ -25,16 +25,13 @@ Route::get('profile',function(){
 	return view('view');
 });
 Route::get('danganh','PageController@danganh');
-Route::get('trangchu','PageController@trangchu');
-Route::get('baidang/{id}','PageController@getBaiDang');
-Route::get('loaiphong/{id}','PageController@getLoaiPhong');
+
+// Route::get('trangchu','PageController@trangchu');
+
 Route::get('trangnhap/{id}','PageController@getTrangnhap');
-Route::get('dangnhap','PageController@getdangnhap');
-Route::post('dangnhap','PageController@postdangnhap');
-Route::get('dangxuat','PageController@getdangxuat');
-Route::get('dangky','PageController@getdangky');
-Route::post('dangky','PageController@postdangky');
-Route::get('sua/{id}/','PageController@getsua');
+
+
+Route::get('sua/{id}','PageController@getsua');
 Route::post('sua/{id}/{idbaidang}','PageController@postsua');
 Route::get('thongbao','PageController@getthongbao');
 Route::post('binhluan/{id}','BinhLuanController@postbinhluan');
@@ -51,11 +48,66 @@ Route::post('xemthongbao/{idbaiviet}/{idthongbao}','PageController@postxemthongb
 Route::get('xoabaidang/{idbaiviet}/{idquanly}','PageController@getxoabaidang');
 
 
+Route::get('/','PageController@trangchu');
+Route::get('baidang/{id}','PageController@getBaiDang');
+Route::get('loaiphong/{id}','PageController@getLoaiPhong');
 
-Route::get('admin/dangnhap','UserController@getdangnhapAdmin');
-Route::post('admin/dangnhap','UserController@postdangnhapAdmin');
-Route::get('admin/logout','UserController@getDangXuatAdmin');
+Route::get('dangnhap','PageController@getdangnhap');
+Route::post('dangnhap','PageController@postdangnhap');
+Route::get('dangxuat','PageController@getdangxuat');
+Route::get('dangky','PageController@getdangky');
+Route::post('dangky','PageController@postdangky');
 
+Route::group(['prefix'=>'user'],function(){
+	Route::group(['prefix'=>'thongbao'],function(){
+		Route::get('danhsach','PageController@getDanhsachThongbao');
+		Route::post('xem/{idbaiviet}/{idthongbao}','PageController@postXemThongbao');
+
+	});
+	Route::group(['prefix'=>'profile'],function(){
+		Route::get('xem','PageController@getXemProfile');
+		Route::post('sua','PageController@postSuaProfile');
+		Route::post('doimatkhau','PageController@postDoimatkhau');
+	});
+	Route::group(['prefix'=>'baidang'],function(){
+		Route::group(['prefix'=>'baichothue'],function(){
+			Route::get('danhsach','PageController@getDanhsachBaichothue');
+
+			Route::get('sua/{idbaiviet}','PageController@getSuaBaichothue');
+
+			Route::post('sua/{idbaiviet}','PageController@postSuaBaichothue');
+
+			Route::get('them','PageController@getThemBaichothue');
+
+			Route::post('them','PageController@postThemBaichothue');
+
+			Route::get('xoa/{idbaiviet}','PageController@getXoaBaichothue');
+		});
+		Route::group(['prefix'=>'baicanthue'],function(){
+			Route::get('danhsach','PageController@getDanhsachBaicanthue');
+
+			Route::get('sua/{idbaiviet}','PageController@getSuaBaicanthue');
+
+			Route::post('sua/{idbaiviet}','PageController@postSuaBaicanthue');
+
+			Route::get('them','PageController@getThemBaicanthue');
+
+			Route::post('them','PageController@postThemBaicanthue');
+
+			Route::get('xoa/{idbaiviet}','PageController@getXoaBaicanthue');
+		});
+	});
+});
+// Route::get('admin/dangnhap','UserController@getdangnhapAdmin');
+// Route::post('admin/dangnhap','UserController@postdangnhapAdmin');
+// Route::get('admin/logout','UserController@getDangXuatAdmin');
+Route::group(['prefix'=>'admin'],function(){
+		Route::get('dangnhap','UserController@getdangnhapAdmin');
+
+		Route::post('dangnhap','UserController@postdangnhapAdmin');
+
+		Route::get('logout','UserController@getDangXuatAdmin');
+	});
 
 Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 	Route::group(['prefix'=>'loaiphong'],function(){

@@ -5,7 +5,7 @@
 		<div class="">
 			<div class="user_form_pro_content">
 				<div class="module_title">
-					<span>Đăng bài cho thuê</span>
+					<span>Thông tin cá nhân</span>
 				</div>
 				<div class="clear"></div>
                 @if(session('thongbao'))
@@ -13,93 +13,88 @@
                         {{session('thongbao')}}
                     </div>
                 @endif
-	            <form method="POST" action="sua/2/{{$baidang->id}}" class="user_form "  enctype="multipart/form-data">
+	            <form method="POST" action="user/profile/sua" class="user_form "  enctype="multipart/form-data">
 	            	@csrf
+					<div class="item">
+						<img src="upload/tintuc/{{$user->image}}" width="150px" height="100px"><br>
+						<label>Ảnh đại diện</label>
+	                  	<div class="item_input">
+	                     	<input  name="image" class="pro_title" type="file" id="" value="" placeholder="Chọn ảnh đại diện mới" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                  	</div>
+        			</div>
 	               <div class="item">
-	                  <label>Tiêu đề tin <span class="red">(*)</span></label>
+	                  <label>Tên </label>
 	                  <div class="item_input">
-	                     <input  name="title" class="pro_title" type="text" id="" value="{{$baidang->title}}" placeholder="Cho thuê nhà trọ, phòng trọ ở đâu..." style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="name" class="pro_title" type="text" id="" value="{{$user->name}}" placeholder="Nhập tên" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 	              <div class="item">
-	                  <label>Loại phòng <span class="red">(*)</span></label>
+	                  <label>Địa chỉ</label>
 	                  <div class="item_input">
-	                        <select class="pro_title" name="roomtype" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
-                                @foreach($loaiphong as $lp)
-                                    <option 
-									@if($baidang->post_type_id == $lp->id)
-                                    {{"selected"}}
-                                    @endif
-                                    value="{{$lp->id}}" >{{$lp->name}}</option>
-                                @endforeach
-                            </select>
+	                       <input  name="address" class="pro_title" type="text" id="" value="{{$user->address}}" placeholder="Nhập địa chỉ" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 	               <div class="item">
-	                  <label>Số điện thoại để liên hệ</label>
+	                  <label>Số điện thoại</label>
 	                  <div class="item_input">
-	                     <input  name="phone" class="pro_title" type="text" id="" value="{{$baidang->phone}}" placeholder="Nhập số điện thoại của bạn" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="phone" class="pro_title" type="text" id="" value="{{$user->phone}}" placeholder="Nhập số điện thoại của bạn" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 	               <div class="item">
-	                  <label>Nhập mô tả (điều kiện, diện tích, an ninh, ...)<span class="red">(*)</span></label>
+	                  <label>Email</label>
 	                  <div class="item_input">
-                            <textarea class="pro_title" value="" type="text" name="description" placeholder="Nhập nội dung " style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%;">{{$baidang->chitietphong->description}}</textarea>
+                           <input  name="email" class="pro_title" type="text" id="" value="{{$user->email}}" placeholder="Nhập email của bạn" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;" disabled="">
 	                  </div>
 	              </div>
-	               <div class="item">
-	                  <label>Mức giá (tháng) <span class="red">(*)</span></label>
-	                  <div class="item_input">
-	                     <input  name="price" class="pro_title" type="text" id="" value="{{$baidang->price}}" placeholder="Nhập mức giá" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
-	                  </div>
-	              </div>
-	               <div class="item">
-	                  <label>Nhập diện tích</label>
-	                  <div class="item_input">
-	                     <input  name="aceage" class="pro_title" type="text" id="" value="{{$baidang->chitietphong->aceage}}" placeholder="Nhập diện tích" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
-	                  </div>
-	              </div>
-	               <div class="item">
-	                  <label>Nhập địa chỉ</label>
-	                  <div class="item_input">
-	                     <input  name="address" class="pro_title" type="text" id="" value="{{$baidang->address}}" placeholder="Nhập địa chỉ" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
-	                  </div>
-	              </div>
-
-					<div class="item">
-						<label>Chọn ảnh</label><br>
-						@foreach($baidang->anh as $anh)
-						        <div class="clone">
-						          <div class="control-group input-group" style="margin-top:10px">
-						          	<img src="upload/tintuc/{{$anh->path}}" width="150px" height="100px"><br>
-									<input type="text" name="filename[]" class="form-control pro_title" value="{{$anh->path}}" disabled="">
-						            <div class="input-group-btn" style="padding-bottom: 0;">
-						              <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Move</button>
-						            </div>
-						          </div>
-						        </div>
-				        @endforeach
-						<br>
-				        <div class="input-group control-group increment" >
-				          <input type="file" name="filename[]" class="form-control pro_title" value="">
-				          <div class="input-group-btn">
-				            <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>ADD</button>
-				          </div>
-				        </div>
-				        <div class="clone hide" >
-				          <div class="control-group input-group" style="margin-top:10px">
-				            <input type="file" name="filename[]" class="form-control pro_title">
-				            <div class="input-group-btn" style="padding-bottom: 0;"> 
-				              <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Move</button>
-				            </div>
-				          </div>
-				        </div>
-					</div>
-
-
-
 	             <div class="header_btn_post" style="text-align:center;margin:0;">
-	             		<button type="submit" class="btn_post1" >Sửa bài</button>
+	             		<button type="submit" class="btn_post1" >Cập nhật</button>
+	              </div>
+	          </form>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="module1">
+	<div class="module1_content">
+		<div class="">
+			<div class="user_form_pro_content">
+				<div class="module_title">
+					<span>Đổi mật khẩu</span>
+				</div>
+				<div class="clear"></div>
+                @if(session('thongbao'))
+                    <div class="alert alert-success">
+                        {{session('thongbao')}}
+                    </div>
+                @endif
+	            <form method="POST" action="user/profile/doimatkhau" class="password_form "  enctype="multipart/form-data">
+	            	@csrf
+	               <div class="item">
+	                  <label>Email</label>
+	                  <div class="item_input">
+                           <input  name="email" class="pro_title" type="text" id="" value="{{$user->email}}" placeholder="Nhập email của bạn" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;" disabled="">
+	                  </div>
+	              </div>
+	               <div class="item">
+	                  <label>Mật khẩu cũ</label>
+	                  <div class="item_input">
+	                     <input  name="oldpassword" class="pro_title" type="password" id="oldpassword" value="" placeholder="Nhập mật khẩu hiện tại" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                  </div>
+	              </div>
+	               <div class="item">
+	                  <label>Mật khẩu mới</label>
+	                  <div class="item_input">
+	                     <input  name="newpassword" class="pro_title" type="password" id="newpassword" value="" placeholder="Nhập mật khẩu mới" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                  </div>
+	              </div>
+	               <div class="item">
+	                  <label>Nhập lại mật khẩu mới</label>
+	                  <div class="item_input">
+	                     <input  name="renewpassword" class="pro_title" type="password" id="renewpassword" value="" placeholder="Nhập lại mật khẩu mới" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                  </div>
+	              </div>
+	             <div class="header_btn_post" style="text-align:center;margin:0;">
+	             		<button type="submit" class="btn_post1" >Cập nhật</button>
 	              </div>
 	          </form>
 			</div>
@@ -115,67 +110,57 @@
         $(document).ready(function(){
             $('.user_form').validate({
                 rules:{
-                    title:{
-                        required:true,
-                        minlength: 30,
-                    },
 					phone:{
-                        required:true,
                         number: true,
                         minlength:10,
                         maxlength:10,
                     },
-                    description:{
-                        required:true,
-						minlength: 100,
-						maxlength: 500,
-                    },
-					price:{
-                        required:true,
-                        number: true,
-                    },
-					aceage:{
-                        required:true,
-                        number: true,
-                    },
-					address:{
-                        required:true,
-                    },
-					"image[]":{
-                        required:true,
+					image:{
                         accept: "image/*",
                     },
                 },
                 messages:{
-                    title:{
-                        required:"Vui lòng nhập tiêu đề",
-                        minlength: "Tiêu đề phải có ít nhất 30 ký tự",
-                    },
 					phone:{
-                        required:"Vui lòng nhập số điện thoại",
                         number: "Số điện thoại chỉ gồm số",
                         minlength: "Số điện thoại không hợp lệ",
                         maxlength: "Số điện thoại không hợp lệ",
                     },
-                    description:{
-                        required: "Vui lòng nhập mô tả tin",
-						minlength: "Mô tả phải ít nhất 100 ký tự",
-						maxlength: "Mô tả không được quá 500 ký tự",
-                    },
-					price:{
-                        required:"Vui lòng nhập giá tiền",
-                        number: "Giá tiền không đúng định dạng",
-                    },
-					aceage:{
-                        required:"Vui lòng nhập diện tích",
-                        number: "Diện tích phải là một số",
-                    },
-					address:{
-                        required:"Vui lòng nhập địa chỉ",
-                    },
-					"image[]":{
-                        required:"Vui lòng nhập hình ảnh",
+					image:{
                         accept:"File ảnh không hợp lệ",
+                    },
+                },
+            });
+        });
+</script>
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.password_form').validate({
+                rules:{
+					oldpassword:{
+                        required: true,
+                        minlength:8,
+                    },
+					newpassword:{
+                        required: true,
+                        minlength:8,
+                    },
+                   	renewpassword:{
+                        required: true,
+                        equalTo: "#newpassword",
+                    },
+                },
+                messages:{
+					oldpassword:{
+                        required: "Vui lòng nhập passworld",
+                        minlength: "Password có độ dài tối thiểu 8 kí tự",
+                    },
+					newpassword:{
+                        required: "Vui lòng nhập passworld",
+                        minlength: "Password có độ dài tối thiểu 8 kí tự",
+                    },
+					renewpassword:{
+                        required: "Vui lòng nhập passworld",
+                        equalTo: "Password mới nhập không trùng khớp",
                     },
                 },
             });

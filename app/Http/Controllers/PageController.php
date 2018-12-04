@@ -41,25 +41,24 @@ class PageController extends Controller
         $anh= Anh::where('post_id',$id)->get();
         return view('pages.baidang',['baidang'=>$baidang,'anh'=>$anh]);
     }
-    public function getthongbao(){
+    public function getDanhsachThongbao(){
         $id=Auth::user()->id;
         $thongbao= ThongBao::where('user_id',$id)->get();
         return view('pages.thongbao',['thongbao'=>$thongbao]);
     }
-    public function getdangbaicanthue(){
-        return  view('pages.dangbaicanthue');
-    }
-    public function getquanlytinchothue(){
-        $baidang= BaiDang::where('user_id',Auth::id())->where('post_type_id',2)->get();
-        return view('pages.quanlytinchothue',['baidang'=>$baidang]);
-    }
-    public function postxemthongbao($idbaiviet,$idthongbao){
+    public function postXemThongbao($idbaiviet,$idthongbao){
         $thongbao= ThongBao::find($idthongbao);
         $thongbao->isRead=1;
         $thongbao->save();
         return redirect('baidang/'.$idbaiviet);
     }
-    public function getxoabaidang($idbaiviet,$idquanly){
+
+    public function getDanhsachBaichothue(){
+        $baidang= BaiDang::where('user_id',Auth::id())->where('post_type_id',2)->orderBy('created_at', 'desc')->get();
+        return view('pages.quanlytinchothue',['baidang'=>$baidang]);
+    }
+
+    public function getXoaBaichothue($idbaiviet){
         $baidang=BaiDang::find($idbaiviet);
         $anh = Anh::where('post_id',$idbaiviet);
         $chitietphong = ChiTietPhong::where('post_id',$idbaiviet);
@@ -68,67 +67,12 @@ class PageController extends Controller
         $binhluan->delete();
         $chitietphong->delete();
         $baidang->delete();
-        if($idquanly == 1){
-            return redirect('quanlytincanthue')->with('thongbao','Bạn đã xóa thành công');
-        }
-        else{
-            return redirect('quanlytinchothue')->with('thongbao','Bạn đã xóa thành công');
-        }
-
+        return redirect('user/baidang/baichothue/danhsach')->with('thongbao','Bạn đã xóa thành công');
     }
-    public function getquanlytincanthue(){
-        $baidang= BaiDang::where('user_id',Auth::id())->where('post_type_id',1)->get();
-        return view('pages.quanlytincanthue',['baidang'=>$baidang]);
-    }
-    public function postdangbaicanthue(Request $request,$id){
-        $this->validate($request,
-            [
-                'title'=>'required|min:10|max:100',
-                'roomtype'=>'required',
-                'description'=>'required',
-                'minprice'=>'required',
-                'maxprice'=>'required',
-                'minaceage'=>'required',
-                'maxaceage'=>'required'
-                ],[
-                'title.required'=>'Bạn chưa nhập tiêu đề',
-                'title.min'=>'Tiêu đề tối thiểu 10 kí tự',
-                'title.max'=>'Tiêu đề tối đa 100 kí tự',
-                'roomtype.required'=>'Bạn chưa chọn loại nhà',
-                'description.required'=>'Bạn chưa nhập mô tả',
-                'minprice.required'=>'Bạn chưa nhập giá',
-                'maxprice.required'=>'Bạn chưa nhập giá',
-                'minaceage.required'=>'Bạn chưa nhập diện tích',
-                'maxaceage.required'=>'Bạn chưa nhập diện tích'
-
-            ]);
-        $baidang = new BaiDang;
-        $baidang->post_type_id=$id;
-        $baidang->room_type_id=$request->roomtype;
-        $baidang->user_id=Auth::id();
-        $baidang->title=$request->title;
-        $baidang->phone=$request->phone;
-        $baidang->minPrice=$request->minprice;
-        $baidang->maxPrice=$request->maxprice;
-        $baidang->price=NULL;
-        $baidang->address=NULL;
-        $baidang->save();
-        $chitietphong= new ChiTietPhong;
-        $chitietphong->minAceage=$request->minaceage;
-        $chitietphong->maxAceage=$request->maxaceage;
-        $chitietphong->post_id=$baidang->id;
-        $chitietphong->description=$request->description;
-        $chitietphong->longitute=NULL;
-        $chitietphong->latitude=NULL;
-        $chitietphong->aceage=NULL;
-        $chitietphong->post_id=$baidang->id;
-        $chitietphong->save();
-        return redirect('dangbaicanthue')->with('thongbao','Bạn đã thêm bài đăng cần thuê thành công');
-    }
-    public function getdangbaichothue(){
+    public function getThemBaichothue(){
         return  view('pages.dangbaichothue');
     }
-    public function postdangbaichothue(Request $request,$id){
+    public function postThemBaichothue(Request $request){
         $this->validate($request,
             [
                 'title'=>'required|min:10|max:100',
@@ -146,8 +90,7 @@ class PageController extends Controller
             ]);
         $baidang = new BaiDang;
         $chitietphong= new ChiTietPhong;
-
-        $baidang->post_type_id=$id;
+        $baidang->post_type_id=2;
         $baidang->room_type_id=$request->roomtype;
         $baidang->user_id=Auth::id();
         $baidang->title=$request->title;
@@ -184,7 +127,249 @@ class PageController extends Controller
             }
         }
         else{}
-        return redirect('dangbaichothue')->with('thongbao','Bạn đã thêm bài đăng thành công');
+        return redirect('user/baidang/baichothue/them')->with('thongbao','Bạn đã thêm bài đăng thành công');
+    }
+    public function getSuaBaichothue($idbaiviet){
+        $baidang=BaiDang::find($idbaiviet);
+        return view('pages.suabaidangchothue',['baidang'=>$baidang]);
+    }
+    public function postSuaBaichothue($idbaiviet, Request $request){
+        $this->validate($request,
+            [
+                'title'=>'required|min:10|max:100',
+                'roomtype'=>'required',
+                'description'=>'required',
+                'price'=>'required'
+                ],[
+                'title.required'=>'Bạn chưa nhập tiêu đề',
+                'title.min'=>'Tiêu đề tối thiểu 10 kí tự',
+                'title.max'=>'Tiêu đề tối đa 100 kí tự',
+                'roomtype.required'=>'Bạn chưa chọn loại nhà',
+                'description.required'=>'Bạn chưa nhập mô tả',
+                'price.required'=>'Bạn chưa nhập giá'
+
+            ]);
+
+        $baidang = BaiDang::find($idbaiviet);
+        $baidang->room_type_id=$request->roomtype;
+        $baidang->title=$request->title;
+        if($request->phone != ""){
+            $baidang->phone=$request->phone;
+        }
+        else {
+            $baidang->phone=NULL;
+        }
+        $baidang->price=$request->price;
+        $baidang->minPrice=NULL;
+        $baidang->maxPrice=NULL;
+        $baidang->address=$request->address;
+        $baidang->save();
+
+        $chitietphong=ChiTietPhong::where('post_id',$idbaiviet)->first();
+        $chitietphong->description=$request->description;
+        $chitietphong->aceage=$request->aceage;
+        $chitietphong->minAceage=NULL;
+        $chitietphong->maxAceage=NULL;
+        $chitietphong->save();
+        if($request->hasFile('image')){
+            // $anh = Anh::where('post_id',$idbaidang);
+            //Lap lan 1 de them cac anh chua co
+            foreach($request->file('image') as $image){//anh tu C
+                $filenameWithExt = $image->getClientOriginalName();
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                $extension = $image->getClientOriginalExtension();
+                $fileNameToStore = $filename.$extension;//Tên file lấy từ C
+                $kiemtra=0;//Mac dinh chua co trong DB
+                foreach($baidang->anh as $anh){//Anh tu DB
+                    if($fileNameToStore == $anh->path){
+                        $kiemtra=1;//Co trong DB roi
+                    }
+                }
+                if($kiemtra==0){//Chua co trong DB thi them
+                    // $fileNameToStore = $filename.$extension;
+                    $image->move("upload/tintuc", $fileNameToStore);
+                    $image = new Anh([
+                        'post_id'=> $idbaiviet,
+                        'path' => $fileNameToStore,
+                    ]);
+                    $image->save();
+                }
+                else{//Co trong DB thi bo qua
+                }
+            }
+            // $anh = Anh::where('post_id',$idbaidang);
+            //Lap lan 2 de xoa cac anh bi C xoa
+            // foreach($baidang->anh as $anh){//Anh tu DB
+            //     $idanh=$anh->id;
+            //     foreach($request->file('image') as $image){//anh tu C
+            //         $filenameWithExt = $image->getClientOriginalName();
+            //         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //         $extension = $image->getClientOriginalExtension();
+            //         $fileNameToStore = $filename.$extension;//Ten anh tu C
+            //         $kiemtra=0;//Mac dinh la nen xoa
+            //         if($anh->path == $fileNameToStore){
+            //             $kiemtra=1;//Nguoi dung khong xoa anh do
+            //         }
+            //     }
+            //     if($kiemtra==0){//Xoa
+            //         $xoaanh = Anh::where('id', $idanh)->get();
+            //         $xoaanh->delete();
+            //     }
+            //     else{//Khong xoa
+            //     }
+            // }
+        }
+        else{
+            //Khong co anh nao tai len. Xoa tat ca anh trong DB
+            // $anh = Anh::where('post_id',$idbaidang)->delete();
+            // $anh->delete();
+        }
+        return redirect('user/baidang/baichothue/sua/'.$idbaiviet)->with('thongbao','Bạn đã sửa bài đăng thành công');
+    }
+
+    public function getDanhsachBaicanthue(){
+        $baidang= BaiDang::where('user_id',Auth::id())->where('post_type_id',1)->get();
+        return view('pages.quanlytincanthue',['baidang'=>$baidang]);
+    }
+    public function postThemBaicanthue(Request $request){
+        $this->validate($request,
+            [
+                'title'=>'required|min:10|max:100',
+                'roomtype'=>'required',
+                'description'=>'required',
+                'minprice'=>'required',
+                'maxprice'=>'required',
+                'minaceage'=>'required',
+                'maxaceage'=>'required'
+                ],[
+                'title.required'=>'Bạn chưa nhập tiêu đề',
+                'title.min'=>'Tiêu đề tối thiểu 10 kí tự',
+                'title.max'=>'Tiêu đề tối đa 100 kí tự',
+                'roomtype.required'=>'Bạn chưa chọn loại nhà',
+                'description.required'=>'Bạn chưa nhập mô tả',
+                'minprice.required'=>'Bạn chưa nhập giá',
+                'maxprice.required'=>'Bạn chưa nhập giá',
+                'minaceage.required'=>'Bạn chưa nhập diện tích',
+                'maxaceage.required'=>'Bạn chưa nhập diện tích'
+
+            ]);
+        $baidang = new BaiDang;
+        $baidang->post_type_id=1;
+        $baidang->room_type_id=$request->roomtype;
+        $baidang->user_id=Auth::id();
+        $baidang->title=$request->title;
+        $baidang->phone=$request->phone;
+        $baidang->minPrice=$request->minprice;
+        $baidang->maxPrice=$request->maxprice;
+        $baidang->price=NULL;
+        $baidang->address=NULL;
+        $baidang->save();
+        $chitietphong= new ChiTietPhong;
+        $chitietphong->minAceage=$request->minaceage;
+        $chitietphong->maxAceage=$request->maxaceage;
+        $chitietphong->post_id=$baidang->id;
+        $chitietphong->description=$request->description;
+        $chitietphong->longitute=NULL;
+        $chitietphong->latitude=NULL;
+        $chitietphong->aceage=NULL;
+        $chitietphong->post_id=$baidang->id;
+        $chitietphong->save();
+        return redirect('user/baidang/baicanthue/them')->with('thongbao','Bạn đã thêm bài đăng cần thuê thành công');
+    }
+    public function getThemBaicanthue(){
+        return  view('pages.dangbaicanthue');
+    }
+    public function getSuaBaicanthue($idbaiviet){
+        $baidang=BaiDang::find($idbaiviet);
+        return view('pages.suabaidangcanthue',['baidang'=>$baidang]);
+    }
+    public function postSuaBaicanthue($idbaiviet, Request $request){
+        $this->validate($request,
+            [
+                'title'=>'required|min:10|max:100',
+                'roomtype'=>'required',
+                'description'=>'required',
+                'minprice'=>'required',
+                'maxprice'=>'required',
+                'minaceage'=>'required',
+                'maxaceage'=>'required'
+                ],[
+                'title.required'=>'Bạn chưa nhập tiêu đề',
+                'title.min'=>'Tiêu đề tối thiểu 10 kí tự',
+                'title.max'=>'Tiêu đề tối đa 100 kí tự',
+                'roomtype.required'=>'Bạn chưa chọn loại nhà',
+                'description.required'=>'Bạn chưa nhập mô tả',
+                'minprice.required'=>'Bạn chưa nhập giá',
+                'maxprice.required'=>'Bạn chưa nhập giá',
+                'minaceage.required'=>'Bạn chưa nhập diện tích',
+                'maxaceage.required'=>'Bạn chưa nhập diện tích'
+
+            ]);
+        $baidang = BaiDang::find($idbaiviet);
+        $baidang->room_type_id=$request->roomtype;
+        $baidang->title=$request->title;
+        $baidang->phone=$request->phone;
+        $baidang->minPrice=$request->minprice;
+        $baidang->maxPrice=$request->maxprice;
+        $baidang->price=NULL;
+        $baidang->address=NULL;
+        $baidang->save();
+        $chitietphong= ChiTietPhong::where('post_id',$idbaiviet)->first();
+        $chitietphong->minAceage=$request->minaceage;
+        $chitietphong->maxAceage=$request->maxaceage;
+        $chitietphong->description=$request->description;
+        $chitietphong->longitute=NULL;
+        $chitietphong->latitude=NULL;
+        $chitietphong->aceage=NULL;
+        $chitietphong->save();
+        return redirect('user/baidang/baicanthue/sua/'.$idbaiviet)->with('thongbao','Bạn đã thêm bài đăng cần thuê thành công');
+    }
+    public function getXoaBaicanthue($idbaiviet){
+        $baidang=BaiDang::find($idbaiviet);
+        $anh = Anh::where('post_id',$idbaiviet);
+        $chitietphong = ChiTietPhong::where('post_id',$idbaiviet);
+        $binhluan = BinhLuan::where('post_id',$idbaiviet);
+        $anh->delete();
+        $binhluan->delete();
+        $chitietphong->delete();
+        $baidang->delete();
+        return redirect('user/baidang/baicanthue/danhsach')->with('thongbao','Bạn đã xóa thành công');
+    }
+
+
+
+
+    public function getXemProfile(){
+        $user =User::find(Auth::id());
+        return view('pages.capnhatthongtin',['user'=>$user]);
+    }
+    public function postSuaProfile(Request $request){
+        $user =User::find(Auth::id());
+        if($request->hasFile('image')){
+                $filenameWithExt = $image->getClientOriginalName();
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                $extension = $image->getClientOriginalExtension();
+                $fileNameToStore = $filename.'_'.time().'.'.$extension;
+                $image->move("upload/tintuc", $fileNameToStore);
+                $user->image =$fileNameToStore;
+        }
+        else{}
+        $user->name =$request->name;
+        $user->address =$request->address;
+        $user->phone =$request->phone;
+        $user->save();
+        return redirect('user/profile/xem')->with('thongbao','Bạn đã sửa thành công');
+    }
+    public function postDoimatkhau(Request $request){
+        $user =User::find(Auth::id());
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->oldpassword])){
+            $user->passworld = bcrypt($request->newpassword);
+            $user->save();
+            return redirect('user/profile/xem')->with('thongbao','Bạn đã đổi mật khẩu thành công');
+        }
+        else{
+            return redirect('user/profile/xem')->with('thongbao','Mật khẩu bạn nhập không chính xác');
+        }
     }
     public function getdangxuat(){
         Auth::logout();
@@ -195,10 +380,7 @@ class PageController extends Controller
         $baidang=BaiDang::where('room_type_id',$id)->paginate(5);
         return view('pages.loaiphong',['baidang'=>$baidang,'loaiphongchitiet'=>$loaiphongchitiet]);
     }
-    public function getTrangnhap($id){
 
-        return view('pages.trangnhap');
-    }
     public function getdangky(){
         return view('pages.dangky');
     }
@@ -237,107 +419,6 @@ class PageController extends Controller
     public function getdangnhap(){
         return view('pages.dangnhap');
     }
-    public function getsua($id){
-        $baidang=BaiDang::find($id);
-        return view('pages.suabaidang',['baidang'=>$baidang]);
-    }
-    public function postsua($id, $idbaidang , Request $request){
-        $this->validate($request,
-            [
-                'title'=>'required|min:10|max:100',
-                'roomtype'=>'required',
-                'description'=>'required',
-                'price'=>'required'
-                ],[
-                'title.required'=>'Bạn chưa nhập tiêu đề',
-                'title.min'=>'Tiêu đề tối thiểu 10 kí tự',
-                'title.max'=>'Tiêu đề tối đa 100 kí tự',
-                'roomtype.required'=>'Bạn chưa chọn loại nhà',
-                'description.required'=>'Bạn chưa nhập mô tả',
-                'price.required'=>'Bạn chưa nhập giá'
-
-            ]);
-
-        $baidang = BaiDang::find($idbaidang);
-        // $baidang->post_type_id=$id;
-        $baidang->room_type_id=$request->roomtype;
-        $baidang->title=$request->title;
-        if($request->phone != ""){
-            $baidang->phone=$request->phone;
-        }
-        else {
-            $baidang->phone=NULL;
-        }
-
-
-        $baidang->price=$request->price;
-        $baidang->minPrice=NULL;
-        $baidang->maxPrice=NULL;
-        $baidang->address=$request->address;
-        $baidang->save();
-
-        $chitietphong=ChiTietPhong::where('post_id',$idbaidang)->first();
-        $chitietphong->description=$request->description;
-        $chitietphong->aceage=$request->aceage;
-        $chitietphong->minAceage=NULL;
-        $chitietphong->maxAceage=NULL;
-        $chitietphong->save();
-        if($request->hasFile('image')){
-            // $anh = Anh::where('post_id',$idbaidang);
-            //Lap lan 1 de them cac anh chua co
-            foreach($request->file('image') as $image){//anh tu C
-                $filenameWithExt = $image->getClientOriginalName();
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                $extension = $image->getClientOriginalExtension();
-                $fileNameToStore = $filename.$extension;//Tên file lấy từ C
-                $kiemtra=0;//Mac dinh chua co trong DB
-                foreach($baidang->anh as $anh){//Anh tu DB
-                    if($fileNameToStore == $anh->path){
-                        $kiemtra=1;//Co trong DB roi
-                    }
-                }
-                if($kiemtra==0){//Chua co trong DB thi them
-                    // $fileNameToStore = $filename.$extension;
-                    $image->move("upload/tintuc", $fileNameToStore);
-                    $image = new Anh([
-                        'post_id'=> $idbaidang,
-                        'path' => $fileNameToStore,
-                    ]);
-                    $image->save();
-                }
-                else{//Co trong DB thi bo qua
-                }
-            }
-            // $anh = Anh::where('post_id',$idbaidang);
-            //Lap lan 2 de xoa cac anh bi C xoa
-            // foreach($baidang->anh as $anh){//Anh tu DB
-            //     $idanh=$anh->id;
-            //     foreach($request->file('image') as $image){//anh tu C
-            //         $filenameWithExt = $image->getClientOriginalName();
-            //         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            //         $extension = $image->getClientOriginalExtension();
-            //         $fileNameToStore = $filename.$extension;//Ten anh tu C
-            //         $kiemtra=0;//Mac dinh la nen xoa
-            //         if($anh->path == $fileNameToStore){
-            //             $kiemtra=1;//Nguoi dung khong xoa anh do
-            //         }
-            //     }
-            //     if($kiemtra==0){//Xoa
-            //         $xoaanh = Anh::where('id', $idanh)->get();
-            //         $xoaanh->delete();
-            //     }
-            //     else{//Khong xoa
-            //     }
-            // }
-        }
-        else{
-            //Khong co anh nao tai len. Xoa tat ca anh trong DB
-            // $anh = Anh::where('post_id',$idbaidang)->delete();
-            // $anh->delete();
-        }
-        return redirect('sua/'.$idbaidang)->with('thongbao','Bạn đã sửa bài đăng thành công');
-    }
-
 
     public function postdangnhap(Request $request){
         $this->validate($request,[
@@ -350,7 +431,7 @@ class PageController extends Controller
             'password.max'=>'Password không được quá 32 kí tự'
         ]);
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
-            return redirect('trangchu');
+            return redirect('/');
         }
         else{
             return redirect('dangnhap')->with('baoloi','Sai tài khoản hoặc mật khẩu');
@@ -392,7 +473,6 @@ class PageController extends Controller
             // }
         }
     }
-
 
 
 

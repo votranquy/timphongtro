@@ -22,6 +22,7 @@
                                 <th>User đăng</th>
                                 <th>Tiêu đề</th>
                                 <th>Xem</th>
+                                <th>Sửa</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -36,8 +37,11 @@
                                 <td class="center">
                                     <a href="baidang/{{$bd->id}}" class="btn btn-success">Xem</a>
                                 </td>
+                                <td class="center">
+                                    <a href="user/baidang/baichothue/sua/{{$bd->id}}" class="btn btn-success">Sửa</a>
+                                </td>
                                  <td>
-                                    <a href="xoabaidang/{{$bd->id}}/2" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger">
+                                    <a href="user/baidang/baichothue/xoa/{{$bd->id}}" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger">
                                     <i onclick="return confirm('Bạn có muốn xóa không?')">
                                     </i> Xóa
                                     </a>

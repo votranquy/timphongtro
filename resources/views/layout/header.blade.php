@@ -30,7 +30,7 @@
 			<!-- ./Post -->
 			<!-- User header Menu -->
 			<li class="header_user_loged"> 
-				<a href="/user/vo-tran-quy-4684.htm" class="name"> 
+				<a href="user/profile/xem" class="name"> 
 					@if(Auth::user()->name != NULL)
 					<span class="image">
 						<img src="upload/tintuc/{{Auth::user()->image}}" />
@@ -52,33 +52,33 @@
 						</li>
 						<li class="li_break"></li>
 						<li>
-							<a href="dangbaichothue"> Đăng tin cho thuê
+							<a href="user/baidang/baichothue/them"> Đăng tin cho thuê
 							</a>
 						</li>
 						<li>
-							<a href="dangbaicanthue">
+							<a href="user/baidang/baicanthue/them">
 								 Đăng tin cần thuê
 							</a>
 						</li>
 						<li>
-							<a href="quanlytinchothue">
+							<a href="user/baidang/baichothue/danhsach">
 								 Quản lý tin cho thuê
 							</a>
 						</li>
 						</li>
 						<li>
-							<a href="quanlytincanthue">
+							<a href="user/baidang/baicanthue/danhsach">
 								 Quản lý tin cần thuê
 							</a>
 						</li>
 						<li class="li_break"></li>
 						<li>
-							<a href="/doi-anh-dai-dien.htm">
+							<a href="user/profile/xem">
 								 Thay ảnh đại diện
 							</a> 
 						</li> 
 						<li> 
-							<a href="/cap-nhat-thong-tin.htm"> 
+							<a href="user/profile/xem"> 
 								 Cập nhật thông tin 
 							</a> 
 						</li> 
@@ -99,7 +99,7 @@
 			<!-- ./User header Menu -->
 			<!-- Notification -->
 			  <li class="header_user_loged">
-			    <a href="thongbao/" class="name">
+			    <a href="user/thongbao/danhsach" class="name">
 			      	<!-- <span class="image"> -->
 			      		<img alt="" width="20px" height="20px" src="upload/tintuc/bell.png">
 			     <!--  	</span> -->

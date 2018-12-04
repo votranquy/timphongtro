@@ -5,7 +5,7 @@
 		<div class="">
 			<div class="user_form_pro_content">
 				<div class="module_title">
-					<span>Đăng bài cần thuê</span>
+					<span>Sửa bài cần thuê</span>
 				</div>
 				<div class="clear"></div>
                 @if(session('thongbao'))
@@ -13,12 +13,12 @@
                         {{session('thongbao')}}
                     </div>
                 @endif
-	            <form method="POST" action="user/baidang/baicanthue/them" class="user_form "  enctype="multipart/form-data">
+	            <form method="POST" action="user/baidang/baicanthue/sua/{{$baidang->id}}" class="user_form "  enctype="multipart/form-data">
 	            	@csrf
 	               <div class="item">
 	                  <label>Tiêu đề tin <span class="red">(*)</span></label>
 	                  <div class="item_input">
-	                     <input  name="title" class="pro_title" type="text" id="" value="" placeholder="Cần thuê nhà trọ, phòng trọ ở đâu..." style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="title" class="pro_title" type="text" id="" value="{{$baidang->title}}" placeholder="Cần thuê nhà trọ, phòng trọ ở đâu..." style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 	              <div class="item">
@@ -26,7 +26,11 @@
 	                  <div class="item_input">
 	                        <select class="pro_title" name="roomtype" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
                                 @foreach($loaiphong as $lp)
-                                    <option value="{{$lp->id}}">{{$lp->name}}</option>
+                                    <option 									@if($baidang->room_type_id == $lp->id)
+                                    {{"selected"}}
+                                    @endif
+                                    value="{{$lp->id}}" >{{$lp->name}}
+                                	</option>
                                  @endforeach
                             </select>
 	                  </div>
@@ -34,41 +38,42 @@
 	               <div class="item">
 	                  <label>Số điện thoại để liên hệ <span class="red">(*)</span></label>
 	                  <div class="item_input">
-	                     <input  name="phone" class="pro_title" type="text" id="" value="" placeholder="Nhập số điện thoại của bạn" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="phone" class="pro_title" type="text" id="" value="{{$baidang->phone}}" placeholder="Nhập số điện thoại của bạn" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 	               <div class="item">
 	                  <label>Nhập nội dung (điều kiện, diện tích, an ninh, ...)<span class="red">(*)</span></label>
 	                  <div class="item_input">
-                            <textarea class="pro_title" value="" type="text" name="description" placeholder="Nhập các yêu cầu mong muốn về phòng cần thuê" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%;"></textarea>
+                            <textarea class="pro_title" value="" type="text" name="description" placeholder="Nhập các yêu cầu mong muốn về phòng cần thuê" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%;">{{$baidang->chitietphong->description}}
+                            </textarea>
 	                  </div>
 	              </div>
 	               <div class="item">
 	                  <label>Mức giá min(tháng) <span class="red">(*)</span></label>
 	                  <div class="item_input">
-	                     <input  name="minprice" class="pro_title" type="text" id="" value="" placeholder="Nhập mức giá" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="minprice" class="pro_title" type="text" id="" value="{{$baidang->minPrice}}" placeholder="Nhập mức giá" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 	               <div class="item">
 	                  <label>Mức giá max(tháng) <span class="red">(*)</span></label>
 	                  <div class="item_input">
-	                     <input  name="maxprice" class="pro_title" type="text" id="" value="" placeholder="Nhập mức giá" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="maxprice" class="pro_title" type="text" id="" value="{{$baidang->maxPrice}}" placeholder="Nhập mức giá" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 	               <div class="item">
 	                  <label>Nhập diện tích min <span class="red">(*)</span></label>
 	                  <div class="item_input">
-	                     <input  name="minaceage" class="pro_title" type="text" id="" value="" placeholder="Nhập diện tích" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="minaceage" class="pro_title" type="text" id="" value="{{$baidang->chitietphong->minAceage}}" placeholder="Nhập diện tích" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 	               <div class="item">
 	                  <label>Nhập diện tích max <span class="red">(*)</span></label>
 	                  <div class="item_input">
-	                     <input  name="maxaceage" class="pro_title" type="text" id="" value="" placeholder="Nhập diện tích" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="maxaceage" class="pro_title" type="text" id="" value="{{$baidang->chitietphong->maxAceage}}" placeholder="Nhập diện tích" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 	             <div class="header_btn_post" style="text-align:center;margin:0;">
-	             		<button type="submit" class="btn_post1" >Đăng bài cần thuê</button>
+	             		<button type="submit" class="btn_post1" >Chỉnh sửa</button>
 	              </div>
 	          </form>
 			</div>
