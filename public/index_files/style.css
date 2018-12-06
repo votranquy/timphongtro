@@ -23,11 +23,11 @@ h1, h2, h3 {
 body {
 	color: #333;
 	font-family: Arial, Helvetica, Sans-serif;
-	font-size: 12px;
+	font-size: 15px;
 	line-height: 18px;
 	width: 100%;
 	min-width: 1000px;
-	background: #f4f5f7
+	background: #eee
 }
 
 .paging_content, .paging_wrap {
@@ -462,7 +462,7 @@ select.form_control {
 }
 
 .header_menu {
-	background-color: #0054a0;
+	background-color: #2C7ABE;
 	height: 46px
 }
 
@@ -4312,12 +4312,12 @@ h1, h2, h3 {
 
 body {
 	color: #333;
-	font-family: Arial, Helvetica, Sans-serif;
-	font-size: 12px;
+	font-family: "Segoe UI", Arial, sans-serif
+	font-size: 15px;
 	line-height: 18px;
 	width: 100%;
 	min-width: 1000px;
-	background: #f4f5f7
+	background: #eee
 }
 
 .paging_content, .paging_wrap {
@@ -4752,7 +4752,7 @@ select.form_control {
 }
 
 .header_menu {
-	background-color: #0054a0;
+	background-color: #2C7ABE;
 	height: 46px
 }
 

@@ -29,7 +29,12 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="admin_asset/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <link rel="shortcut icon" href="trotot_icon.png" type="image/x-icon"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> -->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -116,15 +121,17 @@
 <script src="admin_asset/bower_components/js/jquery.validate.min.js"></script>
 <script src="admin_asset/bower_components/js/jquery-3.3.1.min.js"></script>
 
-<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<script src="admin_asset/bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
+<script src="admin_asset/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
 <script>
-$(document).ready(function() {
-    $('#dataTables-example').DataTable({
-            responsive: true
-    });
-});
+  $(document).ready(function() {
+      $('#dataTables-example').DataTable({
+              responsive: true
+      });
+  });
 </script>
-<script type="text/javascript" language="javascript" src="admin_asset/ckeditor/ckeditor.js" ></script>
+<!-- <script type="text/javascript" language="javascript" src="admin_asset/ckeditor/ckeditor.js" ></script> -->
 @yield('script')
 
 

@@ -338,12 +338,14 @@ class PageController extends Controller
     public function postSuaProfile(Request $request){
         $user =User::find(Auth::id());
         if($request->hasFile('image')){
+            foreach($request->file('image') as $image){
                 $filenameWithExt = $image->getClientOriginalName();
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 $extension = $image->getClientOriginalExtension();
                 $fileNameToStore = $filename.'_'.time().'.'.$extension;
                 $image->move("upload/tintuc", $fileNameToStore);
-                $user->image =$fileNameToStore;
+                $user->image = $fileNameToStore;
+            }
         }
         else{}
         $user->name =$request->name;

@@ -147,7 +147,7 @@
 			<li class="header_menu_li header_menu_li_3 ">
         <a class="header_menu_a header_menu_a_cat"
 				href="loaiphong/{{$lp->id}}">
-          <b>{{$lp->name}}</b>
+          {{$lp->name}}
         </a>
 			</li>
 			@endforeach
