@@ -30,9 +30,24 @@ class PageController extends Controller
     	$baidangnoibat = BaiDang::where('post_type_id',2)->take(4)->get();
     	return view('pages.trangchu',['baidangnoibat'=>$baidangnoibat]);
     }
-    public function danganh(){
-        return view('pages.dangnhieuanh');
+    public function updulieu(Request $request){
+
     }
+    public function getupdulieu(){
+        return view('pages.updulieu');
+    }
+    public function postupdulieu(Request $request){
+        foreach($request->name as $name) {
+            $ten = new Anh([
+                    'post_id'=> $baidang->id,
+                    'path' => $fileNameToStore,
+                ]);
+                $image->save();
+
+        }
+        return redirect('updulieu')->with('thongbao','Bạn đã xóa thành công');
+    }
+
     public function getMap(){
         return view('pages.map');
     }
@@ -171,59 +186,36 @@ class PageController extends Controller
         $chitietphong->minAceage=NULL;
         $chitietphong->maxAceage=NULL;
         $chitietphong->save();
+
+            $anhDB=Anh::where('post_id',$baidang->id)->get();//Lay cac anh tu DB
+            $anhCL=$request->get('oldimage');//Lay du lieu tu Client gui len
+            foreach($anhDB as $anh){
+                $kiemtra=0;//Mac dinh nen xoa anh
+                foreach($anhCL as $oldimage) {
+                    if($anh->path == $oldimage) $kiemtra=1;//Nguoi dung khong xoa anh
+                    // dd($anhCL);
+               }
+                if($kiemtra == 0){//Xoa
+                    $xoaanh = Anh::where('id', $anh->id)->delete();
+                }
+            }
+
+        //Them anh moi
         if($request->hasFile('image')){
-            // $anh = Anh::where('post_id',$idbaidang);
-            //Lap lan 1 de them cac anh chua co
-            foreach($request->file('image') as $image){//anh tu C
+            foreach($request->file('image') as $image) {
                 $filenameWithExt = $image->getClientOriginalName();
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 $extension = $image->getClientOriginalExtension();
-                $fileNameToStore = $filename.$extension;//Tên file lấy từ C
-                $kiemtra=0;//Mac dinh chua co trong DB
-                foreach($baidang->anh as $anh){//Anh tu DB
-                    if($fileNameToStore == $anh->path){
-                        $kiemtra=1;//Co trong DB roi
-                    }
-                }
-                if($kiemtra==0){//Chua co trong DB thi them
-                    // $fileNameToStore = $filename.$extension;
-                    $image->move("upload/tintuc", $fileNameToStore);
-                    $image = new Anh([
-                        'post_id'=> $idbaiviet,
-                        'path' => $fileNameToStore,
-                    ]);
-                    $image->save();
-                }
-                else{//Co trong DB thi bo qua
-                }
+                $fileNameToStore = $filename.'_'.time().'.'.$extension;
+                $image->move("upload/tintuc", $fileNameToStore);
+                $image = new Anh([
+                    'post_id'=> $baidang->id,
+                    'path' => $fileNameToStore,
+                ]);
+                $image->save();
             }
-            // $anh = Anh::where('post_id',$idbaidang);
-            //Lap lan 2 de xoa cac anh bi C xoa
-            // foreach($baidang->anh as $anh){//Anh tu DB
-            //     $idanh=$anh->id;
-            //     foreach($request->file('image') as $image){//anh tu C
-            //         $filenameWithExt = $image->getClientOriginalName();
-            //         $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            //         $extension = $image->getClientOriginalExtension();
-            //         $fileNameToStore = $filename.$extension;//Ten anh tu C
-            //         $kiemtra=0;//Mac dinh la nen xoa
-            //         if($anh->path == $fileNameToStore){
-            //             $kiemtra=1;//Nguoi dung khong xoa anh do
-            //         }
-            //     }
-            //     if($kiemtra==0){//Xoa
-            //         $xoaanh = Anh::where('id', $idanh)->get();
-            //         $xoaanh->delete();
-            //     }
-            //     else{//Khong xoa
-            //     }
-            // }
         }
-        else{
-            //Khong co anh nao tai len. Xoa tat ca anh trong DB
-            // $anh = Anh::where('post_id',$idbaidang)->delete();
-            // $anh->delete();
-        }
+
         return redirect('user/baidang/baichothue/sua/'.$idbaiviet)->with('thongbao','Bạn đã sửa bài đăng thành công');
     }
 

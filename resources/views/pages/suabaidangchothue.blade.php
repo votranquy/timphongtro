@@ -68,35 +68,36 @@
 
 					<div class="item">
 						<label>Chọn ảnh</label><br>
+						<?php $i=1; ?>
 						@foreach($baidang->anh as $anh)
-						        <div class="clone">
+						        <div class="">
 						          <div class="control-group input-group" style="margin-top:10px">
 						          	<img src="upload/tintuc/{{$anh->path}}" width="150px" height="100px"><br>
-									<input type="text" name="filename[]" class="form-control pro_title" value="{{$anh->path}}" disabled="">
+									<input type="hidden" name="oldimage[]" class="form-control" value="{{$anh->path}}">
 						            <div class="input-group-btn" style="padding-bottom: 0;">
-						              <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Move</button>
+						              <button class="btn btn-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Move
+						              </button>
 						            </div>
 						          </div>
 						        </div>
+						        <?php $i++; ?>
 				        @endforeach
 						<br>
 				        <div class="input-group control-group increment" >
-				          <input type="file" name="filename[]" class="form-control pro_title" value="">
+				         <!--  <input type="file" name="image[]" class="form-control"  /> -->
 				          <div class="input-group-btn">
-				            <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>ADD</button>
+				            <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Thêm ảnh</button>
 				          </div>
 				        </div>
-				        <div class="clone hide" >
+				        <div class="clone hide">
 				          <div class="control-group input-group" style="margin-top:10px">
-				            <input type="file" name="filename[]" class="form-control pro_title">
-				            <div class="input-group-btn" style="padding-bottom: 0;"> 
-				              <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Move</button>
+				            <input type="file" name="image[]" class="form-control" multiple />
+				            <div class="input-group-btn">
+				              <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
 				            </div>
 				          </div>
 				        </div>
 					</div>
-
-
 
 	             <div class="header_btn_post" style="text-align:center;margin:0;">
 	             		<button type="submit" class="btn_post1" >Sửa bài</button>
@@ -182,18 +183,18 @@
         });
 </script>
 <script type="text/javascript">
-
     $(document).ready(function() {
 
       $(".btn-success").click(function(){ 
           var html = $(".clone").html();
           $(".increment").after(html);
       });
-
       $("body").on("click",".btn-danger",function(){ 
           $(this).parents(".control-group").remove();
       });
-
+      $("body").on("click",".btn-remove",function(){ 
+          $(this).parents(".control-group").remove();
+      });
     });
 </script>
 

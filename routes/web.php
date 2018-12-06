@@ -24,7 +24,8 @@ Route::get('thu', function () {
 Route::get('profile',function(){
 	return view('view');
 });
-Route::get('danganh','PageController@danganh');
+Route::get('updulieu','PageController@getupdulieu');
+Route::post('updulieu','PageController@postupdulieu');
 
 // Route::get('trangchu','PageController@trangchu');
 
