@@ -59,7 +59,7 @@ Route::get('dangxuat','PageController@getdangxuat');
 Route::get('dangky','PageController@getdangky');
 Route::post('dangky','PageController@postdangky');
 
-Route::group(['prefix'=>'user'],function(){
+Route::group(['prefix'=>'user','middleware'=>'userLogin'],function(){
 	Route::group(['prefix'=>'thongbao'],function(){
 		Route::get('danhsach','PageController@getDanhsachThongbao');
 		Route::post('xem/{idbaiviet}/{idthongbao}','PageController@postXemThongbao');
