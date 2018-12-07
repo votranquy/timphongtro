@@ -12,15 +12,15 @@
 			 @if(Auth::check()) 
 				<li class="header_btn_post"> 
 					<a class="btn_post1" href="javascript: void(0)"> 
-						<i class="fa fa-plus-circle"></i> Đăng tin 
+						 Đăng tin 
 					</a>
 					<div class="header_post_sub"> 
 						<ul> 
 							<li> 
-								<a href="">Đăng tin cho thuê</a> 
+								<a href="user/baidang/baichothue/them">Đăng tin cho thuê</a> 
 							</li> 
 							<li> 
-								<a rel="nofollow" target="_blank" href="">Đăng tin tìm thuê</a> 
+								<a rel="nofollow" target="_blank" href="user/baidang/baicanthue/them">Đăng tin tìm thuê</a> 
 							</li> 
 						</ul> 
 					</div> 
