@@ -2,8 +2,8 @@
 	<div class="container">
 		<!-- Logo -->
 		<div class="box_logo">
-			<a title="" href="" class="logo"> 
-				<img alt="" src="index_files/pqd1541408742.png">
+			<a title="logo" href="/" class="logo"> 
+				<img alt="LOGO" src="index_files/pqd1541408742.png">
 			</a>
 		</div>
 		<!-- ./Logo -->
@@ -140,7 +140,7 @@
     <ul class="header_menu_ul">
 			<li class="header_menu_li active">
         <a class="header_menu_a"
-				href="trangchu">TRANG CHỦ
+				href="/">TRANG CHỦ
         </a>
       </li>
 			@foreach($loaiphong as $lp)
