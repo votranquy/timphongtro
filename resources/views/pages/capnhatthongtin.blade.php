@@ -13,10 +13,12 @@
                         {{session('thongbao')}}
                     </div>
                 @endif
-	            <form method="POST" action="user/profile/sua" class="user_form "  enctype="multipart/form-data">
+	            <form method="POST" action="user/profile/sua" class="user_form"  enctype="multipart/form-data">
 	            	@csrf
 					<div class="item">
+						@if(Auth::user()->image != NULL)
 						<img src="upload/tintuc/{{$user->image}}" width="150px" height="100px"><br>
+						@endif
 						<label>Ảnh đại diện</label>
 	                  	<div class="item_input">
 	                     	<input  name="image[]" class="pro_title" type="file" id="" value="" placeholder="Chọn ảnh đại diện mới" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">

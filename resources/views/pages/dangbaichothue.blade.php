@@ -34,7 +34,7 @@
 	               <div class="item">
 	                  <label>Số điện thoại để liên hệ<span class="red">(*)</span></label>
 	                  <div class="item_input">
-	                     <input  name="phone" class="pro_title" type="text" id="" value="" placeholder="Nhập số điện thoại của bạn" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="phone" class="pro_title" type="text" id="" value="{{Auth::user()->phone}}" placeholder="Nhập số điện thoại của bạn" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 	               <div class="item">
@@ -58,7 +58,7 @@
 	               <div class="item">
 	                  <label>Nhập địa chỉ<span class="red">(*)</span></label>
 	                  <div class="item_input">
-	                     <input  name="address" class="pro_title" type="text" id="" value="" placeholder="Nhập địa chỉ" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
+	                     <input  name="address" class="pro_title" type="text" id="" value="{{Auth::user()->address}}" placeholder="Nhập địa chỉ" style="margin-bottom:5px;border: 1px solid #dfdfdf;padding: 5px; width: 100%; height: 33px;">
 	                  </div>
 	              </div>
 <!-- 	               <div class="item">

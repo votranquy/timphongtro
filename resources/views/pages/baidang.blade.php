@@ -194,7 +194,7 @@
 		                    <h4>Viết bình luận ...
 		                    	<span class="glyphicon glyphicon-pencil"></span>
 		                    </h4>
-		                    <form action="binhluan/{{$baidang->id}}" method="post" role="form">
+		                    <form action="user/binhluan/them/{{$baidang->id}}" method="post" role="form">
 		                        @csrf
 		                        <div class="form-group">
 		                            <textarea class="form-control" rows="3" name="description"></textarea>

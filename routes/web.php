@@ -32,21 +32,21 @@ Route::post('updulieu','PageController@postupdulieu');
 Route::get('trangnhap/{id}','PageController@getTrangnhap');
 
 
-Route::get('sua/{id}','PageController@getsua');
-Route::post('sua/{id}/{idbaidang}','PageController@postsua');
-Route::get('thongbao','PageController@getthongbao');
+// Route::get('sua/{id}','PageController@getsua');
+// Route::post('sua/{id}/{idbaidang}','PageController@postsua');
+// Route::get('thongbao','PageController@getthongbao');
 Route::post('binhluan/{id}','BinhLuanController@postbinhluan');
 Route::get('dangbaichothue','PageController@getdangbaichothue');
 Route::post('dangbaichothue/{id}','PageController@postdangbaichothue');
 Route::get('dangbaicanthue','PageController@getdangbaicanthue');
 Route::post('dangbaicanthue/{id}','PageController@postdangbaicanthue');
-Route::get('login','PageController@getLogin');
-Route::post('login','PageController@postLogin');
+// Route::get('login','PageController@getLogin');
+// Route::post('login','PageController@postLogin');
 Route::get('map','PageController@getMap');
-Route::get('quanlytinchothue','PageController@getquanlytinchothue');
-Route::get('quanlytincanthue','PageController@getquanlytincanthue');
-Route::post('xemthongbao/{idbaiviet}/{idthongbao}','PageController@postxemthongbao');
-Route::get('xoabaidang/{idbaiviet}/{idquanly}','PageController@getxoabaidang');
+// Route::get('quanlytinchothue','PageController@getquanlytinchothue');
+// Route::get('quanlytincanthue','PageController@getquanlytincanthue');
+// Route::post('xemthongbao/{idbaiviet}/{idthongbao}','PageController@postxemthongbao');
+// Route::get('xoabaidang/{idbaiviet}/{idquanly}','PageController@getxoabaidang');
 
 
 Route::get('/','PageController@trangchu');
@@ -63,6 +63,14 @@ Route::group(['prefix'=>'user'],function(){
 	Route::group(['prefix'=>'thongbao'],function(){
 		Route::get('danhsach','PageController@getDanhsachThongbao');
 		Route::post('xem/{idbaiviet}/{idthongbao}','PageController@postXemThongbao');
+
+	});
+	Route::group(['prefix'=>'binhluan'],function(){
+		Route::get('danhsach','PageController@getDanhsachBinhluan');
+		Route::post('them/{id}','PageController@postThemBinhLuan');
+		Route::get('sua/{idbinhluan}','PageController@getSuaBinhluan');
+		Route::post('sua/{idbinhluan}','PageController@postSuaBinhluan');
+		Route::get('xoa/{idbinhluan}','PageController@getXoaBinhluan');
 
 	});
 	Route::group(['prefix'=>'profile'],function(){
