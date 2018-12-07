@@ -178,6 +178,7 @@
 
 
 		                <!-- Comments Form -->
+		                @if(Auth::check())
 		                <div class="well">
 	                        @if(count($errors)>0)
 	                            <div class="alert alert-danger">
@@ -202,6 +203,7 @@
 		                        <button type="submit" class="btn btn-primary">Gửi</button>
 		                    </form>
 		                </div>
+		                @endif
 		                <!-- ./Posted Comments -->
 		                <!-- Comment -->
 		                @foreach($baidang->binhluan as $bl)
