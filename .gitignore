@@ -1,9 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
-/public/upload/tintuc
 /storage/*.key
-/store/app/upload/tintuc
 /vendor
 /.idea
 /.vscode
