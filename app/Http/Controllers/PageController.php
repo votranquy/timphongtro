@@ -133,7 +133,7 @@ class PageController extends Controller
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 $extension = $image->getClientOriginalExtension();
                 $fileNameToStore = $filename.'_'.time().'.'.$extension;
-                $image->move("upload/tintuc", $fileNameToStore);
+                $image->move("storage/tintuc", $fileNameToStore);
                 $image = new Anh([
                     'post_id'=> $baidang->id,
                     'path' => $fileNameToStore,
@@ -207,7 +207,7 @@ class PageController extends Controller
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 $extension = $image->getClientOriginalExtension();
                 $fileNameToStore = $filename.'_'.time().'.'.$extension;
-                $image->move("upload/tintuc", $fileNameToStore);
+                $image->move("storage/tintuc", $fileNameToStore);
                 $image = new Anh([
                     'post_id'=> $baidang->id,
                     'path' => $fileNameToStore,
@@ -343,7 +343,7 @@ class PageController extends Controller
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
                 $extension = $image->getClientOriginalExtension();
                 $fileNameToStore = $filename.'_'.time().'.'.$extension;
-                $image->move("upload/tintuc", $fileNameToStore);
+                $image->move("storage/tintuc", $fileNameToStore);
                 $user->image = $fileNameToStore;
             }
         }

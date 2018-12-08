@@ -30,7 +30,7 @@
                         <div class="thumb">
                             <div class="profile-userpic mt-card-item">
                                 <div class="avatar-view mt-card-avatar mt-overlay-1">
-                                    <img src="upload/tintuc/{{$user->name}}" >
+                                    <img src="storage/tintuc/{{$user->name}}" >
                                 </div>
                                 <div class="mt-card-content">
                                     <h3 class="mt-card-name">Name</h3>

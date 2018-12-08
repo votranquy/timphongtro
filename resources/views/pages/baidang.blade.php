@@ -58,7 +58,7 @@
 					                        @endif
 					                        >
 					                        <?php $i++; ?>
-					                            <img class="slide-image" width="200px" height="150px" src="upload/tintuc/{{$ah->path}}" alt="{{$ah->path}}">
+					                            <img class="slide-image" width="200px" height="150px" src="storage/tintuc/{{$ah->path}}" alt="{{$ah->path}}">
 					                        </div>
 					                        @endforeach
 					                    </div>

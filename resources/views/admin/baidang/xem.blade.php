@@ -149,7 +149,7 @@
                               </td>
                             @foreach($anh as $ah)
                               <td>
-                                <img width="150px" src="upload/tintuc/{{$ah->path}}"/>
+                                <img width="150px" src="storage/tintuc/{{$ah->path}}"/>
                               </td>
                             @endforeach
                             @endif

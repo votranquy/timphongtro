@@ -17,7 +17,7 @@
 	            	@csrf
 					<div class="item">
 						@if(Auth::user()->image != NULL)
-						<img src="upload/tintuc/{{$user->image}}" width="150px" height="100px"><br>
+						<img src="storage/tintuc/{{$user->image}}" width="150px" height="100px"><br>
 						@endif
 						<label>Ảnh đại diện</label>
 	                  	<div class="item_input">

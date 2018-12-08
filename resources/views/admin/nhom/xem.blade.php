@@ -57,7 +57,7 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->nhomtaikhoan->nhom->name}}</td>
                                 <td>{{$user->phone}}</td>
-<!--                                 <td><img width="100px" src="upload/tintuc/{{$us->image}}"/></td> -->
+<!--                                 <td><img width="100px" src="storage/tintuc/{{$us->image}}"/></td> -->
                                 <td>{{$user->email}}</td>
                                 <td class="center">
                                     <a href="admin/user/xem/{{$user->id}}" class="btn btn-block btn-success"><i class="fa fa-newspaper-o"></i> View</a>

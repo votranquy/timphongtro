@@ -16,7 +16,7 @@
 					@if( count($baidang->anh) != 0)
 					<?php $tenanh= $baidang->anh->first();?>
 					<a class="img" href="baidang/{{$baidang->id}}">
-						<img alt="" src="upload/tintuc/{{$tenanh->path}}">
+						<img alt="" src="storage/tintuc/{{$tenanh->path}}">
 					</a>
 					@endif
 					<div class="info">

@@ -31,7 +31,7 @@
                             <tr class="odd gradeX" align="center">
                                 <td>{{$tt->id}}</td>
                                 <td>{{$tt->TieuDe}}
-                                   <p> <img width="100px" src="upload/tintuc/{{$tt->Hinh}}"/></p>
+                                   <p> <img width="100px" src="storage/tintuc/{{$tt->Hinh}}"/></p>
                                 </td>
                                 <td>{{$tt->TomTat}}</td>
                                 <td>{{$tt->loaitin->theloai->Ten}}</td>

@@ -31,7 +31,7 @@
 					<a href="user/profile/xem" class="name"> 
 						@if(Auth::user()->images != NULL)
 						<span class="image">
-							<img src="upload/tintuc/{{Auth::user()->image}}" />
+							<img src="storage/tintuc/{{Auth::user()->image}}" />
 						</span>
 						@endif
 						<b>{{Auth::user()->username}}</b> 
@@ -42,7 +42,7 @@
 								<a href="user/profile/xem" class="name2">
 									@if(Auth::user()->image != NULL)
 									<span class="image">
-										<img src="upload/tintuc/{{Auth::user()->image}}" />
+										<img src="storage/tintuc/{{Auth::user()->image}}" />
 									</span>
 									@endif
 									<b>{{Auth::user()->username}}</b>
@@ -104,7 +104,7 @@
 				  <li class="header_user_loged">
 				    <a href="user/thongbao/danhsach" class="name">
 				      	<!-- <span class="image"> -->
-				      		<img alt="" width="20px" height="20px" src="upload/tintuc/bell.png">
+				      		<img alt="" width="20px" height="20px" src="storage/tintuc/bell.png">
 				     <!--  	</span> -->
 				      	<span class="label label-warning" style="margin-left:-5px;">
 				          	<?php $dem=0;?>

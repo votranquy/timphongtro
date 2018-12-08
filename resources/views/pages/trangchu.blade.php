@@ -15,7 +15,7 @@
 				<li>
 					<?php $tenanh= $baidang->anh->first();?>
 					<a class="img" href="baidang/{{$baidang->id}}">
-						<img width="15px" src="upload/tintuc/{{$tenanh->path}}">
+						<img width="15px" src="storage/tintuc/{{$tenanh->path}}">
 					</a>
 					<a class="title" href="baidang/{{$baidang->id}}">
 						{{$baidang->title}}
@@ -45,7 +45,7 @@
 					@if( count($baidang->anh) != 0)
 					<?php $tenanh= $baidang->anh->first();?>
 					<a class="img" href="baidang/{{$baidang->id}}">
-						<img alt="" src="upload/tintuc/{{$tenanh->path}}">
+						<img alt="" src="storage/tintuc/{{$tenanh->path}}">
 					</a>
 					@endif
 					<div class="info">

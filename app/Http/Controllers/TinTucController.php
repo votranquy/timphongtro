@@ -57,10 +57,10 @@ class TinTucController extends Controller
             }
             $name = $file->getClientOriginalName();
             $TenHinh =str_random(4)."_".$name;
-            while(file_exists("upload/tintuc/".$TenHinh)){
+            while(file_exists("storage/tintuc/".$TenHinh)){
                 $TenHinh =str_random(4)."_".$name;
             }
-            $file->move("upload/tintuc",$TenHinh);
+            $file->move("storage/tintuc",$TenHinh);
             $tintuc->Hinh=$TenHinh;
         }
         else{

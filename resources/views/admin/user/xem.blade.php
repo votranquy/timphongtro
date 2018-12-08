@@ -29,7 +29,7 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="upload/tintuc/{{$user->image}}" alt="{{$user->image}}">
+              <img class="profile-user-img img-responsive img-circle" src="storage/tintuc/{{$user->image}}" alt="{{$user->image}}">
 
               <h3 class="profile-username text-center">{{$user->username}}</h3>
 
@@ -70,7 +70,7 @@
                 @foreach($baidang as $bd)
                 <div class="post">
                   <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="upload/tintuc/{{$user->image}}" alt="user image">
+                    <img class="img-circle img-bordered-sm" src="storage/tintuc/{{$user->image}}" alt="user image">
                         <span class="username">
                           <a href="#">{{$user->username}}</a>
                           <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>

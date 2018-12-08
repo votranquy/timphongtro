@@ -10,7 +10,7 @@
 						<li>
 							<?php $tenanh= $bcc->anh->first();?>
 							<a class="img" href="baidang/{{$bcc->id}}" title="">
-								<img alt="{{$tenanh->path}}" src="upload/tintuc/{{$tenanh->path}}">
+								<img alt="{{$tenanh->path}}" src="storage/tintuc/{{$tenanh->path}}">
 							</a>
 							<a class="title" href="baidang/{{$bcc->id}}">
 								{{ $bcc->title }}
@@ -32,7 +32,7 @@
 						<li>
 							<?php $tenanh= $bm->anh->first();?>
 							<a class="img" href="baidang/{{$bm->id}}" title="">
-								<img alt="" src="upload/tintuc/{{$tenanh->path}}">
+								<img alt="" src="storage/tintuc/{{$tenanh->path}}">
 							</a>
 							<a class="title" href="baidang/{{ $bm->id }}">
 								{{$bm->title}}

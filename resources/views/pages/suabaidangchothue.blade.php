@@ -72,7 +72,7 @@
 						@foreach($baidang->anh as $anh)
 						        <div class="">
 						          <div class="control-group input-group" style="margin-top:10px">
-						          	<img src="upload/tintuc/{{$anh->path}}" width="150px" height="100px"><br>
+						          	<img src="storage/tintuc/{{$anh->path}}" width="150px" height="100px"><br>
 									<input type="hidden" name="oldimage[]" class="form-control" value="{{$anh->path}}">
 						            <div class="input-group-btn" style="padding-bottom: 0;">
 						              <button class="btn btn-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Move
