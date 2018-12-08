@@ -9,13 +9,15 @@ use App\BinhLuan;
 use App\ChiTietPhong;
 use App\LoaiBai;
 use App\LoaiPhong;
+use App\Quyen;
 
 class BaiDangController extends Controller
 {
    //
     public function getDanhSach(){
     	$baidang = BaiDang::where('id','!=',0)->paginate(10);
-    	return view('admin.baidang.danhsach',['baidang'=>$baidang]);
+        $quyen = Quyen::where('group_id',Auth::user()->nhomtaikhoan->group_id)->get();
+    	return view('admin.baidang.danhsach',['baidang'=>$baidang,'quyen'=>$quyen]);
 
     }
     public function getXem($id){

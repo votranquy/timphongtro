@@ -33,8 +33,19 @@
                                 <th>Loại phòng</th>
                                 <th>User đăng</th>
                                 <th>Tiêu đề</th>
-                                <th>Xem</th>
-                                <th>Delete</th>
+                                <?php $i=1; ?>
+                                @foreach(Auth::user()->nhomtaikhoan->nhom->quyen as $quyen)
+                                    @if($quyen->isAction == 1 && $i==1)
+                                    <th>Xem</th>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==2)
+                                    <th>Sửa</th>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==3)
+                                    <th>Xóa</th>
+                                    @endif
+                                    <?php $i++; ?>
+                                @endforeach
                             </tr>
                         </thead>
                         <tbody>
@@ -45,15 +56,26 @@
                                 <td>{{$bd->loaiphong->name}}</td>
                                 <td>{{$bd->user->username}}</td>
                                 <td>{{$bd->title}}</td>
-                                <td class="center">
-                                    <a href="admin/baidang/xem/{{$bd->id}}" class="btn btn-success"><i class="fa fa-newspaper-o"></i> Xem</a>
-                                </td>
-                                 <td>
-                                    <a href="admin/baidang/xoa/{{$bd->id}}" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger">
-                                    <i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil">
-                                    </i> Xóa
-                                    </a>
-                                </td>
+                                 <?php $i=1; ?>
+                                @foreach(Auth::user()->nhomtaikhoan->nhom->quyen as $quyen)
+                                    @if($quyen->isAction == 1 && $i==1)
+                                    <td class="center">
+                                        <a href="admin/baidang/xem/{{$bd->id}}" class="btn btn-success"><i class="fa fa-newspaper-o"></i> Xem</a>
+                                    </td>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==2)
+                                    <th>Sửa</th>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==3)
+                                     <td>
+                                        <a href="admin/baidang/xoa/{{$bd->id}}" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger">
+                                        <i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil">
+                                        </i> Xóa
+                                        </a>
+                                    </td>
+                                    @endif
+                                    <?php $i++; ?>
+                                @endforeach
 
                             </tr>
                            @endforeach

@@ -38,8 +38,19 @@
                                 <th>Mô tả</th>
                                 <th>Thời gian tạo</th>
                                 <th>Thời gian sửa</th>
-                                <th>Delete</th>
-                                <th>Edit</th>
+                                <?php $i=1; ?>
+                                @foreach(Auth::user()->nhomtaikhoan->nhom->quyen as $quyen)
+                                    @if($quyen->isAction == 1 && $i==10)
+                                    <th>{{$quyen->hanhdong->name}}</th>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==11)
+                                    <th>{{$quyen->hanhdong->name}}</th>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==12)
+                                    <th>{{$quyen->hanhdong->name}}</th>
+                                    @endif
+                                    <?php $i++; ?>
+                                @endforeach
                             </tr>
                         </thead>
                         <tbody>
@@ -50,13 +61,21 @@
                                 <td>{{$lb->description}}</td>
                                 <td>{{$lb->created_at}}</td>
                                 <td>{{$lb->updated_at}}</td>
-<!--                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/loaibai/xem/{{$lb->id}}"> View</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/loaibai/sua/{{$lb->id}}">Edit</a></td> -->
-                                <td class="center">
-                                    <a href="admin/loaibai/xem/{{$lb->id}}" class="btn btn-success"><i class="fa fa-newspaper-o"></i> View</a>
-                                </td>
-
-                                 <td class="center"><a href="admin/loaibai/sua/{{$lb->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
+                                <?php $i=1; ?>
+                                @foreach(Auth::user()->nhomtaikhoan->nhom->quyen as $quyen)
+                                    @if($quyen->isAction == 1 && $i==10)
+                                    <td class="center">
+                                        <a href="admin/loaibai/xem/{{$lb->id}}" class="btn btn-success"><i class="fa fa-newspaper-o"></i> View</a>
+                                    </td>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==11)
+                                     <td class="center"><a href="admin/loaibai/sua/{{$lb->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==12)
+                                     <th>Delete</th>
+                                    @endif
+                                    <?php $i++; ?>
+                                @endforeach
                             </tr>
                             @endforeach
                         </tbody>

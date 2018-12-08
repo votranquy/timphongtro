@@ -14,4 +14,7 @@ class NhomTaiKhoan extends Model
     public function nhom(){
     	return $this->belongsTo('App\Nhom','group_id','id');
     }
+    // public function quyen(){
+    // 	return $this->hasMany('App\Quyen','group_id','id');
+    // }
 }

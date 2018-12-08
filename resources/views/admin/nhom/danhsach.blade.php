@@ -37,10 +37,20 @@
                                 <th>ID</th>
                                 <th>Tên nhóm</th>
                                 <th>Mô tả</th>
-<!--                                 <th>Thời gian tạo</th>
-                                <th>Thời gian sửa</th> -->
-                                <th>View</th>
-                                <th>Edit</th>
+
+                                <?php $i=1; ?>
+                                @foreach(Auth::user()->nhomtaikhoan->nhom->quyen as $quyen)
+                                    @if($quyen->isAction == 1 && $i==13)
+                                    <th>{{$quyen->hanhdong->name}}</th>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==14)
+                                    <th>{{$quyen->hanhdong->name}}</th>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==15)
+                                    <th>{{$quyen->hanhdong->name}}</th>
+                                    @endif
+                                    <?php $i++; ?>
+                                @endforeach
                             </tr>
                         </thead>
                         <tbody>
@@ -50,11 +60,26 @@
                                 <td>{{$nh->name}}</td>
                                 <td>{{$nh->description}}</td>
 
-                                <td class="center">
-                                    <a href="admin/nhom/xem/{{$nh->id}}" class="btn btn-success"><i class="fa fa-newspaper-o"></i> View</a>
-                                </td>
 
-                                 <td class="center"><a href="admin/nhom/sua/{{$nh->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
+                                <?php $i=1; ?>
+                                @foreach(Auth::user()->nhomtaikhoan->nhom->quyen as $quyen)
+                                    @if($quyen->isAction == 1 && $i==13)
+                                    <td class="center">
+                                        <a href="admin/nhom/xem/{{$nh->id}}" class="btn btn-success"><i class="fa fa-newspaper-o"></i> View</a>
+                                    </td>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==14)
+                                        <td class="center"><a href="admin/nhom/sua/{{$nh->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==15)
+                                        <th>{{$quyen->hanhdong->name}}</th>
+                                    @endif
+                                    <?php $i++; ?>
+                                @endforeach
+
+
+
+
                             </tr>
                             @endforeach
                         </tbody>

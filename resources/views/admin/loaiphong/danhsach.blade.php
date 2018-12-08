@@ -38,9 +38,19 @@
                                 <th>ID</th>
                                 <th>Tên</th>
                                 <th>Mô tả</th>
-                                <th>View</th>
-                                <th>Edit</th>
-<!--                                 <th>Delete</th> -->
+                                 <?php $i=1; ?>
+                                @foreach(Auth::user()->nhomtaikhoan->nhom->quyen as $quyen)
+                                    @if($quyen->isAction == 1 && $i==7)
+                                         <th>View</th>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==8)
+                                        <th>Edit</th>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==9)
+                                        <th>Delete</th>
+                                    @endif
+                                    <?php $i++; ?>
+                                @endforeach
                             </tr>
                         </thead>
                         <tbody>
@@ -49,26 +59,22 @@
                                 <td>{{$lp->id}}</td>
                                 <td>{{$lp->name}}</td>
                                 <td>{{$lp->description}}</td>
-
-                                <td class="center">
-                                    <a href="admin/loaiphong/xem/{{$lp->id}}" class="btn btn-success"><i class="fa fa-newspaper-o"></i> View</a>
-                                </td>
-
-                                 <td class="center"><a href="admin/loaiphong/sua/{{$lp->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
-
-<!--                                 <td class="center"><a href="admin/loaiphong/danhsach" onclick="return confirm('Chức năng tạm thời disable');" title="Xóa" class="btn btn-danger"><i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil"></i> Delete</a></td> -->
-
-
-
-
-
-
-
-
-
-
-
-
+                                 <?php $i=1; ?>
+                                @foreach(Auth::user()->nhomtaikhoan->nhom->quyen as $quyen)
+                                    @if($quyen->isAction == 1 && $i==7)
+                                    <td class="center">
+                                        <a href="admin/loaiphong/xem/{{$lp->id}}" class="btn btn-success"><i class="fa fa-newspaper-o"></i> View</a>
+                                    </td>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==8)
+                                       <td class="center"><a href="admin/loaiphong/sua/{{$lp->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==9)
+                                         <td class="center"><a href="admin/loaiphong/danhsach" onclick="return confirm('Chức năng tạm thời disable');" title="Xóa" class="btn btn-danger"><i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil"></i> Delete</a>
+                                         </td>
+                                    @endif
+                                    <?php $i++; ?>
+                                @endforeach
 
                             </tr>
                             @endforeach

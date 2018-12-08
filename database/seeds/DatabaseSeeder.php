@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(room_type::class);
         $this->call(rooms_detail::class);
         $this->call(users::class);
+        $this->call(permission::class);
     }
 }

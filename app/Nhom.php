@@ -16,5 +16,8 @@ class Nhom extends Model
     	return $this->hasManyThrough('App\User','App\NhomTaiKhoan',
     		'group_id','user_id','id');
     }
+    public function quyen(){
+        return $this->hasMany('App\Quyen','group_id','id');
+    }
 }
 

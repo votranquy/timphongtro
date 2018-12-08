@@ -40,11 +40,21 @@
                                 <th>Name</th>
                                 <th>Quyền</th>
                                 <th>Phone</th>
-<!--                                 <th>Image</th> -->
                                 <th>Email</th>
-                                <th>View</th>
-                                <th>Delete</th>
-                                <th>Edit</th>
+
+                                 <?php $i=1; ?>
+                                @foreach(Auth::user()->nhomtaikhoan->nhom->quyen as $quyen)
+                                    @if($quyen->isAction == 1 && $i==4)
+                                        <th>{{$quyen->hanhdong->name}}</th>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==5)
+                                        <th>{{$quyen->hanhdong->name}}</th>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==6)
+                                        <th>{{$quyen->hanhdong->name}}</th>
+                                    @endif
+                                    <?php $i++; ?>
+                                @endforeach
                             </tr>
                         </thead>
                         <tbody>
@@ -55,13 +65,30 @@
                                 <td>{{$us->name}}</td>
                                 <td>{{$us->nhomtaikhoan->nhom->name}}</td>
                                 <td>{{$us->phone}}</td>
-<!--                                 <td><img width="100px" src="upload/tintuc/{{$us->image}}"/></td> -->
                                 <td>{{$us->email}}</td>
-                                <td class="center">
-                                    <a href="admin/user/xem/{{$us->id}}" class="btn btn-block btn-success"><i class="fa fa-newspaper-o"></i> View</a>
+                                 <?php $i=1; ?>
+                                @foreach(Auth::user()->nhomtaikhoan->nhom->quyen as $quyen)
+                                    @if($quyen->isAction == 1 && $i==4)
+                                        <td class="center">
+                                    <a href="admin/user/xem/{{$us->id}}" class="btn btn-block btn-success"><i class="fa fa-newspaper-o"></i> View
+                                    </a>
                                 </td>
-                                <td class="center"><a href="admin/user/xoa/{{$us->id}}" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger"><i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil"></i> Delete</a></td>
-                                <td class="center"><a href="admin/user/sua/{{$us->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit</a></td>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==5)
+                                        <td class="center">
+                                    <a href="admin/user/sua/{{$us->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit
+                                    </a>
+                                </td>
+                                    @endif
+                                    @if($quyen->isAction == 1 && $i==6)
+                                        <td class="center">
+                                    <a href="admin/user/xoa/{{$us->id}}" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger"><i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil"></i> Delete
+                                    </a>
+                                </td>
+                                    @endif
+                                    <?php $i++; ?>
+                                @endforeach
+
                             </tr>
                             @endforeach
                         </tbody>
