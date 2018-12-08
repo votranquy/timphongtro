@@ -497,7 +497,7 @@ class PageController extends Controller
         $users->save();
         $nhomtaikhoan=new NhomTaiKhoan;
         $nhomtaikhoan->user_id=$users->id;
-        $nhomtaikhoan->group_id=3;
+        $nhomtaikhoan->group_id=1;
         $nhomtaikhoan->save();
         return redirect('dangnhap')->with('thongbao','Chúc mừng bạn đăng ký thành công. Vui lòng đăng nhập để tiếp tục sử dụng dịch vụ.');
     }
