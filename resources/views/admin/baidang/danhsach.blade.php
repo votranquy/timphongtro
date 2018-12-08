@@ -7,7 +7,7 @@
         <small>Danh sách</small>
       </h1>
       <ol class="breadcrumb">
-        <li><i class="fa fa-dashboard"></i> Bài đăng</li>
+        <li><i class="fa fa-dashboard"></i> Bài đăng.</li>
         <li class="active">Danh sách</li>
       </ol>
     </section>
