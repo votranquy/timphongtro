@@ -48,8 +48,8 @@ Route::get('map','PageController@getMap');
 // Route::post('xemthongbao/{idbaiviet}/{idthongbao}','PageController@postxemthongbao');
 // Route::get('xoabaidang/{idbaiviet}/{idquanly}','PageController@getxoabaidang');
 
-
 Route::get('/','PageController@trangchu');
+Route::get('home','PageController@trangchu');
 Route::get('baidang/{id}','PageController@getBaiDang');
 Route::get('loaiphong/{id}','PageController@getLoaiPhong');
 

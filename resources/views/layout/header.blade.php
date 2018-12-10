@@ -2,7 +2,7 @@
 	<div class="container">
 		<!-- Logo -->
 		<div class="box_logo">
-			<a title="logo" href="/" class="logo"> 
+			<a title="logo" href="home" class="logo"> 
 				<img alt="LOGO" src="index_files/pqd1541408742.png">
 			</a>
 		</div>
@@ -143,7 +143,7 @@
     <ul class="header_menu_ul">
 			<li class="header_menu_li active">
         <a class="header_menu_a"
-				href="/">Trang Chủ
+				href="home">Trang Chủ
         </a>
       </li>
 			@foreach($loaiphong as $lp)
