@@ -464,7 +464,27 @@ class PageController extends Controller
         $baidang=BaiDang::where('room_type_id',$id)->paginate(5);
         return view('pages.loaiphong',['baidang'=>$baidang,'loaiphongchitiet'=>$loaiphongchitiet]);
     }
-
+    public function posttimkiem(Request $request){
+        $diachi= $request->address;
+        if($request->price=="1"){$minprice=0;$maxprice=1000000;}
+        if($request->price=="2"){$minprice=1000000;$maxprice=3000000;}
+        if($request->price=="3"){$minprice=3000000;$maxprice=5000000;}
+        if($request->price=="4"){$minprice=5000000;$maxprice=10000000;}
+        if($request->price=="5"){$minprice=10000000;$maxprice=40000000;}
+        if($request->price=="6"){$minprice=40000000;$maxprice=7000000;}
+        if($request->price=="7"){$minprice=70000000;$maxprice=10000000;}
+        if($request->price=="8"){$minprice=100000000;$maxprice=1000000000000;}
+        if($request->aceage=="1"){$minaceage=0;$maxaceage=10;}
+        if($request->aceage=="2"){$minaceage=10;$maxaceage=15;}
+        if($request->aceage=="3"){$minaceage=15;$maxaceage=25;}
+        if($request->aceage=="4"){$minaceage=25;$maxaceage=35;}
+        if($request->aceage=="5"){$minaceage=35;$maxaceage=50;}
+        if($request->aceage=="6"){$minaceage=50;$maxaceage=75;}
+        if($request->aceage=="7"){$minaceage=75;$maxaceage=100;}
+        if($request->aceage=="8"){$minaceage=100;$maxaceage=10000;}
+        $baidang = BaiDang::where('post_type_id',2)->orWhere('address','like',"%$diachi%")->where('price','>=',"$minprice")->where('price','<=',"$maxprice")->where('aceage','>=',"$minAceage")->where('aceage','<=',"$maxAceage")->take(30)->paginate(6);
+        return view('pages.timkiem',['baidang'=>$baidang]);
+    }
     public function getdangky(){
         return view('pages.dangky');
     }

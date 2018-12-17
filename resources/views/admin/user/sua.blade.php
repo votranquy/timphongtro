@@ -50,19 +50,16 @@
                                 <label>{{$user->email}}</label>
                         </div>
                         <div class="form-group">
-                                <label>Quyền </label>
-                                <label class="radio-inline">
-                                    <input name="group" value="3" checked="" type="radio"                                     @if($user->nhomtaikhoan->group_id==3) {{"checked"}}
-                                    @endif>Thường
-                                </label>
-                                <label class="radio-inline">
-                                    <input name="group" value="2" type="radio" @if($user->nhomtaikhoan->group_id==2) {{"checked"}}
-                                    @endif>Mod
-                                </label>
-                                <label class="radio-inline">
-                                    <input name="group" value="1" type="radio" @if($user->nhomtaikhoan->group_id==1) {{"checked"}}
-                                    @endif>Admin
-                                </label>
+                                <label>Quyền: </label>
+                                @foreach($nhom as $nhom)
+                                @if($nhom->id > Auth::user()->nhomtaikhoan->group_id)
+                                  <label class="radio-inline">
+                                      <input name="usergroup" value="{{$nhom->id}}" type="radio"
+                                      @if($user->nhomtaikhoan->group_id == $nhom->id)       checked=""
+                                      @endif>{{ $nhom->name }}
+                                  </label>
+                                  @endif
+                                @endforeach
                         </div>
                       </div>
                       <!-- /.box-body -->

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\NhomTaiKhoan;
 use App\BaiDang;
+use App\Nhom;
 class UserController extends Controller
 {
     //
@@ -15,8 +16,15 @@ class UserController extends Controller
     }
 
     public function getSua($id){
+        $nhom = Nhom::all();
         $user=User::find($id);
-    	return view('admin.user.sua',['user'=>$user]);
+    	return view('admin.user.sua',['user'=>$user,'nhom'=>$nhom]);
+    }
+    public function postSua($id,Request $request){
+        $nhomtaikhoan=NhomTaiKhoan::where('user_id',$id)->first();
+        $nhomtaikhoan->group_id=$request->usergroup;
+        $nhomtaikhoan->save();
+        return redirect('admin/user/sua/'.$id)->with('thongbao','Sửa thành công');
     }
 
     public function getThem(){

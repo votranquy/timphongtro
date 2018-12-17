@@ -76,15 +76,19 @@
                                     @endif
                                     @if($quyen->isAction == 1 && $i==5)
                                         <td class="center">
-                                    <a href="admin/user/sua/{{$us->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit
-                                    </a>
-                                </td>
+                                            @if($us->id != Auth::user()->id)
+                                                <a href="admin/user/sua/{{$us->id}}" title="Sửa" class="btn btn-primary"><i class="fa fa-edit "></i>Edit
+                                                </a>
+                                            @endif
+                                        </td>
                                     @endif
                                     @if($quyen->isAction == 1 && $i==6)
                                         <td class="center">
-                                    <a href="admin/user/xoa/{{$us->id}}" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger"><i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil"></i> Delete
-                                    </a>
-                                </td>
+                                        @if($us->id != Auth::user()->id)
+                                            <a href="admin/user/xoa/{{$us->id}}" onclick="return confirm('Bạn đã chắc xóa ?');" title="Xóa" class="btn btn-danger"><i onclick="return confirm('Bạn có muốn xóa không?')" class="fa fa-pencil"></i> Delete
+                                            </a>
+                                        @endif
+                                    </td>
                                     @endif
                                     <?php $i++; ?>
                                 @endforeach

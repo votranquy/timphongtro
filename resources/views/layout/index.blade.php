@@ -52,7 +52,9 @@
 		<!-- Header -->
 		@include('layout.header')
 		<!--./Header -->
-
+		<!-- search -->
+		@include('layout.search')
+		<!-- ./search -->
 
 		<div class="content mainContent">
 			<div class="container ">

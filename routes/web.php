@@ -17,32 +17,32 @@
 // 	return view('welcome');
 // });
 
-Route::get('thu', function () {
-    return view('admin.loaiphong.them');
-});
+// Route::get('thu', function () {
+//     return view('admin.loaiphong.them');
+// });
 
-Route::get('profile',function(){
-	return view('view');
-});
-Route::get('updulieu','PageController@getupdulieu');
-Route::post('updulieu','PageController@postupdulieu');
+// Route::get('profile',function(){
+// 	return view('view');
+// });
+// Route::get('updulieu','PageController@getupdulieu');
+// Route::post('updulieu','PageController@postupdulieu');
 
 // Route::get('trangchu','PageController@trangchu');
 
-Route::get('trangnhap/{id}','PageController@getTrangnhap');
+// Route::get('trangnhap/{id}','PageController@getTrangnhap');
 
 
 // Route::get('sua/{id}','PageController@getsua');
 // Route::post('sua/{id}/{idbaidang}','PageController@postsua');
 // Route::get('thongbao','PageController@getthongbao');
-Route::post('binhluan/{id}','BinhLuanController@postbinhluan');
-Route::get('dangbaichothue','PageController@getdangbaichothue');
-Route::post('dangbaichothue/{id}','PageController@postdangbaichothue');
-Route::get('dangbaicanthue','PageController@getdangbaicanthue');
-Route::post('dangbaicanthue/{id}','PageController@postdangbaicanthue');
+// Route::post('binhluan/{id}','BinhLuanController@postbinhluan');
+// Route::get('dangbaichothue','PageController@getdangbaichothue');
+// Route::post('dangbaichothue/{id}','PageController@postdangbaichothue');
+// Route::get('dangbaicanthue','PageController@getdangbaicanthue');
+// Route::post('dangbaicanthue/{id}','PageController@postdangbaicanthue');
 // Route::get('login','PageController@getLogin');
 // Route::post('login','PageController@postLogin');
-Route::get('map','PageController@getMap');
+// Route::get('map','PageController@getMap');
 // Route::get('quanlytinchothue','PageController@getquanlytinchothue');
 // Route::get('quanlytincanthue','PageController@getquanlytincanthue');
 // Route::post('xemthongbao/{idbaiviet}/{idthongbao}','PageController@postxemthongbao');
@@ -58,7 +58,7 @@ Route::post('dangnhap','PageController@postdangnhap');
 Route::get('dangxuat','PageController@getdangxuat');
 Route::get('dangky','PageController@getdangky');
 Route::post('dangky','PageController@postdangky');
-
+Route::post('timkiem','PageController@posttimkiem');
 Route::group(['prefix'=>'user','middleware'=>'userLogin'],function(){
 	Route::group(['prefix'=>'thongbao'],function(){
 		Route::get('danhsach','PageController@getDanhsachThongbao');
